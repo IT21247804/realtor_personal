@@ -39,13 +39,13 @@
 
     --radius: 0.5rem;
 
-    --dark-blue: 235 43.5% 27.1%;
-    --light-blue: 203 87.4% 28%;
-    --dark-red: 360 78.4% 54.5%;
-    --light-red: 0 67.4% 56.7%;
-    --cool-gray: 204 13.5% 92.7%;
-    --pure-white: 0 0% 100%;
-    --beige: 40 58.7% 76.3%;
+    --dark-blue: #272c63;
+    --light-blue: #085585;
+    --dark-red: #e53030;
+    --light-red: #db4646;
+    --cool-gray: #e9ecee;
+    --pure-white: #ffffff;
+    --beige: #e6ce9f;
 
     --headline-font: "Kollektif", sans-serif;
   }
