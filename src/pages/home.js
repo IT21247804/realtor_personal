@@ -1,74 +1,10 @@
+import { HomeComp } from "../modules/client/home/components/home";
+
 const Home = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-      <h1>Home Page</h1>
-    </div>
+    <>
+      <HomeComp />
+    </>
   );
 };
 
