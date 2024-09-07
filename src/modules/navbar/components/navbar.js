@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../../hooks/auth-provider";
+import { Link, useLocation } from "react-router-dom";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { Menu, Collapse } from "antd";
+import { NavLink } from "./nav-link";
+import { navbarLinks } from "./navbar-links";
 
 const Navbar = () => {
   const { Panel } = Collapse;
@@ -46,6 +47,10 @@ const Navbar = () => {
     }
   };
 
+  const location = useLocation();
+  const pathname = location.pathname;
+  const route = pathname.split("/")[1];
+
   return (
     <div
       className={
@@ -64,24 +69,25 @@ const Navbar = () => {
       <div className="flex items-center">
         <ul className={"hidden lg:flex list-none font-medium"}>
           <li
-            className={"mr-8 uppercase text-xs tracking-widest hover:underline"}
+            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+              route === "add-listing" ? "text-[#e53030]" : ""
+            }`}
           >
             <Link to="/add-listing">list with us</Link>
           </li>
           <li
-            className={"mr-8 uppercase text-xs tracking-widest hover:underline"}
+            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+              route === "explore-to-buy" ? "text-[#e53030]" : ""
+            }`}
           >
             <Link to="/explore-to-buy">explore to buy</Link>
           </li>
           <li
-            className={"mr-8 uppercase text-xs tracking-widest hover:underline"}
+            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+              route === "browse-rentals" ? "text-[#e53030]" : ""
+            }`}
           >
             <Link to="/browse-rentals">browse rentals</Link>
-          </li>
-          <li
-            className={"mr-8 uppercase text-xs tracking-widest hover:underline"}
-          >
-            <Link to="/find">Find your dream stay</Link>
           </li>
         </ul>
         <MenuOutlined
