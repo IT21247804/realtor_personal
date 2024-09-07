@@ -8,6 +8,7 @@ import { useAuth } from "./hooks/auth-provider";
 import SignatureProperty from "./pages/signature-property";
 import AddListing from "./pages/add-listing";
 import { ExploreToBuy } from "./pages/explore-to-buy";
+import { BrowseRentals } from "./pages/browse-rentals";
 
 const App = () => {
   const { user } = useAuth();
@@ -22,6 +23,7 @@ const App = () => {
           element={<SignatureProperty />}
         />
         <Route path="/explore-to-buy" element={<ExploreToBuy />} />
+        <Route path="/browse-rentals" element={<BrowseRentals />} />
       </Route>
 
       <Route
