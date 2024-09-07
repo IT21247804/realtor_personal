@@ -22,8 +22,7 @@ export const propertyTypes = [
   {
     label: "Villa / Bungalow",
     value: "villa / bungalow",
-    key: "",
-    key: "hou",
+    key: "villa / bungalow",
   },
   {
     label: "Hotel",

@@ -5,8 +5,8 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     // Define SQL query with correct syntax
     const addPropertyRequest = `
-      INSERT INTO property_request (contact, email, firstname, lastname, location, propertyType)
-      VALUES (?, ?, ?, ?, ?, ?)`;
+      INSERT INTO property_request (contact, email, firstname, lastname, location, propertyType, listingType)
+      VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
     // Extract values from request body
     const propertyRequestValues = [
@@ -16,6 +16,7 @@ module.exports = (db) => {
       req.body.lastname,
       req.body.location,
       req.body.propertyType,
+      req.body.listingType,
     ];
 
     // Execute the query

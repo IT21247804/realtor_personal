@@ -77,9 +77,8 @@ export const AddListingForm = () => {
         message: "Request Submitted",
         description: "Your property request was successfully submitted!",
       });
+      window.location.reload();
     } catch (error) {
-      console.log(error);
-
       notification.error({
         message: "Submission Failed",
         description: "An error occurred while submitting your request.",
