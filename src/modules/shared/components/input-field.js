@@ -31,7 +31,6 @@ export const InputField = ({
 
   return (
     <FormItem
-      // Disable the default required indicator
       required={false}
       validateStatus={errors && error ? "error" : ""}
       help={errors && error?.message}
