@@ -100,7 +100,7 @@ const Navbar = () => {
       {menuOpen && (
         <div
           className={`
-                    bg-slate-50 h-screen w-full lg:w-96 absolute flex flex-col items-center justify-center top-0 bottom-0 transition-all ease-in-out duration-500
+                    z-40 bg-slate-50 h-screen w-full lg:w-96 absolute flex flex-col items-center justify-center top-0 bottom-0 transition-all ease-in-out duration-500
                     ${sideMenu ? "right-0" : "-right-full lg:-right-96"}
                 `}
         >
