@@ -29,8 +29,6 @@ const OurMarket = () => {
     fetchMarket();
   }, []);
 
-  console.log(market);
-
   return (
     <>
       {market ? (
