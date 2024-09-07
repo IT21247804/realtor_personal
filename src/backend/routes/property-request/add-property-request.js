@@ -22,11 +22,15 @@ module.exports = (db) => {
     db.query(addPropertyRequest, propertyRequestValues, (err, results) => {
       if (err) {
         console.error("Error inserting market data: ", err.message);
-        return res.status(500).json({ error: "Failed to insert market data" });
+        return res
+          .status(500)
+          .json({ error: "Failed to insert property request data" });
       }
 
       console.log("Market data added successfully");
-      res.status(201).json({ message: "Market data added successfully" });
+      res
+        .status(201)
+        .json({ message: "Property request data added successfully" });
     });
   });
 

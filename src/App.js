@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home";
-import About from "./pages/about";
 import Admin from "./pages/admin";
 import Layout from "./modules/shared/components/layout";
 import Login from "./pages/login";
 import { useAuth } from "./hooks/auth-provider";
 import SignatureProperty from "./pages/signature-property";
+import AddListing from "./pages/add-listing";
 
 const App = () => {
   const { user } = useAuth();
@@ -15,7 +15,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
+        <Route path="/add-listing" element={<AddListing />} />
         <Route
           path="/signature-collection/:id"
           element={<SignatureProperty />}

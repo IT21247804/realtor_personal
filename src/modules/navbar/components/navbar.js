@@ -66,7 +66,7 @@ const Navbar = () => {
           <li
             className={"mr-8 uppercase text-xs tracking-widest hover:underline"}
           >
-            <Link to="/list-with-us">list with us</Link>
+            <Link to="/add-listing">list with us</Link>
           </li>
           <li
             className={"mr-8 uppercase text-xs tracking-widest hover:underline"}
