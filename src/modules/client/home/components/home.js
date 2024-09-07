@@ -1,5 +1,6 @@
 import BrandPromise from "./brand-promise";
 import Hero from "./hero";
+import OurMarket from "./market";
 import SignatureProperties from "./signature-properties";
 import Testimonials from "./testimonials";
 
@@ -9,7 +10,7 @@ export const HomeComp = () => {
       <Hero />
       <SignatureProperties />
       <BrandPromise />
-      {/* our market */}
+      <OurMarket />
       <Testimonials />
     </>
   );
