@@ -6,25 +6,27 @@ import Admin from "./pages/admin";
 import Layout from "./modules/shared/components/layout";
 import Login from "./pages/login";
 import { useAuth } from "./hooks/auth-provider";
+import SignatureProperty from "./pages/signature-property";
 
 const App = () => {
-  console.log(44, "app rendering");
   const { user } = useAuth();
-  console.log(11, user);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route
+          path="/signature-collection/:id"
+          element={<SignatureProperty />}
+        />
       </Route>
 
-      {/* Admin Dashboard (Protected Route) */}
       <Route
         path="/admin"
         element={user ? <Admin /> : <Navigate to="/login" />}
       />
 
-      {/* Login Route */}
       <Route path="/login" element={<Login />} />
     </Routes>
   );
