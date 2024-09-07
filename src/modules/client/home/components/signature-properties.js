@@ -14,7 +14,7 @@ const SignatureProperties = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_MYSQL_ENDPOINT}/get-signature-property`
+          `http://localhost:3001/get-signature-property`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");
@@ -72,7 +72,7 @@ const SignatureProperties = () => {
             ) : (
               <div
                 className={
-                  "grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 items-center"
+                  "grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 items-center"
                 }
               >
                 <Link
@@ -100,7 +100,7 @@ const SignatureProperties = () => {
                     whileInView="show"
                     viewport={{ once: false, amount: 0.25 }}
                     className={
-                      "z-30 relative w-full max-w-80 h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
+                      "z-30 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
                     }
                   >
                     {signatureData && signatureData[0] && (
@@ -167,7 +167,7 @@ const SignatureProperties = () => {
                     whileInView="show"
                     viewport={{ once: false, amount: 0.25 }}
                     className={
-                      "z-30 relative w-full max-w-80 h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
+                      "z-30 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
                     }
                   >
                     {signatureData && signatureData[1] && (
@@ -234,7 +234,7 @@ const SignatureProperties = () => {
                     whileInView="show"
                     viewport={{ once: false, amount: 0.25 }}
                     className={
-                      "z-30 relative w-full max-w-80 h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
+                      "z-30 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
                     }
                   >
                     {signatureData && signatureData[2] && (
@@ -301,7 +301,7 @@ const SignatureProperties = () => {
                     whileInView="show"
                     viewport={{ once: false, amount: 0.25 }}
                     className={
-                      "z-30 relative w-full max-w-80 h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
+                      "z-30 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
                     }
                   >
                     {signatureData && signatureData[3] && (

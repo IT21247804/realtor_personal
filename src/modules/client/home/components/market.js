@@ -8,15 +8,11 @@ const OurMarket = () => {
   const [market, setMarket] = useState([]);
   const [error, setError] = useState(null);
 
-  console.log(12, market);
-
   useEffect(() => {
     const fetchMarket = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_MYSQL_ENDPOINT}/get-all-market`
-        );
+        const response = await fetch(`http://localhost:3001/get-all-market`);
 
         if (!response.ok) throw new Error("Failed to fetch market data");
 
@@ -74,7 +70,7 @@ const OurMarket = () => {
           ) : (
             <div
               className={
-                "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center"
+                "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-center"
               }
             >
               <motion.div
@@ -97,7 +93,7 @@ const OurMarket = () => {
                 whileInView="show"
                 viewport={{ once: false, amount: 0.25 }}
                 className={
-                  "z-0 relative w-full max-w-96 h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
+                  "z-0 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
                 }
               >
                 {market && market[0] && (
@@ -153,7 +149,7 @@ const OurMarket = () => {
                 whileInView="show"
                 viewport={{ once: false, amount: 0.25 }}
                 className={
-                  "z-0 relative w-full max-w-96 h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
+                  "z-0 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
                 }
               >
                 {market && market[1] && (
@@ -209,7 +205,7 @@ const OurMarket = () => {
                 whileInView="show"
                 viewport={{ once: false, amount: 0.25 }}
                 className={
-                  "z-0 relative w-full max-w-96 h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
+                  "z-0 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
                 }
               >
                 {market && market[2] && (
@@ -265,7 +261,7 @@ const OurMarket = () => {
                 whileInView="show"
                 viewport={{ once: false, amount: 0.25 }}
                 className={
-                  "z-0 relative w-full max-w-96 h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
+                  "z-0 relative w-full h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
                 }
               >
                 {market && market[3] && (
