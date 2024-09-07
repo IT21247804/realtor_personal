@@ -104,6 +104,11 @@ const SignatureProperty = () => {
     return str?.split(regex);
   }
 
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const openVideoModal = () => setIsVideoOpen(true);
+  const closeVideoModal = () => setIsVideoOpen(false);
+
   return (
     <div className={"w-full max-w-[1280px] mx-auto p-8"}>
       {isLoading ? (
@@ -113,21 +118,21 @@ const SignatureProperty = () => {
           <div className="w-full">
             <div className="flex items-start justify-between">
               <div>
-                <h2 className="capitalize text-xl lg:text-3xl mb-2 font-semibold text-darkBlue">
+                <h2 className="capitalize text-xl lg:text-3xl mb-2 font-semibold text-[#272c63]">
                   {property?.propertyType} in {property?.location}
                 </h2>
-                <p className="text-darkBlue mb-2 text-lg  lg:text-2xl capitalize ">
+                <p className="text-[#272c63] mb-2 text-lg  lg:text-2xl capitalize ">
                   {splitAtCapitalLetters(property?.age)}{" "}
                   {property?.propertyType} for {property?.listingType}.
                 </p>
               </div>
               <div className={"gap-4 flex items-center"}>
                 {property?.status === "sold" ? (
-                  <p className="text-darkRed border p-4 border-black rounded-full text-lg: lg:text-3xl">
+                  <p className="text-[#e53030] border p-4 border-black rounded-full text-lg: lg:text-3xl">
                     Sold out
                   </p>
                 ) : (
-                  <p className="text-darkRed border p-4 border-black rounded-full text-lg: lg:text-3xl">
+                  <p className="text-[#e53030] border p-4 border-black rounded-full text-lg: lg:text-3xl">
                     LKR {formatPrice(property?.price)} Million
                   </p>
                 )}
@@ -138,38 +143,59 @@ const SignatureProperty = () => {
             <div className="w-full lg:w-3/5 h-96 overflow-hidden rounded-md shadow-sm relative">
               {property?.video?.toString().length > 0 && (
                 <div className="absolute top-4 right-4">
-                  {/* <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button size={"sm"} variant="outline">
-                        <Play className="size-4 mr-2" />
-                        play video
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent className={"w-auto lg:max-w-[1200px]"}>
-                      <AlertDialogHeader className="mb-4">
-                        <AlertDialogTitle className="capitalize">
-                          {property?.propertyType} in {property?.location}
-                        </AlertDialogTitle>
-                        <AlertDialogDescription
-                          className={"rounded-md overflow-hidden w-auto"}
+                  <div>
+                    {/* Play Video Button */}
+                    {property?.video?.toString().length > 0 && (
+                      <div className="absolute top-4 right-4">
+                        <button
+                          onClick={openVideoModal}
+                          className="bg-gray-200 text-black p-2 rounded flex items-center"
                         >
-                          <video
-                            controls
-                            autoPlay
-                            loop
-                            className="lg:max-w-[1150px] lg:max-h-[840px] max-w-[400px] w-auto h-auto object-cover"
-                          >
-                            <source src={property?.video} />
-                          </video>
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter className="absolute top-4 right-4">
-                        <AlertDialogCancel>
-                          Close <X className="w-4 h-4 ml-2" />
-                        </AlertDialogCancel>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog> */}
+                          <Play className="w-4 h-4 mr-2" />
+                          Play Video
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Video Modal */}
+                    {isVideoOpen && (
+                      <div
+                        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                        onClick={closeVideoModal}
+                      >
+                        <div
+                          className="bg-white rounded-md p-4 w-auto lg:max-w-[1200px] relative"
+                          onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking inside it
+                        >
+                          <div className="flex justify-between mb-4">
+                            <h2 className="capitalize text-xl font-semibold">
+                              {property?.propertyType} in {property?.location}
+                            </h2>
+                            <button onClick={closeVideoModal}>
+                              Close <X className="w-4 h-4 ml-2" />
+                            </button>
+                          </div>
+                          <div className="rounded-md overflow-hidden w-auto">
+                            <video
+                              controls
+                              autoPlay
+                              loop
+                              className="lg:max-w-[1150px] lg:max-h-[840px] max-w-[400px] w-auto h-auto object-cover"
+                            >
+                              <source src={property?.video} />
+                            </video>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Property Cover Image */}
+                    <img
+                      src={property?.cover}
+                      alt={property?.location}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               )}
               <img
@@ -408,7 +434,7 @@ const SignatureProperty = () => {
 
               {property?.whatsappNumber && (
                 <div
-                  className="flex items-center border p-4 justify-center rounded-4 shadow-sm hover:shadow-md cursor-pointer hover:shadow-lightBlue/50 duration-300 transition-all"
+                  className="flex items-center border p-4 justify-center rounded-4 shadow-sm hover:shadow-md cursor-pointer hover:shadow-[#085585]/50 duration-300 transition-all"
                   onClick={() => handleWhatsAppClick}
                 >
                   <img
@@ -424,7 +450,7 @@ const SignatureProperty = () => {
 
               {property?.email && (
                 <div
-                  className="flex items-center border p-4 justify-center rounded-4 shadow-sm hover:shadow-md cursor-pointer hover:shadow-lightBlue/50 duration-300 transition-all"
+                  className="flex items-center border p-4 justify-center rounded-4 shadow-sm hover:shadow-md cursor-pointer hover:shadow-[#085585]/50 duration-300 transition-all"
                   onClick={() => handleEmailClick}
                 >
                   <Mail className="w-4 h-4 mr-2" />
