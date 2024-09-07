@@ -146,7 +146,7 @@ export const BrowseRentalProperties = () => {
               const desc =
                 description?.length > 0 ? descriptions : <p>No description</p>;
               return (
-                <Link key={property.id} href={`/explore-to-buy/${property.id}`}>
+                <Link key={property.id} to={`/explore-to-buy/${property.id}`}>
                   <PropertyCard
                     id={property.id}
                     cover={property.cover}
@@ -164,7 +164,7 @@ export const BrowseRentalProperties = () => {
       </div>
       <div className={"w-full items-center h-48 flex justify-center"}>
         {!isLoading && filteredProperties?.length === 0 && (
-          <div className="col-span-4 text-center text-darkBlue font-semibold">
+          <div className="col-span-4 text-center text-[#272c63] font-semibold">
             Relevant data is not found
           </div>
         )}

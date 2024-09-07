@@ -44,7 +44,7 @@ export const PropertyFilterBar = ({
       <div className={"w-full"}>
         <div className={"flex gap-4 lg:items-center flex-col lg:flex-row"}>
           <div className={"lg:mb-4"}>
-            <p className={"font-semibold text-darkBlue text-sm mb-2"}>
+            <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
               Filter by Location:
             </p>
             <Select
@@ -61,7 +61,7 @@ export const PropertyFilterBar = ({
           </div>
 
           <div className={"lg:mb-4"}>
-            <p className={"font-semibold text-darkBlue text-sm mb-2"}>
+            <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
               Filter by Property Type:
             </p>
             <Select
@@ -78,7 +78,7 @@ export const PropertyFilterBar = ({
           </div>
 
           <div className={"lg:mb-4"}>
-            <p className={"font-semibold text-darkBlue text-sm mb-2"}>
+            <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
               Filter by Property Age:
             </p>
             <Select
@@ -96,7 +96,7 @@ export const PropertyFilterBar = ({
 
           {selectedPropertyType !== "land" && selectedPropertyType && (
             <div className={"lg:mb-4"}>
-              <p className={"font-semibold text-darkBlue text-sm mb-2"}>
+              <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
                 Filter by Number of Rooms:
               </p>
               <Input
@@ -112,7 +112,7 @@ export const PropertyFilterBar = ({
 
         <div className={"mt-4 lg:mt-0 z-0"}>
           <div className={"w-full lg:max-w-[600px]"}>
-            <p className={"font-semibold text-darkBlue text-sm mb-2"}>
+            <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
               Filter by Price:
             </p>
             <div className={"w-full max-w-[600px]"}>
@@ -126,10 +126,10 @@ export const PropertyFilterBar = ({
             </div>
           </div>
           <div className="flex justify-between mt-2 w-full max-w-[600px]">
-            <span className={"text-sm text-lightBlue"}>
+            <span className={"text-sm text-[#085585]"}>
               LKR {formatPrice(priceRange[0])} Million
             </span>
-            <span className={"text-sm text-darkBlue"}>
+            <span className={"text-sm text-[#272c63]"}>
               LKR {formatPrice(priceRange[1])} Million
             </span>
           </div>
@@ -138,7 +138,14 @@ export const PropertyFilterBar = ({
 
       <Button
         onClick={resetFilters}
-        className="bg-lightBlue hover:bg-lightRed text-pureWhite mt-4 lg:mt-0 lg:w-48 "
+        className="bg-[#085585] hover:bg-[#db4646] text-white mt-4 lg:mt-0 lg:w-48 h-10 border-0"
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = "#e53030";
+          e.currentTarget.style.color = "#ffffff";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "#272c63";
+        }}
       >
         Reset filters
       </Button>

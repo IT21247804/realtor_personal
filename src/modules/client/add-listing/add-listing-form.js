@@ -188,7 +188,7 @@ export const AddListingForm = () => {
             <CustomPrimaryButton
               text="Send Request"
               htmlType="submit"
-              loading={isLoading} // Optional: Add loading state to the button
+              loading={isLoading}
             />
           </Col>
         </Row>

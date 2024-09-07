@@ -9,6 +9,7 @@ import SignatureProperty from "./pages/signature-property";
 import AddListing from "./pages/add-listing";
 import { ExploreToBuy } from "./pages/explore-to-buy";
 import { BrowseRentals } from "./pages/browse-rentals";
+import { BrowseProperty } from "./pages/browse-property";
 
 const App = () => {
   const { user } = useAuth();
@@ -24,6 +25,8 @@ const App = () => {
         />
         <Route path="/explore-to-buy" element={<ExploreToBuy />} />
         <Route path="/browse-rentals" element={<BrowseRentals />} />
+        <Route path="/explore-to-buy/:id" element={<BrowseProperty />} />
+        <Route path="/browse-rentals/:id" element={<BrowseProperty />} />
       </Route>
 
       <Route

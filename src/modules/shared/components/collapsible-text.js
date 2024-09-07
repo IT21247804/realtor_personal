@@ -20,7 +20,7 @@ export const CollapsibleText = ({ text, collapsedHeight }) => {
       </div>
       <button
         onClick={toggleText}
-        className="font-semibold text-md text-darkBlue"
+        className="font-semibold text-md text-[#272c63]"
       >
         {isExpanded ? "Show Less" : "Show More"}
       </button>

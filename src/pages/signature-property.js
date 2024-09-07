@@ -6,9 +6,7 @@ import { splitPhoneNumber } from "../modules/shared/utils/splitPhoneNumber";
 import { handleEmailClick } from "../modules/shared/utils/handleEmailClick";
 import { formatPrice } from "../modules/shared/utils/format-price";
 import { ContactFieldCard } from "../modules/shared/components/contact-field-card";
-import { CollapsibleText } from "../modules/shared/components/collapsible-text";
 import { PropertyItemCard } from "../modules/shared/components/property-item-card";
-import { Button } from "antd";
 
 import {
   Bath,
@@ -110,7 +108,7 @@ const SignatureProperty = () => {
   const closeVideoModal = () => setIsVideoOpen(false);
 
   return (
-    <div className={"w-full max-w-[1280px] mx-auto p-8"}>
+    <div className={"w-full max-w-[1440px] mx-auto p-8"}>
       {isLoading ? (
         <LoadingSpinner />
       ) : (
