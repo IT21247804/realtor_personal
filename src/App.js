@@ -7,6 +7,7 @@ import Login from "./pages/login";
 import { useAuth } from "./hooks/auth-provider";
 import SignatureProperty from "./pages/signature-property";
 import AddListing from "./pages/add-listing";
+import { ExploreToBuy } from "./pages/explore-to-buy";
 
 const App = () => {
   const { user } = useAuth();
@@ -20,6 +21,7 @@ const App = () => {
           path="/signature-collection/:id"
           element={<SignatureProperty />}
         />
+        <Route path="/explore-to-buy" element={<ExploreToBuy />} />
       </Route>
 
       <Route

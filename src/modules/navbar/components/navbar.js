@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { Menu, Collapse } from "antd";
-import { NavLink } from "./nav-link";
-import { navbarLinks } from "./navbar-links";
 
 const Navbar = () => {
   const { Panel } = Collapse;
@@ -54,7 +52,7 @@ const Navbar = () => {
   return (
     <div
       className={
-        "z-40 w-full transition-all duration-500 ease-in-out fixed top-0 left-0 right-0 flex items-center justify-between p-5 h-28 bg-white text-black shadow-md"
+        "z-40 w-full transition-all duration-500 ease-in-out static top-0 left-0 right-0 flex items-center justify-between p-5 h-28 bg-white text-black shadow-md"
       }
     >
       <div>
