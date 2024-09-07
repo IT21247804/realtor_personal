@@ -1,4 +1,5 @@
 import BrandPromise from "./brand-promise";
+import ContactUs from "./contact-us";
 import Hero from "./hero";
 import OurMarket from "./market";
 import SignatureProperties from "./signature-properties";
@@ -12,6 +13,7 @@ export const HomeComp = () => {
       <BrandPromise />
       <OurMarket />
       <Testimonials />
+      <ContactUs />
     </>
   );
 };
