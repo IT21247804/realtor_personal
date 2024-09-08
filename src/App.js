@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home";
-import Admin from "./pages/admin";
+import Dashboard from "./pages/dashboard";
 import Layout from "./modules/shared/components/layout";
 import Login from "./pages/login";
 import { useAuth } from "./hooks/auth-provider";
@@ -30,8 +30,8 @@ const App = () => {
       </Route>
 
       <Route
-        path="/admin"
-        element={user ? <Admin /> : <Navigate to="/login" />}
+        path="/dashboard/*"
+        element={user ? <Dashboard /> : <Navigate to="/login" />}
       />
 
       <Route path="/login" element={<Login />} />

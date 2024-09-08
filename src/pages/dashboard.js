@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "../hooks/auth-provider";
 
-const Admin = () => {
+const Dashboard = () => {
   const { logout } = useAuth();
 
   return (
@@ -12,4 +12,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Dashboard;
