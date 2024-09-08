@@ -58,6 +58,13 @@ const Login = () => {
           <Button
             onClick={handleLogin}
             className="h-10 w-full py-3 bg-[#085585] text-white rounded-md hover:bg-[#272c63] transition-colors"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#e53030";
+              e.currentTarget.style.color = "#ffffff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#272c63";
+            }}
           >
             Login
           </Button>
