@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleLogin = () => {
     login({ username, password });
-    navigate("/dashboard");
+    navigate("/dashboard/properties");
   };
 
   return (

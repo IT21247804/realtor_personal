@@ -1,13 +1,15 @@
 import React from "react";
-import { useAuth } from "../hooks/auth-provider";
+import { Outlet } from "react-router-dom";
+import { DashboardNavBar } from "../modules/dashboard/navbar/components/dashboard-nav-bar";
 
 const Dashboard = () => {
-  const { logout } = useAuth();
-
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <button onClick={logout}>Logout</button>
+    <div className="dashboard flex">
+      <DashboardNavBar />
+      <div className="content flex-1 p-6">
+        {/* Nested routes will render here */}
+        <Outlet />
+      </div>
     </div>
   );
 };

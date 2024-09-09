@@ -10,6 +10,7 @@ import AddListing from "./pages/add-listing";
 import { ExploreToBuy } from "./pages/explore-to-buy";
 import { BrowseRentals } from "./pages/browse-rentals";
 import { BrowseProperty } from "./pages/browse-property";
+import PropertyRequests from "./pages/property-requests";
 
 const App = () => {
   const { user } = useAuth();
@@ -31,8 +32,12 @@ const App = () => {
 
       <Route
         path="/dashboard/*"
-        element={user ? <Dashboard /> : <Navigate to="/login" />}
-      />
+        // element={user ? <Dashboard /> : <Navigate to="/login" />}
+        element={<Dashboard />}
+      >
+        {/* Nested routes inside dashboard */}
+        <Route path="property-requests" element={<PropertyRequests />} />
+      </Route>
 
       <Route path="/login" element={<Login />} />
     </Routes>
