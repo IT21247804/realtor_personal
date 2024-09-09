@@ -148,7 +148,7 @@ export const DashboardPropertyCard = ({
   return (
     <div
       className={
-        "relative group w-full cursor-pointer rounded-lg border border-lightBlue shadow-lg hover:shadow-md duration-300 hover:shadow-lightBlue/40 overflow-hidden h-[600px] z-10"
+        "relative group w-full cursor-pointer rounded-lg border border--[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow--[#085585]/40 overflow-hidden h-[600px] z-10"
       }
     >
       {status === "sold" && (
@@ -173,10 +173,10 @@ export const DashboardPropertyCard = ({
             <div>
               <Link href={`/dashboard/properties/${id}`}>
                 <div className="flex items-center gap-2 rounded-md hover:bg-gray-100 p-2 cursor-pointer">
-                  <p className={"text-sm text-darkBlue font-semibold"}>
+                  <p className={"text-sm text--[#272c63] font-semibold"}>
                     View Property
                   </p>
-                  <Eye className={"h-4 text-darkBlue"} />
+                  <Eye className={"h-4 text--[#272c63]"} />
                 </div>
               </Link>
               <div
@@ -184,20 +184,20 @@ export const DashboardPropertyCard = ({
                 onClick={handleAddToSignature}
               >
                 <p
-                  className={"text-sm text-lightBlue font-semibold capitalize"}
+                  className={"text-sm text--[#085585] font-semibold capitalize"}
                 >
                   {signature ? "remove signature" : "add signature"}
                 </p>
-                <Activity className={"h-4 text-lightBlue"} />
+                <Activity className={"h-4 text--[#085585]"} />
               </div>
               <div
                 className="flex items-center gap-2 rounded-md hover:bg-gray-100 p-2 cursor-pointer"
                 onClick={confirmDelete}
               >
-                <p className={"text-sm text-lightRed font-semibold"}>
+                <p className={"text-sm text--[#db4646] font-semibold"}>
                   Delete Property
                 </p>
-                <Trash2 className={"h-4 text-lightRed"} />
+                <Trash2 className={"h-4 text--[#db4646]"} />
               </div>
             </div>
           </PopoverContent>
@@ -215,7 +215,7 @@ export const DashboardPropertyCard = ({
       <div className={`p-2 ${signature ? "bg-pink-100" : "bg-white"}`}>
         <div className={"flex items-center justify-between mb-4"}>
           <div className={"flex items-center"}>
-            <p className={"text-lg font-semibold text-darkBlue"}>
+            <p className={"text-lg font-semibold text--[#272c63]"}>
               {listingType === "rent" ? (
                 <>
                   <span className={"text-sm"}>LKR</span> {formatNumber(price)}
@@ -230,8 +230,8 @@ export const DashboardPropertyCard = ({
             </p>
           </div>
           <div className={"flex items-center"}>
-            <MapPin className={"h-4 text-lightBlue"} />
-            <p className={"font-semibold capitalize text-lightBlue"}>
+            <MapPin className={"h-4 text--[#085585]"} />
+            <p className={"font-semibold capitalize text--[#085585]"}>
               {location}
             </p>
           </div>
@@ -244,7 +244,7 @@ export const DashboardPropertyCard = ({
           <div>
             <p
               className={
-                "rounded-full shadow-xs border border-lightRed px-4 py-1 uppercase text-sm group-hover:bg-lightRed group-hover:text-coolGray font-semibold text-darkRed duration-300"
+                "rounded-full shadow-xs border border--[#db4646] px-4 py-1 uppercase text-sm group-hover:bg--[#db4646] group-hover:text-coolGray font-semibold text--[#e53030] duration-300"
               }
             >
               {status !== "sold" ? <>{listingType}</> : "sold out"}

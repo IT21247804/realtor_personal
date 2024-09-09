@@ -10,7 +10,6 @@ const Properties = () => {
         description={"You can view all the properties here."}
       />
       <PropertyDetails />
-      helo
     </div>
   );
 };
