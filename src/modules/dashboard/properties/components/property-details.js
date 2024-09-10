@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { PropertyFilterBar } from "../../../shared/components/property-filter-bar";
 import { DashboardPropertyCard } from "./dashboard-property-card";
+import { ChevronsDown } from "lucide-react";
+import { Button } from "antd";
 
 export const PropertyDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -147,6 +149,25 @@ export const PropertyDetails = () => {
               );
             })
           : null}
+      </div>
+      <div className="w-full items-center h-24 flex justify-center">
+        {!isLoading && filteredProperties?.length === 0 && (
+          <div className="col-span-4 text-center text-darkBlue font-semibold">
+            No properties found
+          </div>
+        )}
+      </div>
+
+      <div className="w-full flex justify-center pb-16">
+        {!isLoading && visiblePropertiesCount < filteredProperties?.length && (
+          <Button
+            className="bg-darkBlue text-white px-4 py-2 rounded"
+            onClick={loadMoreProperties}
+          >
+            <ChevronsDown className="w-5 h-5 mr-2" />
+            Load More Properties
+          </Button>
+        )}
       </div>
     </div>
   );

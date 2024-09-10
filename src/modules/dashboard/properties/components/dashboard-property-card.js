@@ -2,6 +2,7 @@ import { Popover, Button, notification } from "antd";
 import { MapPin, ChevronsDown, Eye, Trash2, Activity } from "lucide-react";
 import { formatPrice } from "../../../shared/utils/format-price";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const DashboardPropertyCard = ({
   image,
@@ -149,13 +150,13 @@ export const DashboardPropertyCard = ({
   const popoverContent = (
     <div>
       <div className="flex items-center gap-2 rounded-md hover:bg-gray-100 p-2 cursor-pointer">
-        <a
-          href={`/dashboard/properties/${id}`}
+        <Link
+          to={`/dashboard/properties/${id}`}
           className="flex items-center gap-2"
         >
           <p className="text-sm text--[#272c63] font-semibold">View Property</p>
           <Eye className="h-4 text--[#272c63]" />
-        </a>
+        </Link>
       </div>
       <div
         className="flex items-center gap-2 rounded-md hover:bg-gray-100 p-2 cursor-pointer"
