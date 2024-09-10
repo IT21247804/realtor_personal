@@ -42,7 +42,7 @@ export const AddMarketForm = () => {
     try {
       setIsLoading(true);
 
-      const response = await fetch(`http://localhost:3001/add-market`, {
+      const response = await fetch(`https://backend.therealrealtor.lk/add-market`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

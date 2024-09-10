@@ -32,10 +32,10 @@ const columns = [
     key: "action",
     render: (_, record) => (
       <Space size="middle">
-        <a onClick={() => {}}>
+        <a onClick={() => { }}>
           <EditOutlined /> Edit
         </a>
-        <a onClick={() => {}}>
+        <a onClick={() => { }}>
           <DeleteOutlined /> Delete
         </a>
       </Space>
@@ -54,7 +54,7 @@ const Users = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/get-all-users`);
+        const response = await fetch(`https://backend.therealrealtor.lk/get-all-users`);
 
         if (!response.ok) throw new Error("Failed to fetch property requests");
 

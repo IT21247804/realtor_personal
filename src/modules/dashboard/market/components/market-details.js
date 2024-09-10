@@ -22,7 +22,7 @@ export const MarketDetails = () => {
     const fetchMarket = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`http://localhost:3001/get-all-market`);
+        const response = await fetch(`https://backend.therealrealtor.lk/get-all-market`);
 
         if (!response.ok) throw new Error("Failed to fetch market data");
 
@@ -97,16 +97,16 @@ export const MarketDetails = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 z-0">
         {visibleProperties
           ? visibleProperties.map((property) => (
-              <div key={property.id}>
-                <MarketCard
-                  id={property.id}
-                  image={property.cover}
-                  location={property.location}
-                  propertyType={property.type}
-                  description={property.description}
-                />
-              </div>
-            ))
+            <div key={property.id}>
+              <MarketCard
+                id={property.id}
+                image={property.cover}
+                location={property.location}
+                propertyType={property.type}
+                description={property.description}
+              />
+            </div>
+          ))
           : ""}
       </div>
 
