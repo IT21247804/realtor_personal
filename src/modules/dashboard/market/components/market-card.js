@@ -68,8 +68,15 @@ export const MarketCard = ({
         and remove the data from our servers.
       </p>
       <div className="flex justify-end gap-2">
-        <Button onClick={() => setIsDeleting(false)}>Cancel</Button>
-        <Button type="primary" onClick={confirmDelete} loading={isDeleting}>
+        <Button onClick={() => setIsDeleting(false)} style={{ height: "40px" }}>
+          Cancel
+        </Button>
+        <Button
+          type="primary"
+          onClick={confirmDelete}
+          loading={isDeleting}
+          style={{ height: "40px" }}
+        >
           Continue
         </Button>
       </div>
