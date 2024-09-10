@@ -13,6 +13,7 @@ import { BrowseProperty } from "./pages/browse-property";
 import PropertyRequests from "./pages/property-requests";
 import Properties from "./pages/properties";
 import { BrowseDashboardProperty } from "./pages/browse-dashboard-property";
+import Market from "./pages/market";
 
 const App = () => {
   const { user } = useAuth();
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="property-requests" element={<PropertyRequests />} />
         <Route path="properties" element={<Properties />} />
         <Route path="properties/:id" element={<BrowseDashboardProperty />} />
+        <Route path="market" element={<Market />} />
       </Route>
 
       <Route path="/login" element={<Login />} />

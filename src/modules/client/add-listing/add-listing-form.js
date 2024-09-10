@@ -55,11 +55,10 @@ export const AddListingForm = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       setIsLoading(true);
       const response = await fetch(
-        `${process.env.REACT_APP_MYSQL_ENDPOINT}/add-property-request`,
+        `http://localhost:3001/add-property-request`,
         {
           method: "POST",
           headers: {
