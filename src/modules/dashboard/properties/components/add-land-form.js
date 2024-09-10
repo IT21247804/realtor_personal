@@ -126,12 +126,10 @@ export const AddLandForm = ({ control, errors, setIsImageUploaded }) => {
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <MultiDropbox
             name="pictures"
-            label="Dropbox"
-            placeholder="Upload images"
-            required={false}
+            label="Upload Images"
             control={control}
+            required={false}
             errors={errors}
-            setValue={handleImageUpload}
           />
         </Col>
 

@@ -135,19 +135,16 @@ export const AddHouseOrHotelOrVillaForm = ({
             placeholder="Add cover image"
             required={true}
             control={control}
-            setValue={handleImageUpload}
           />
         </Col>
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <MultiDropbox
             name="pictures"
-            label="Dropbox"
-            placeholder="Upload images"
-            required={false}
+            label="Upload Images"
             control={control}
+            required={false}
             errors={errors}
-            setValue={handleImageUpload}
           />
         </Col>
 

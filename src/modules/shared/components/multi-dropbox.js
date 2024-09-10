@@ -1,120 +1,179 @@
-import React, { useState } from "react";
-import { Form, Upload, message } from "antd";
-import { InboxOutlined } from "@ant-design/icons";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import React, { useState, useRef } from "react";
+import { useDropzone } from "react-dropzone";
+import { Button, message, Form } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import AWS from "aws-sdk";
+import { RequiredIndicator } from "./required-indictor";
+import { Controller } from "react-hook-form";
 
-export const MultiDropbox = ({ fieldName, fieldLabel, required, setValue }) => {
-  const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState(null);
-  const [uploadedImages, setUploadedImages] = useState([]); // To store multiple image URLs
+// Configure AWS SDK
+AWS.config.update({
+  accessKeyId: "AKIA2UC3EVGCE3UXFAPD",
+  secretAccessKey: "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",
+  region: "eu-north-1",
+});
 
-  const s3Client = new S3Client({
-    region: "eu-north-1",
-    credentials: {
-      accessKeyId: "AKIA2UC3EVGCE3UXFAPD",
-      secretAccessKey: "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",
-    },
-  });
+const s3 = new AWS.S3();
 
-  const handleFileUpload = async (files) => {
-    if (files.length + uploadedImages.length > 9) {
-      setError("You can upload up to 9 images.");
-      return Upload.LIST_IGNORE;
+const { Item: FormItem } = Form;
+
+export const MultiDropbox = ({
+  name,
+  label,
+  control,
+  required,
+  labelColor,
+  errors,
+}) => {
+  const [previewImages, setPreviewImages] = useState([]);
+  const onChangeRef = useRef(null); // Ref to hold field.onChange
+  let error;
+
+  if (name.includes(".")) {
+    const nameIndexes = name.split(".");
+    if (
+      errors &&
+      nameIndexes.length === 3 &&
+      errors[nameIndexes[0]] &&
+      errors[nameIndexes[0]][nameIndexes[1]]
+    ) {
+      error = errors[nameIndexes[0]][nameIndexes[1]][nameIndexes[2]];
+    }
+  } else if (errors) {
+    error = errors[name];
+  }
+
+  // Define onDrop with access to onChangeRef
+  const onDrop = async (acceptedFiles) => {
+    if (acceptedFiles.length === 0) {
+      message.error("No files selected.");
+      return;
     }
 
-    const newUploadedImages = [...uploadedImages];
-    setUploading(true);
-    setError(null);
+    if (previewImages.length + acceptedFiles.length > 9) {
+      message.error("You can only upload up to 9 images.");
+      return;
+    }
 
-    for (const file of files) {
-      const fileType = file.type;
-      const fileSize = file.size;
+    const newPreviewImages = [];
+    const imageUrls = [];
 
-      if (!["image/jpeg", "image/jpg"].includes(fileType)) {
-        setError("Only JPG and JPEG files are allowed.");
-        setUploading(false);
-        return Upload.LIST_IGNORE;
-      }
-
-      if (fileSize > 10 * 1024 * 1024) {
-        setError("File size should be less than 10MB.");
-        setUploading(false);
-        return Upload.LIST_IGNORE;
-      }
-
-      const params = {
-        Bucket: "trrbucket",
-        Key: `uploads/${file.name}`,
-        Body: file,
-        ContentType: file.type,
-        ACL: "public-read",
-      };
+    for (const file of acceptedFiles) {
+      const filePreview = URL.createObjectURL(file); // Update preview URLs
+      newPreviewImages.push(filePreview);
 
       try {
-        const command = new PutObjectCommand(params);
-        await s3Client.send(command);
-        const fileUrl = `https://trrbucket.s3.eu-north-1.amazonaws.com/uploads/${file.name}`;
-        newUploadedImages.push(fileUrl);
+        const fileName = file.name;
+        const fileType = file.type;
+        const params = {
+          Bucket: "trrbucket",
+          Key: `uploads/${fileName}`,
+          ContentType: fileType,
+          ACL: "public-read",
+        };
+
+        // Get a pre-signed URL for the upload
+        const uploadUrl = await s3.getSignedUrlPromise("putObject", params);
+
+        // Perform the upload
+        const response = await fetch(uploadUrl, {
+          method: "PUT",
+          body: file,
+          headers: {
+            "Content-Type": fileType,
+          },
+        });
+
+        if (response.ok) {
+          message.success(`${fileName} uploaded successfully`);
+          // Construct the file URL
+          const fileUrl = `https://${params.Bucket}.s3.${AWS.config.region}.amazonaws.com/${params.Key}`;
+          imageUrls.push(fileUrl);
+        } else {
+          throw new Error("Upload failed");
+        }
       } catch (error) {
-        setError("Error uploading file. Please try again.");
-        console.error("Error uploading file: ", error);
-        message.error("Error uploading file. Please try again.");
-        setUploading(false);
-        return Upload.LIST_IGNORE;
+        console.error(error);
+        message.error("File upload failed.");
       }
     }
 
-    setUploadedImages(newUploadedImages);
-    setValue(fieldName, newUploadedImages);
-    setUploading(false);
-    return false; // Prevent auto upload by Upload component
+    // Update the preview images and form field
+    setPreviewImages((prevImages) => [...prevImages, ...newPreviewImages]);
+    if (onChangeRef.current) {
+      const updatedUrls = [...imageUrls].join(",");
+      onChangeRef.current(updatedUrls);
+    }
   };
 
-  return (
-    <Form.Item
-      name={fieldName}
-      label={<span className="capitalize">{fieldLabel}</span>}
-      rules={[
-        {
-          required: required,
-          message: `${fieldLabel} is required`,
-        },
-      ]}
-    >
-      <Upload.Dragger
-        beforeUpload={(file, fileList) => handleFileUpload(fileList)}
-        accept=".jpeg,.jpg"
-        multiple={true}
-        showUploadList={false}
-      >
-        {uploadedImages.length > 0 ? (
-          <div style={{ textAlign: "center" }}>
-            {uploadedImages.map((imageUrl, index) => (
-              <img
-                key={index}
-                src={imageUrl}
-                alt={`Uploaded ${index}`}
-                style={{ maxWidth: "100%", maxHeight: "200px", margin: "10px" }}
-              />
-            ))}
-          </div>
-        ) : (
-          <>
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">
-              Click or drag file to this area to upload
-            </p>
-            <p className="ant-upload-hint">
-              Support for multiple JPG or JPEG files, up to 9 images, and each
-              file size should not exceed 10MB.
-            </p>
-          </>
-        )}
-      </Upload.Dragger>
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    multiple: true,
+    accept: "image/*",
+  });
 
-      {error && <p className="text-red-500">{error}</p>}
-    </Form.Item>
+  return (
+    <FormItem
+      required={false}
+      validateStatus={errors && error ? "error" : ""}
+      help={errors && error?.message}
+      label={
+        <span style={{ color: labelColor }}>
+          {label} {required && <RequiredIndicator />}
+        </span>
+      }
+    >
+      <Controller
+        control={control}
+        name={name}
+        render={({ field }) => {
+          // Assign field.onChange to the ref
+          onChangeRef.current = field.onChange;
+
+          return (
+            <div
+              {...getRootProps()}
+              style={{
+                border: "2px dashed #d9d9d9",
+                borderRadius: 4,
+                padding: 16,
+                textAlign: "center",
+                cursor: "pointer", // Indicate that it's clickable
+              }}
+            >
+              <input {...getInputProps()} />
+              <p>Drag & drop images here, or click to select files</p>
+              <Button icon={<UploadOutlined />} type="primary">
+                Upload
+              </Button>
+              {previewImages.length > 0 && (
+                <div
+                  style={{
+                    marginTop: 16,
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 10,
+                  }}
+                >
+                  {previewImages.map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={`Preview ${index}`}
+                      style={{
+                        width: 100,
+                        height: 100,
+                        objectFit: "cover",
+                        borderRadius: 4,
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        }}
+      />
+    </FormItem>
   );
 };
