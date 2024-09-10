@@ -311,7 +311,7 @@ export const AddPropertyForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(99, data);
+    console.log(750, data);
     const descriptionData = data?.description.split(/\n/);
     const descriptionContent = descriptionData?.map((line) => ({
       item: line,
@@ -524,7 +524,7 @@ export const AddPropertyForm = () => {
           />
         )}
 
-        {propertyType === "villa" && (
+        {propertyType.includes("villa") && (
           <AddHouseOrHotelOrVillaForm
             control={control}
             errors={errors}

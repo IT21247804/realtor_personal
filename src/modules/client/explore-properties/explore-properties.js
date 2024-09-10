@@ -16,7 +16,7 @@ export const ExploreProperties = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3001/get-all-properties`
+          `https://backend.therealrealtor.lk/get-all-properties`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");
@@ -40,7 +40,7 @@ export const ExploreProperties = () => {
       setError(null);
       try {
         const response = await fetch(
-          `http://localhost:3001/get-property-descriptions`
+          `https://backend.therealrealtor.lk/get-property-descriptions`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");

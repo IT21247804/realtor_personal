@@ -49,7 +49,7 @@ const SignatureProperty = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3001/get-all-properties`
+          `https://backend.therealrealtor.lk/get-all-properties`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");
@@ -71,7 +71,7 @@ const SignatureProperty = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3001/get-property-description-by-property-id/${parseInt(
+          `https://backend.therealrealtor.lk/get-property-description-by-property-id/${parseInt(
             propertyId
           )}`
         );

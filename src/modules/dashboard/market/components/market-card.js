@@ -25,7 +25,7 @@ export const MarketCard = ({
 
     try {
       const response = await fetch(
-        `http://localhost:3001/delete-market-by-id/${id}`,
+        `https://backend.therealrealtor.lk/delete-market-by-id/${id}`,
         {
           method: "DELETE",
         }

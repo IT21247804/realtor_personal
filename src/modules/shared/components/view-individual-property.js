@@ -44,7 +44,7 @@ export const ViewIndividualProperty = (propertyId) => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3001/get-property-by-id/${propertyId?.id}`
+          `https://backend.therealrealtor.lk/get-property-by-id/${propertyId?.id}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch property data");
@@ -66,7 +66,7 @@ export const ViewIndividualProperty = (propertyId) => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3001/get-property-description-by-property-id/${propertyId?.id}`
+          `https://backend.therealrealtor.lk/get-property-description-by-property-id/${propertyId?.id}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");

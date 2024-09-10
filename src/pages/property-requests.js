@@ -53,7 +53,7 @@ const PropertyRequests = () => {
     const fetchRequests = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/get-all-property-request`
+          `https://backend.therealrealtor.lk/get-all-property-request`
         );
 
         if (!response.ok) throw new Error("Failed to fetch property requests");
@@ -86,7 +86,7 @@ const PropertyRequests = () => {
       onOk: async () => {
         try {
           const response = await fetch(
-            `http://localhost:3001/delete-request/${record.id}`,
+            `https://backend.therealrealtor.lk/delete-request/${record.id}`,
             {
               method: "DELETE",
             }

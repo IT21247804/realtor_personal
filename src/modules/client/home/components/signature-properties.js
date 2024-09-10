@@ -14,7 +14,7 @@ const SignatureProperties = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3001/get-signature-property`
+          `https://backend.therealrealtor.lk/get-signature-property`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");

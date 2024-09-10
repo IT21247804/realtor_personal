@@ -31,7 +31,7 @@ export const DashboardPropertyCard = ({
     try {
       // Delete property description
       const deleteDescriptionResponse = await fetch(
-        `http://localhost:3001/delete-property-description-by-property-id/${id}`,
+        `https://backend.therealrealtor.lk/delete-property-description-by-property-id/${id}`,
         {
           method: "DELETE",
         }
@@ -43,7 +43,7 @@ export const DashboardPropertyCard = ({
 
       // Delete property
       const deletePropertyResponse = await fetch(
-        `http://localhost:3001/delete-property-by-id/${id}`,
+        `https://backend.therealrealtor.lk/delete-property-by-id/${id}`,
         {
           method: "DELETE",
         }
@@ -82,7 +82,7 @@ export const DashboardPropertyCard = ({
     try {
       // Fetch current signature state
       const currentSignatureResponse = await fetch(
-        `http://localhost:3001/get-property-by-id/${id}`,
+        `https://backend.therealrealtor.lk/get-property-by-id/${id}`,
         {
           method: "GET",
         }
@@ -102,7 +102,7 @@ export const DashboardPropertyCard = ({
 
       // Update property signature
       const updateSignatureResponse = await fetch(
-        `http://localhost:3001/set-signature-property/${id}`,
+        `https://backend.therealrealtor.lk/set-signature-property/${id}`,
         {
           method: "PUT", // Change to PUT if your API uses PUT for updates
           headers: {

@@ -58,7 +58,7 @@ export const AddListingForm = () => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `http://localhost:3001/add-property-request`,
+        `https://backend.therealrealtor.lk/add-property-request`,
         {
           method: "POST",
           headers: {
