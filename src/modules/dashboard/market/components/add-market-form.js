@@ -61,7 +61,7 @@ export const AddMarketForm = () => {
       });
 
       // Reset form
-      //   window.location.reload();
+      window.location.reload();
     } catch (error) {
       notification.error({
         message: "Submission Failed",
