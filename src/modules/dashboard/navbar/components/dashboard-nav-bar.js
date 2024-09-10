@@ -22,7 +22,7 @@ export const DashboardNavBar = () => {
   return (
     <div>
       {/* Mobile Menu Button */}
-      <div className="fixed top-4 right-4 z-50 md:hidden h-screen">
+      <div className="fixed top-4 right-4 z-50 md:hidden">
         <button
           onClick={toggleMobileMenu}
           className="text-white bg-[#272c63] p-2 rounded"
@@ -33,9 +33,9 @@ export const DashboardNavBar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 bottom-0 h-screen w-64 shadow bg-[#272c63] text-white transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 bottom-0 h-full w-64 bg-[#272c63] text-white transition-transform duration-300 transform z-40 ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 md:relative  md:w-64`}
+        } md:translate-x-0 md:relative md:w-64 md:z-auto shadow-lg`}
       >
         <div className="p-6 border-b-[1px]">
           <img
@@ -44,11 +44,14 @@ export const DashboardNavBar = () => {
             alt="Logo"
           />
         </div>
+
+        {/* Links */}
         <div className="mt-16">
           <div className="flex items-center gap-4 mb-4 pl-6">
             <AppstoreAddOutlined className="text-2xl" />
             <p className="text-lg font-semibold">Dashboard</p>
           </div>
+
           <NavLink
             to="/dashboard/properties"
             className={({ isActive }) =>
@@ -60,6 +63,7 @@ export const DashboardNavBar = () => {
             <HomeOutlined className="text-xl" />
             <p>Properties</p>
           </NavLink>
+
           <NavLink
             to="/dashboard/property-requests"
             className={({ isActive }) =>
@@ -71,6 +75,7 @@ export const DashboardNavBar = () => {
             <MailOutlined className="text-xl" />
             <p>Property Requests</p>
           </NavLink>
+
           <NavLink
             to="/dashboard/add-property"
             className={({ isActive }) =>
@@ -82,6 +87,7 @@ export const DashboardNavBar = () => {
             <PlusCircleOutlined className="text-xl" />
             <p>Add Property</p>
           </NavLink>
+
           <NavLink
             to="/dashboard/market"
             className={({ isActive }) =>
@@ -94,11 +100,14 @@ export const DashboardNavBar = () => {
             <p>Market</p>
           </NavLink>
         </div>
+
+        {/* Users Section */}
         <div className="mt-4">
           <div className="flex items-center gap-4 mb-4 pl-6">
             <UsergroupAddOutlined className="text-2xl" />
             <p className="text-lg font-semibold">Users</p>
           </div>
+
           <NavLink
             to="/dashboard/users"
             className={({ isActive }) =>
