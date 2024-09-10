@@ -43,7 +43,7 @@ export const AddUserForm = () => {
     try {
       setIsLoading(true);
 
-      const response = await fetch(`http://localhost:3001/add-user`, {
+      const response = await fetch(`https://backend.therealrealtor.lk/add-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
