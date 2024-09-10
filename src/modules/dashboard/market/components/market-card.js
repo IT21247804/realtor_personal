@@ -84,7 +84,7 @@ export const MarketCard = ({
   );
 
   return (
-    <div className="relative group w-full cursor-pointer rounded-lg border border-lightBlue shadow-lg hover:shadow-md duration-300 hover:shadow-lightBlue/40 overflow-hidden h-[500px] z-10">
+    <div className="relative group w-full cursor-pointer rounded-lg border border-[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow-[#085585]/40 overflow-hidden h-[500px] z-10">
       <div className="absolute top-4 right-4 z-10">
         <Popover
           content={popoverContent}
@@ -116,7 +116,7 @@ export const MarketCard = ({
       <div className="p-2 bg-white">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
-            <p className="text-lg font-semibold text-darkBlue capitalize">
+            <p className="text-lg font-semibold text-[#272c63] capitalize">
               {propertyType} in {location}
             </p>
           </div>

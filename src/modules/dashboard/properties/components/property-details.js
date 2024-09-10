@@ -152,7 +152,7 @@ export const PropertyDetails = () => {
       </div>
       <div className="w-full items-center h-24 flex justify-center">
         {!isLoading && filteredProperties?.length === 0 && (
-          <div className="col-span-4 text-center text-darkBlue font-semibold">
+          <div className="col-span-4 text-center text-[#272c63] font-semibold">
             No properties found
           </div>
         )}
