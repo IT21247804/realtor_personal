@@ -11,16 +11,9 @@ import { Dropbox } from "../../../shared/components/dropbox";
 import { MultiDropbox } from "../../../shared/components/multi-dropbox";
 import { VideoDropbox } from "../../../shared/components/video-dropbox";
 
-export const AddLandForm = ({
-  control,
-  errors,
-  setUploding,
-  setValue,
-  setIsImageUploaded,
-  setIsVideoUploaded,
-}) => {
+export const AddLandForm = ({ control, errors, setIsImageUploaded }) => {
   const handleImageUpload = (field, value) => {
-    setValue(field, value);
+    // setValue(field, value);
     setIsImageUploaded(!!value);
   };
 
@@ -127,7 +120,6 @@ export const AddLandForm = ({
             placeholder="Add cover image"
             required={true}
             control={control}
-            setValue={handleImageUpload}
           />
         </Col>
 
