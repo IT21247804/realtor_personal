@@ -136,12 +136,10 @@ export const AddLandForm = ({ control, errors, setIsImageUploaded }) => {
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <VideoDropbox
             name="video"
-            label="Vdieo"
+            label="Upload video"
             placeholder="Upload video"
             required={false}
             control={control}
-            errors={errors}
-            setValue={handleImageUpload}
           />
         </Col>
       </Row>

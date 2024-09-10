@@ -139,7 +139,7 @@ export const AddApartmentForm = ({
             name="cover"
             label="Cover image"
             placeholder="Add cover image"
-            required={true}
+            required={false}
             control={control}
           />
         </Col>
@@ -157,12 +157,10 @@ export const AddApartmentForm = ({
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <VideoDropbox
             name="video"
-            label="Vdieo"
+            label="Upload video"
             placeholder="Upload video"
             required={false}
             control={control}
-            errors={errors}
-            setValue={handleImageUpload}
           />
         </Col>
       </Row>
