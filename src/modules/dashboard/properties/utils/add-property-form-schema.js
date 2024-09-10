@@ -41,7 +41,7 @@ export const addPropertyFormSchema = Yup.object().shape({
     .min(2, "Listing type is required.")
     .required("Please select a listing type."),
 
-  propertyType: Yup.string()
-    .min(2, "Property type is required.")
-    .required("Property type is required."),
+  // propertyType: Yup.string()
+  //   .min(2, "Property type is required.")
+  //   .required("Property type is required."),
 });

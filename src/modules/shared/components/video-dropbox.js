@@ -3,10 +3,10 @@ import { Form, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
-export const Dropbox = ({ fieldName, fieldLabel, required, setValue }) => {
+export const VideoDropbox = ({ fieldName, fieldLabel, required, setValue }) => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // To store image URL
+  const [uploadedVideoUrl, setUploadedVideoUrl] = useState(null); // To store video URL
 
   const s3Client = new S3Client({
     region: "eu-north-1",
@@ -20,13 +20,14 @@ export const Dropbox = ({ fieldName, fieldLabel, required, setValue }) => {
     const fileType = file.type;
     const fileSize = file.size;
 
-    if (!["image/jpeg", "image/jpg"].includes(fileType)) {
-      setError("Only JPG and JPEG files are allowed.");
+    // Validate file type and size
+    if (!["video/mp4"].includes(fileType)) {
+      setError("Only MP4 video files are allowed.");
       return Upload.LIST_IGNORE;
     }
 
-    if (fileSize > 10 * 1024 * 1024) {
-      setError("File size should be less than 10MB.");
+    if (fileSize > 50 * 1024 * 1024) {
+      setError("File size should be less than 50MB.");
       return Upload.LIST_IGNORE;
     }
 
@@ -35,7 +36,7 @@ export const Dropbox = ({ fieldName, fieldLabel, required, setValue }) => {
 
     const params = {
       Bucket: "trrbucket",
-      Key: `uploads/${file.name}`,
+      Key: `videos/${file.name}`,
       Body: file,
       ContentType: file.type,
       ACL: "public-read",
@@ -44,15 +45,15 @@ export const Dropbox = ({ fieldName, fieldLabel, required, setValue }) => {
     try {
       const command = new PutObjectCommand(params);
       await s3Client.send(command);
-      const fileUrl = `https://trrbucket.s3.eu-north-1.amazonaws.com/uploads/${file.name}`;
-      setUploadedImageUrl(fileUrl); // Store the uploaded image URL
+      const fileUrl = `https://trrbucket.s3.eu-north-1.amazonaws.com/videos/${file.name}`;
+      setUploadedVideoUrl(fileUrl); // Store the uploaded video URL
       setValue(fieldName, fileUrl);
       setUploading(false);
     } catch (error) {
       setUploading(false);
-      setError("Error uploading file. Please try again.");
-      console.error("Error uploading file: ", error);
-      message.error("Error uploading file. Please try again.");
+      setError("Error uploading video. Please try again.");
+      console.error("Error uploading video: ", error);
+      message.error("Error uploading video. Please try again.");
     }
     return false; // Prevent auto upload by Upload component
   };
@@ -70,16 +71,16 @@ export const Dropbox = ({ fieldName, fieldLabel, required, setValue }) => {
     >
       <Upload.Dragger
         beforeUpload={handleFileUpload}
-        accept=".jpeg,.jpg"
-        maxCount={1}
+        accept=".mp4"
+        maxCount={1} // Only allow one file
         showUploadList={false}
       >
-        {uploadedImageUrl ? (
+        {uploadedVideoUrl ? (
           <div style={{ textAlign: "center" }}>
-            <img
-              src={uploadedImageUrl}
-              alt="Uploaded"
-              style={{ maxWidth: "100%", maxHeight: "200px" }}
+            <video
+              src={uploadedVideoUrl}
+              controls
+              style={{ maxWidth: "100%", maxHeight: "300px" }}
             />
           </div>
         ) : (
@@ -88,11 +89,11 @@ export const Dropbox = ({ fieldName, fieldLabel, required, setValue }) => {
               <InboxOutlined />
             </p>
             <p className="ant-upload-text">
-              Click or drag file to this area to upload
+              Click or drag video file to this area to upload
             </p>
             <p className="ant-upload-hint">
-              Support for a single JPG or JPEG file, and size should not exceed
-              10MB.
+              Support for a single MP4 file, and the size should not exceed
+              50MB.
             </p>
           </>
         )}

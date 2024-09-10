@@ -22,7 +22,7 @@ const addMarketFormSchema = Yup.object().shape({
 
 export const AddMarketForm = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isImageUploaded, setIsImageUploaded] = useState(false); // Track image upload status
+  const [isImageUploaded, setIsImageUploaded] = useState(false);
 
   const {
     control,
