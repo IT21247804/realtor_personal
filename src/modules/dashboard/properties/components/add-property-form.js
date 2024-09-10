@@ -552,7 +552,15 @@ export const AddPropertyForm = () => {
           ) : (
             <Button
               htmlType="submit"
-              className="bg-darkBlue hover:bg-darkRed text-coolGray duration-300"
+              className="h-10 w-auto py-3 bg-[#085585] text-white rounded-md hover:bg-[#272c63] transition-colors"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#e53030";
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.border = 0;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#272c63";
+              }}
             >
               Add Property
             </Button>
