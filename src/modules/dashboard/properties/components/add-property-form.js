@@ -319,17 +319,20 @@ export const AddPropertyForm = () => {
 
     try {
       setIsLoading(true);
-      const response = await fetch(`https://backend.therealrealtor.lk/add-property`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...data,
-          price: data.price.split(",").join(""),
-          description: descriptionContent,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/add-property`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...data,
+            price: data.price.split(",").join(""),
+            description: descriptionContent,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to add property");

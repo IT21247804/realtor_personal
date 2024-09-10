@@ -31,7 +31,7 @@ export const DashboardPropertyCard = ({
     try {
       // Delete property description
       const deleteDescriptionResponse = await fetch(
-        `https://backend.therealrealtor.lk/delete-property-description-by-property-id/${id}`,
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/delete-property-description-by-property-id/${id}`,
         {
           method: "DELETE",
         }
@@ -43,7 +43,7 @@ export const DashboardPropertyCard = ({
 
       // Delete property
       const deletePropertyResponse = await fetch(
-        `https://backend.therealrealtor.lk/delete-property-by-id/${id}`,
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/delete-property-by-id/${id}`,
         {
           method: "DELETE",
         }
@@ -82,7 +82,7 @@ export const DashboardPropertyCard = ({
     try {
       // Fetch current signature state
       const currentSignatureResponse = await fetch(
-        `https://backend.therealrealtor.lk/get-property-by-id/${id}`,
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-property-by-id/${id}`,
         {
           method: "GET",
         }
@@ -102,7 +102,7 @@ export const DashboardPropertyCard = ({
 
       // Update property signature
       const updateSignatureResponse = await fetch(
-        `https://backend.therealrealtor.lk/set-signature-property/${id}`,
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/set-signature-property/${id}`,
         {
           method: "PUT", // Change to PUT if your API uses PUT for updates
           headers: {

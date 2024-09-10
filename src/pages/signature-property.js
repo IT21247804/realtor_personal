@@ -49,7 +49,7 @@ const SignatureProperty = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://backend.therealrealtor.lk/get-all-properties`
+          `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-all-properties`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");
@@ -71,9 +71,9 @@ const SignatureProperty = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://backend.therealrealtor.lk/get-property-description-by-property-id/${parseInt(
-            propertyId
-          )}`
+          `${
+            process.env.REACT_APP_MYSQL_ENDPOINT
+          }/get-property-description-by-property-id/${parseInt(propertyId)}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");

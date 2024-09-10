@@ -58,7 +58,7 @@ export const AddListingForm = () => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `https://backend.therealrealtor.lk/add-property-request`,
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/add-property-request`,
         {
           method: "POST",
           headers: {

@@ -16,7 +16,7 @@ export const ExploreProperties = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://backend.therealrealtor.lk/get-all-properties`
+          `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-all-properties`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");
@@ -40,7 +40,7 @@ export const ExploreProperties = () => {
       setError(null);
       try {
         const response = await fetch(
-          `https://backend.therealrealtor.lk/get-property-descriptions`
+          `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-property-descriptions`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");

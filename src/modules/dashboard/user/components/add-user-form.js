@@ -43,18 +43,21 @@ export const AddUserForm = () => {
     try {
       setIsLoading(true);
 
-      const response = await fetch(`https://backend.therealrealtor.lk/add-user`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstname: data.firstname,
-          lastname: data.lastname,
-          email: data.email,
-          userRole: data.userRole,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/add-user`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstname: data.firstname,
+            lastname: data.lastname,
+            email: data.email,
+            userRole: data.userRole,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to send user request.");

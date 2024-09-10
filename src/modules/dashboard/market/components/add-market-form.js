@@ -42,13 +42,16 @@ export const AddMarketForm = () => {
     try {
       setIsLoading(true);
 
-      const response = await fetch(`https://backend.therealrealtor.lk/add-market`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/add-market`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to send market request.");

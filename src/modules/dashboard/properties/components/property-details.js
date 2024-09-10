@@ -24,8 +24,10 @@ export const PropertyDetails = () => {
       setError(null);
       try {
         const [propertyResponse, descriptionResponse] = await Promise.all([
-          fetch("https://backend.therealrealtor.lk/get-all-properties"),
-          fetch("https://backend.therealrealtor.lk/get-property-descriptions"),
+          fetch(`${process.env.REACT_APP_MYSQL_ENDPOINT}/get-all-properties`),
+          fetch(
+            `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-property-descriptions`
+          ),
         ]);
 
         if (!propertyResponse.ok || !descriptionResponse.ok) {

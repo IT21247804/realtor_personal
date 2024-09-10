@@ -12,7 +12,9 @@ const OurMarket = () => {
     const fetchMarket = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`https://backend.therealrealtor.lk/get-all-market`);
+        const response = await fetch(
+          `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-all-market`
+        );
 
         if (!response.ok) throw new Error("Failed to fetch market data");
 

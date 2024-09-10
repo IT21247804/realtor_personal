@@ -50,7 +50,7 @@ export const BrowseDashboardProperty = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://backend.therealrealtor.lk/get-property-by-id/${propertyId}`
+          `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-property-by-id/${propertyId}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch property data");
@@ -72,7 +72,7 @@ export const BrowseDashboardProperty = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://backend.therealrealtor.lk/get-property-description-by-property-id/${propertyId}`
+          `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-property-description-by-property-id/${propertyId}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");
@@ -116,7 +116,7 @@ export const BrowseDashboardProperty = () => {
   const updatePropertyStatus = async (id, newStatus) => {
     try {
       const updateStatusResponse = await fetch(
-        `https://backend.therealrealtor.lk/set-property-status/${id}`,
+        `${process.env.REACT_APP_MYSQL_ENDPOINT}/set-property-status/${id}`,
         {
           method: "PUT", // PUT request to update property status
           headers: {
