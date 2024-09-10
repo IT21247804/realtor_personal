@@ -180,7 +180,7 @@ export const DashboardPropertyCard = ({
   return (
     <div className="relative group w-full cursor-pointer rounded-lg border border--[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow--[#085585]/40 overflow-hidden h-[600px] z-10">
       {status === "sold" && (
-        <div className="w-full h-full absolute bg-black/20" />
+        <div className="w-full h-full absolute bg-black/10" />
       )}
       <div className="w-full flex items-center justify-end p-4 absolute top-0 right-0 z-10">
         <Popover content={popoverContent} trigger="click">
@@ -194,7 +194,7 @@ export const DashboardPropertyCard = ({
           className="object-cover w-full h-64"
         />
       </div>
-      <div className={`p-2 ${signature ? "bg-pink-100" : "bg-white"}`}>
+      <div className={`p-2 ${signature ? "bg-pink-100" : "bg-white"} h-full`}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <p className="text-lg font-semibold text--[#272c63]">
