@@ -39,7 +39,6 @@ export const AddMarketForm = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       setIsLoading(true);
 
@@ -60,7 +59,6 @@ export const AddMarketForm = () => {
         description: "Your market request was successfully submitted!",
       });
 
-      // Reset form
       window.location.reload();
     } catch (error) {
       notification.error({

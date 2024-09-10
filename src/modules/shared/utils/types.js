@@ -83,14 +83,17 @@ export const listingTypes = [
 
 export const userRoles = [
   {
+    key: "super admin",
     label: "Super Admin",
-    value: "superAdmin",
+    value: "super admin",
   },
   {
+    key: "admin",
     label: "Admin",
     value: "admin",
   },
   {
+    key: "user",
     label: "User",
     value: "user",
   },
