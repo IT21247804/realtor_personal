@@ -244,13 +244,46 @@ export const AddPropertyForm = () => {
     control,
     handleSubmit,
     formState: { errors },
-    setValue,
     watch,
   } = useForm({
     defaultValues: {
+      referenceId: "",
+      firstname: "",
+      lastname: "",
+      contactNumberOne: "",
+      contactNumberTwo: "",
+      whatsappNumber: "",
+      email: "",
+      addressLineOne: "",
+      addressLineTwo: "",
       location: "",
+      age: "",
+      listingType: "",
+      propertyType: "",
+      numberOfRooms: "",
+      numberOfWashrooms: "",
+      floorArea: "",
+      price: "",
+      numberOfFloors: "",
+      furnished: "",
       description: "",
-      cover: null,
+      cover: "",
+      video: "",
+      developer: "",
+      cod: "",
+      amenity: "",
+      apartmentName: "",
+      size: "",
+      accessRoad: "",
+      water: "",
+      surveyPlans: "",
+      deedType: "",
+      elevator: "",
+      generator: "",
+      airCondition: "",
+      parking: "",
+      security: "",
+      pictures: "",
     },
     resolver: yupResolver(addPropertyFormSchema),
   });
@@ -278,7 +311,7 @@ export const AddPropertyForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    console.log(99, data);
     const descriptionData = data?.description.split(/\n/);
     const descriptionContent = descriptionData?.map((line) => ({
       item: line,
@@ -307,7 +340,7 @@ export const AddPropertyForm = () => {
         description: "Property added successfully!",
       });
 
-      navigate("/dashboard/properties");
+      // navigate("/dashboard/properties");
     } catch (error) {
       notification.error({
         message: "Error",
@@ -519,7 +552,15 @@ export const AddPropertyForm = () => {
           ) : (
             <Button
               htmlType="submit"
-              className="bg-darkBlue hover:bg-darkRed text-coolGray duration-300"
+              className="h-10 w-auto py-3 bg-[#085585] text-white rounded-md hover:bg-[#272c63] transition-colors"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#e53030";
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.border = 0;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#272c63";
+              }}
             >
               Add Property
             </Button>

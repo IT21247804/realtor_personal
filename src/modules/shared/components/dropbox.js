@@ -1,104 +1,151 @@
-import React, { useState } from "react";
-import { Form, Upload, message } from "antd";
-import { InboxOutlined } from "@ant-design/icons";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import React, { useState, useRef } from "react";
+import { useDropzone } from "react-dropzone";
+import { Button, message, Form } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import AWS from "aws-sdk";
+import { RequiredIndicator } from "./required-indictor";
+import { Controller } from "react-hook-form";
 
-export const Dropbox = ({ fieldName, fieldLabel, required, setValue }) => {
-  const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState(null);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // To store image URL
+// Configure AWS SDK
+AWS.config.update({
+  accessKeyId: "AKIA2UC3EVGCE3UXFAPD",
+  secretAccessKey: "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",
+  region: "eu-north-1",
+});
 
-  const s3Client = new S3Client({
-    region: "eu-north-1",
-    credentials: {
-      accessKeyId: "AKIA2UC3EVGCE3UXFAPD",
-      secretAccessKey: "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",
-    },
-  });
+const s3 = new AWS.S3();
 
-  const handleFileUpload = async (file) => {
-    const fileType = file.type;
-    const fileSize = file.size;
+const { Item: FormItem } = Form;
 
-    if (!["image/jpeg", "image/jpg"].includes(fileType)) {
-      setError("Only JPG and JPEG files are allowed.");
-      return Upload.LIST_IGNORE;
+export const Dropbox = ({
+  name,
+  label,
+  control,
+  required,
+  labelColor,
+  errors,
+}) => {
+  const [preview, setPreview] = useState(null);
+  const onChangeRef = useRef(null); // Ref to hold field.onChange
+
+  let error;
+
+  if (name.includes(".")) {
+    const nameIndexes = name.split(".");
+    if (
+      errors &&
+      nameIndexes.length === 3 &&
+      errors[nameIndexes[0]] &&
+      errors[nameIndexes[0]][nameIndexes[1]]
+    ) {
+      error = errors[nameIndexes[0]][nameIndexes[1]][nameIndexes[2]];
+    }
+  } else if (errors) {
+    error = errors[name];
+  }
+
+  // Define onDrop with access to onChangeRef
+  const onDrop = async (acceptedFiles) => {
+    if (acceptedFiles.length === 0) {
+      message.error("No files selected.");
+      return;
     }
 
-    if (fileSize > 10 * 1024 * 1024) {
-      setError("File size should be less than 10MB.");
-      return Upload.LIST_IGNORE;
-    }
-
-    setError(null);
-    setUploading(true);
-
-    const params = {
-      Bucket: "trrbucket",
-      Key: `uploads/${file.name}`,
-      Body: file,
-      ContentType: file.type,
-      ACL: "public-read",
-    };
+    const file = acceptedFiles[0];
+    setPreview(URL.createObjectURL(file)); // Update preview URL
 
     try {
-      const command = new PutObjectCommand(params);
-      await s3Client.send(command);
-      const fileUrl = `https://trrbucket.s3.eu-north-1.amazonaws.com/uploads/${file.name}`;
-      setUploadedImageUrl(fileUrl); // Store the uploaded image URL
-      setValue(fieldName, fileUrl);
-      setUploading(false);
+      const fileName = file.name;
+      const fileType = file.type;
+      const params = {
+        Bucket: "trrbucket",
+        Key: `uploads/${fileName}`,
+        ContentType: fileType,
+        ACL: "public-read",
+      };
+
+      // Get a pre-signed URL for the upload
+      const uploadUrl = await s3.getSignedUrlPromise("putObject", params);
+
+      // Perform the upload
+      const response = await fetch(uploadUrl, {
+        method: "PUT",
+        body: file,
+        headers: {
+          "Content-Type": fileType,
+        },
+      });
+
+      if (response.ok) {
+        message.success(`${fileName} file uploaded successfully`);
+        // Construct the file URL
+        const fileUrl = `https://${params.Bucket}.s3.${AWS.config.region}.amazonaws.com/${params.Key}`;
+        // Update the form state
+        if (onChangeRef.current) {
+          onChangeRef.current(fileUrl);
+        }
+      } else {
+        throw new Error("Upload failed");
+      }
     } catch (error) {
-      setUploading(false);
-      setError("Error uploading file. Please try again.");
-      console.error("Error uploading file: ", error);
-      message.error("Error uploading file. Please try again.");
+      console.error(error);
+      message.error("File upload failed.");
     }
-    return false; // Prevent auto upload by Upload component
   };
 
-  return (
-    <Form.Item
-      name={fieldName}
-      label={<span className="capitalize">{fieldLabel}</span>}
-      rules={[
-        {
-          required: required,
-          message: `${fieldLabel} is required`,
-        },
-      ]}
-    >
-      <Upload.Dragger
-        beforeUpload={handleFileUpload}
-        accept=".jpeg,.jpg"
-        maxCount={1}
-        showUploadList={false}
-      >
-        {uploadedImageUrl ? (
-          <div style={{ textAlign: "center" }}>
-            <img
-              src={uploadedImageUrl}
-              alt="Uploaded"
-              style={{ maxWidth: "100%", maxHeight: "200px" }}
-            />
-          </div>
-        ) : (
-          <>
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">
-              Click or drag file to this area to upload
-            </p>
-            <p className="ant-upload-hint">
-              Support for a single JPG or JPEG file, and size should not exceed
-              10MB.
-            </p>
-          </>
-        )}
-      </Upload.Dragger>
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
-      {error && <p className="text-red-500">{error}</p>}
-    </Form.Item>
+  return (
+    <FormItem
+      required={false}
+      validateStatus={errors && error ? "error" : ""}
+      help={errors && error?.message}
+      label={
+        <span style={{ color: labelColor }}>
+          {label} {required && <RequiredIndicator />}
+        </span>
+      }
+    >
+      <Controller
+        control={control}
+        name={name}
+        render={({ field }) => {
+          // Assign field.onChange to the ref
+          onChangeRef.current = field.onChange;
+
+          return (
+            <div
+              {...getRootProps()}
+              style={{
+                border: "2px dashed #d9d9d9",
+                borderRadius: 4,
+                padding: 16,
+                textAlign: "center",
+                cursor: "pointer", // Indicate that it's clickable
+              }}
+            >
+              <input {...getInputProps()} />
+              <p>Drag & drop an image here, or click to select one</p>
+              <Button icon={<UploadOutlined />} type="primary">
+                Upload
+              </Button>
+              {preview && (
+                <div style={{ marginTop: 16 }}>
+                  <img
+                    src={preview}
+                    alt="Preview"
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: 200,
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          );
+        }}
+      />
+    </FormItem>
   );
 };

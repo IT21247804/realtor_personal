@@ -224,7 +224,7 @@ export const DashboardPropertyCard = ({
           <div>
             <p
               className={
-                "rounded-full shadow-xs border border--[#db4646] px-4 py-1 uppercase text-sm group-hover:bg--[#db4646] group-hover:text-coolGray font-semibold text--[#e53030] duration-300"
+                "rounded-full shadow-xs border border--[#db4646] px-4 py-1 uppercase text-sm group-hover:bg--[#db4646] group-hover:text-[#e9ecee] font-semibold text--[#e53030] duration-300"
               }
             >
               {status !== "sold" ? <>{listingType}</> : "sold out"}

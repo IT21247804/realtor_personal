@@ -121,7 +121,15 @@ export const MarketDetails = () => {
       <div className="w-full flex justify-center pb-16">
         {!isLoading && visiblePropertiesCount < filteredProperties?.length && (
           <Button
-            className="bg-darkBlue text-white px-4 py-2 rounded"
+            className="h-10 w-auto py-3 bg-[#085585] text-white rounded-md hover:bg-[#272c63] transition-colors"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#e53030";
+              e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.border = 0;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#272c63";
+            }}
             onClick={loadMoreProperties}
           >
             <ChevronsDown className="w-5 h-5 mr-2" />
