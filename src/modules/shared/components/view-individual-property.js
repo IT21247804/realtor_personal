@@ -96,7 +96,7 @@ export const ViewIndividualProperty = (propertyId) => {
 
   const individualImage = propertyData?.pictures?.split(",");
 
-  const sliderImages = individualImage?.map((images: any) => ({
+  const sliderImages = individualImage?.map((images) => ({
     original: images,
     thumbnail: images,
   }));
@@ -225,7 +225,7 @@ export const ViewIndividualProperty = (propertyId) => {
               <div className="mt-4">
                 <div className="mb-2">
                   <p className="font-semibold text-lg">Description: </p>
-                  {propertyDescription?.map((d: any, index: any) => (
+                  {propertyDescription?.map((d, index) => (
                     <p key={index}>{d.description}</p>
                   ))}
                 </div>

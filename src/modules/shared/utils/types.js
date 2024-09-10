@@ -35,25 +35,17 @@ export const furnitureTypes = [
   {
     label: "Furnished",
     value: "furnished",
+    key: "furnished",
   },
   {
     label: "Unfurnished",
     value: "unfurnished",
+    key: "unfurnished",
   },
   {
     label: "Semi Furnished",
     value: "semi furnished",
-  },
-];
-
-export const surveyPlans = [
-  {
-    label: "Yes",
-    value: "yes",
-  },
-  {
-    label: "No",
-    value: "no",
+    key: "semi furnished",
   },
 ];
 
@@ -61,10 +53,12 @@ export const booleanTypes = [
   {
     label: "Yes",
     value: "yes",
+    key: "yes",
   },
   {
     label: "No",
     value: "no",
+    key: "no",
   },
 ];
 
@@ -83,14 +77,17 @@ export const listingTypes = [
 
 export const userRoles = [
   {
+    key: "super admin",
     label: "Super Admin",
-    value: "superAdmin",
+    value: "super admin",
   },
   {
+    key: "admin",
     label: "Admin",
     value: "admin",
   },
   {
+    key: "user",
     label: "User",
     value: "user",
   },
@@ -99,19 +96,23 @@ export const userRoles = [
 export const propertyAgeType = [
   {
     label: "Brand New",
-    value: "brandNew",
+    value: "brand new",
+    key: "brand new",
   },
   {
     label: "Less than 5 years",
     value: "less than 5 years",
+    key: "less than 5 years",
   },
   {
     label: "Less than 10 years",
     value: "less than 10 years",
+    key: "less than 10 years",
   },
   {
     label: "More than 10 years",
     value: "more than 10 years",
+    key: "more than 10 years",
   },
 ];
 
@@ -119,10 +120,12 @@ export const measuringUnitType = [
   {
     label: "Acres",
     value: "acres",
+    key: "acres",
   },
   {
     label: "Perches",
     value: "perches",
+    key: "perches",
   },
 ];
 
@@ -131,15 +134,18 @@ export const amenityType = [
     label: "Water",
     value: "water",
     id: "water",
+    key: "water",
   },
   {
     label: "Electricity",
     value: "electricity",
     id: "electricity",
+    key: "electricity",
   },
   {
     label: "telephone",
     value: "telephone",
     id: "telephone",
+    key: "telephone",
   },
 ];

@@ -31,6 +31,7 @@ const getPropertyById = require("./routes/property/get-property-by-id");
 const deletePropertyById = require("./routes/property/delete-property-by-id");
 const setSignatureProperty = require("./routes/property/set-signature-property");
 const getSignatureProperty = require("./routes/property/get-signature-property");
+const setPropertyStatus = require("./routes/property/set-property-status");
 
 app.use("/add-property", addProperty(db));
 app.use("/get-all-properties", getProperty(db));
@@ -38,6 +39,7 @@ app.use("/get-property-by-id", getPropertyById(db));
 app.use("/delete-property-by-id", deletePropertyById(db));
 app.use("/set-signature-property", setSignatureProperty(db));
 app.use("/get-signature-property", getSignatureProperty(db));
+app.use("/set-property-status", setPropertyStatus(db));
 
 // market routes
 const addMarket = require("./routes/market/add-market");

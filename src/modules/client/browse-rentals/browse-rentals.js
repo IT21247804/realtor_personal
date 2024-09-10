@@ -40,7 +40,7 @@ export const BrowseRentalProperties = () => {
       setError(null);
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_MYSQL_ENDPOINT}/get-property-descriptions`
+          `http://localhost:3001/get-property-descriptions`
         );
 
         if (!response.ok) throw new Error("Failed to fetch market data");
