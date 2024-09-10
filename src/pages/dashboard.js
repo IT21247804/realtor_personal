@@ -5,8 +5,10 @@ import { DashboardNavBar } from "../modules/dashboard/navbar/components/dashboar
 const Dashboard = () => {
   return (
     <div className="dashboard flex">
-      <DashboardNavBar />
-      <div className="content flex-1 p-6">
+      <div className="fixed z-40">
+        <DashboardNavBar />
+      </div>
+      <div className="content flex-1 p-6 ml-0 md:ml-64">
         {/* Nested routes will render here */}
         <Outlet />
       </div>
