@@ -154,7 +154,7 @@ export const BrowseRentalProperties = () => {
                     price={property.price}
                     propertyType={property.propertyType}
                     description={desc}
-                    listingType={"buy"}
+                    listingType={"rent"}
                     status={property.status}
                   />
                 </Link>
