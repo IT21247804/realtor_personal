@@ -307,7 +307,7 @@ export const AddPropertyForm = () => {
         description: "Property added successfully!",
       });
 
-      // navigate("/dashboard/properties");
+      navigate("/dashboard/properties");
     } catch (error) {
       notification.error({
         message: "Error",
