@@ -37,12 +37,16 @@ const Navbar = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
     if (!menuOpen) {
-      if (!menuOpen) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
     }
+  };
+
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+    setSideMenu(false);
+    document.body.style.overflow = "auto"; // Ensure scrolling is enabled again
   };
 
   const location = useLocation();
@@ -56,7 +60,7 @@ const Navbar = () => {
       }
     >
       <div>
-        <Link to={"/"}>
+        <Link to={"/"} onClick={handleLinkClick}>
           <img
             src={"/images/logo-primary.png"}
             alt={"logo-primary"}
@@ -71,21 +75,27 @@ const Navbar = () => {
               route === "add-listing" ? "text-[#e53030]" : ""
             }`}
           >
-            <Link to="/add-listing">list with us</Link>
+            <Link to="/add-listing" onClick={handleLinkClick}>
+              list with us
+            </Link>
           </li>
           <li
             className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
               route === "explore-to-buy" ? "text-[#e53030]" : ""
             }`}
           >
-            <Link to="/explore-to-buy">explore to buy</Link>
+            <Link to="/explore-to-buy" onClick={handleLinkClick}>
+              explore to buy
+            </Link>
           </li>
           <li
             className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
               route === "browse-rentals" ? "text-[#e53030]" : ""
             }`}
           >
-            <Link to="/browse-rentals">browse rentals</Link>
+            <Link to="/browse-rentals" onClick={handleLinkClick}>
+              browse rentals
+            </Link>
           </li>
         </ul>
         <MenuOutlined
@@ -99,14 +109,13 @@ const Navbar = () => {
 
       {menuOpen && (
         <div
-          className={`
-                    z-40 bg-slate-50 h-screen w-full lg:w-96 absolute flex flex-col items-center justify-center top-0 bottom-0 transition-all ease-in-out duration-500
-                    ${sideMenu ? "right-0" : "-right-full lg:-right-96"}
-                `}
+          className={`z-40 bg-slate-50 h-screen w-full lg:w-96 absolute flex flex-col items-center justify-center top-0 bottom-0 transition-all ease-in-out duration-500 ${
+            sideMenu ? "right-0" : "-right-full lg:-right-96"
+          }`}
         >
           <div className="h-28 flex items-center justify-between absolute top-0 z-20 w-full text-slate-900 cursor-pointer p-4">
             <div>
-              <Link to={"/"}>
+              <Link to={"/"} onClick={handleLinkClick}>
                 <img
                   src={"/images/logo-primary.png"}
                   alt={"logo-primary"}
@@ -125,8 +134,9 @@ const Navbar = () => {
               className="border-b-2 border-t-2 w-full text-center uppercase tracking-widest py-6 hover:bg-slate-100 transition-all ease-in-out duration-500"
             >
               <Link
-                href="/add-listing"
+                to="/add-listing"
                 className="w-full absolute top-1 left-0 right-0"
+                onClick={handleLinkClick}
               >
                 list with us
               </Link>
@@ -136,7 +146,11 @@ const Navbar = () => {
               key="explore-to-buy"
               className="border-b-2 w-full text-center uppercase tracking-widest py-6 hover:bg-slate-100 transition-all ease-in-out duration-500"
             >
-              <Link href="/" className="w-full absolute top-1 left-0 right-0">
+              <Link
+                to="/explore-to-buy"
+                className="w-full absolute top-1 left-0 right-0"
+                onClick={handleLinkClick}
+              >
                 explore to buy
               </Link>
             </Menu.Item>
@@ -145,17 +159,12 @@ const Navbar = () => {
               key="browse-rentals"
               className="border-b-2 w-full text-center uppercase tracking-widest py-6 hover:bg-slate-100 transition-all ease-in-out duration-500"
             >
-              <Link href="/" className="w-full absolute top-1 left-0 right-0">
+              <Link
+                to="/browse-rentals"
+                className="w-full absolute top-1 left-0 right-0"
+                onClick={handleLinkClick}
+              >
                 browse rentals
-              </Link>
-            </Menu.Item>
-
-            <Menu.Item
-              key="find-your-dream-stay"
-              className="border-b-2 w-full text-center uppercase tracking-widest py-6 hover:bg-slate-100 transition-all ease-in-out duration-500"
-            >
-              <Link href="/" className="w-full absolute top-1 left-0 right-0">
-                find your dream stay
               </Link>
             </Menu.Item>
           </Menu>
@@ -163,45 +172,35 @@ const Navbar = () => {
           <ul className="flex w-full flex-col items-center justify-center text-sm list-none text-slate-900">
             <li className="lg:border-t-2 w-full text-center uppercase tracking-widest transition-all ease-in-out duration-500 cursor-pointer">
               <Collapse accordion className="w-full">
-                {/* Buy Section */}
                 <Panel header="buy" key="1" className="uppercase font-normal">
-                  <Link href="/properties/house">
+                  <Link to="/properties/house" onClick={handleLinkClick}>
                     <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                      {" "}
                       house
                     </div>
                   </Link>
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                    {" "}
                     land
                   </div>
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                    {" "}
                     apartment
                   </div>
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                    {" "}
                     commercial property
                   </div>
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                    {" "}
                     villa / bungalow
                   </div>
                 </Panel>
 
-                {/* Rent Section */}
                 <Panel header="rent" key="2" className="uppercase font-normal">
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                    {" "}
                     long term
                   </div>
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                    {" "}
                     short term
                   </div>
                 </Panel>
 
-                {/* Book / Reserve Section */}
                 <Panel
                   header="book / reserve"
                   key="3"
@@ -229,48 +228,6 @@ const Navbar = () => {
               </Collapse>
             </li>
           </ul>
-
-          <Menu
-            mode="vertical"
-            className="w-full text-center text-slate-900 bg-slate-50"
-            style={{ border: "none" }}
-          >
-            <Menu.Item
-              key="5"
-              className="border-b-2 w-full text-center uppercase tracking-widest py-6 hover:bg-slate-100 transition-all ease-in-out duration-500"
-            >
-              <Link
-                href="/add-listing"
-                className="w-full absolute top-1 left-0 right-0"
-              >
-                services
-              </Link>
-            </Menu.Item>
-            <Menu.Item
-              key="6"
-              className="border-b-2 w-full text-center uppercase tracking-widest py-6 hover:bg-slate-100 transition-all ease-in-out duration-500"
-            >
-              <Link href="/" className="w-full absolute top-1 left-0 right-0">
-                investor portal
-              </Link>
-            </Menu.Item>
-            <Menu.Item
-              key="7"
-              className="border-b-2 w-full text-center uppercase tracking-widest py-6 hover:bg-slate-100 transition-all ease-in-out duration-500"
-            >
-              <Link href="/" className="w-full absolute top-1 left-0 right-0">
-                why us?
-              </Link>
-            </Menu.Item>
-            <Menu.Item
-              key="8"
-              className="border-b-2 w-full text-center uppercase tracking-widest py-6 hover:bg-slate-100 transition-all ease-in-out duration-500"
-            >
-              <Link href="/" className="w-full absolute top-1 left-0 right-0">
-                contact for expert advice
-              </Link>
-            </Menu.Item>
-          </Menu>
         </div>
       )}
     </div>

@@ -41,34 +41,40 @@ const ContactUs = () => {
           </h1>
           <div className={"flex flex-col md:flex-row items-start gap-16"}>
             <div>
-              <p
-                className={
-                  "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
-                }
-              >
-                list with us
-              </p>
-              <p
-                className={
-                  "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
-                }
-              >
-                explore to buy
-              </p>
-              <p
-                className={
-                  "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
-                }
-              >
-                browse rentals
-              </p>
-              <p
+              <a href="/add-listing">
+                <p
+                  className={
+                    "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
+                  }
+                >
+                  list with us
+                </p>
+              </a>
+              <a href="/explore-to-buy">
+                <p
+                  className={
+                    "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
+                  }
+                >
+                  explore to buy
+                </p>
+              </a>
+              <a href="/browse-rentals">
+                <p
+                  className={
+                    "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
+                  }
+                >
+                  browse rentals
+                </p>
+              </a>
+              {/* <p
                 className={
                   "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
                 }
               >
                 find your dream stay
-              </p>
+              </p> */}
               <p
                 className={
                   "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
@@ -83,13 +89,13 @@ const ContactUs = () => {
               >
                 rent
               </p>
-              <p
+              {/* <p
                 className={
                   "text-xs md:text-sm capitalize mb-2 cursor-pointer hover:underline"
                 }
               >
                 book / reserve
-              </p>
+              </p> */}
             </div>
             <div>
               <p
