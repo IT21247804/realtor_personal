@@ -23,9 +23,9 @@ const columns = [
     key: "email",
   },
   {
-    title: "Contact",
-    dataIndex: "contact",
-    key: "contact",
+    title: "User role",
+    dataIndex: "userRole",
+    key: "userRole",
   },
   {
     title: "Action",
@@ -54,9 +54,7 @@ const Users = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3001/get-all-property-request`
-        );
+        const response = await fetch(`http://localhost:3001/get-all-users`);
 
         if (!response.ok) throw new Error("Failed to fetch property requests");
 
@@ -71,40 +69,6 @@ const Users = () => {
 
     fetchRequests();
   }, []);
-
-  const handleEdit = (record) => {
-    console.log("Edit record:", record);
-    // You can add your logic here to handle the editing
-    // For example, show a modal with a form to edit the record
-    setSelectedRecord(record);
-    setModalVisible(true);
-  };
-
-  const handleDelete = (record) => {
-    console.log("Delete record:", record);
-    // Add logic to confirm and delete the record
-    Modal.confirm({
-      title: "Are you sure you want to delete this record?",
-      onOk: async () => {
-        try {
-          const response = await fetch(
-            `http://localhost:3001/delete-request/${record.id}`,
-            {
-              method: "DELETE",
-            }
-          );
-
-          if (!response.ok) throw new Error("Failed to delete the request");
-
-          // Remove the deleted record from the state
-          setRequests(requests.filter((req) => req.id !== record.id));
-          Modal.success({ content: "Record deleted successfully" });
-        } catch (err) {
-          Modal.error({ content: err.message });
-        }
-      },
-    });
-  };
 
   if (isLoading) {
     return (
