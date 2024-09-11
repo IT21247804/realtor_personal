@@ -11,7 +11,8 @@ module.exports = (db) => {
     // Define SQL query to insert property data
     const addProperty = `
       INSERT INTO property (
-        referenceId, firstname, lastname, contactNumberOne, contactNumberTwo, whatsappNumber, email, addressLineOne, addressLineTwo, location, age, listingType, propertyType,numberOfRooms, numberOfWashrooms, floorArea, size, measuringUnit,price,numberOfFloors,furnished, cover, pictures, video, accessRoad, airCondition, amenity, apartmentName, cod, deedType, developer, elevator, generator, parking, security, signature, status, surveyPlans 
+        referenceId, firstname, lastname, contactNumberOne, contactNumberTwo, whatsappNumber, email, addressLineOne, addressLineTwo, location, age, listingType, propertyType, 
+        numberOfRooms, numberOfWashrooms, floorArea, size, measuringUnit ,price, numberOfFloors, furnished, cover, pictures, video, accessRoad, airCondition, amenity, apartmentName, cod, deedType, developer, elevator, generator, parking, security, signature, status, surveyPlans 
       ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     `;
 
@@ -36,8 +37,8 @@ module.exports = (db) => {
       req.body.size,
       req.body.measuringUnit,
       req.body.price,
-      req.body.price,
       req.body.numberOfFloors,
+      req.body.furnished,
       req.body.cover,
       req.body.pictures,
       req.body.video,

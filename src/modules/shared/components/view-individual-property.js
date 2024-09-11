@@ -234,32 +234,26 @@ export const ViewIndividualProperty = (propertyId) => {
                   {propertyData.numberOfRooms && (
                     <PropertyItemCard
                       icon={BedDouble}
-                      text={`Number of rooms: ${" "} ${
-                        propertyData.numberOfRooms
-                      }`}
+                      text={`Number of rooms:  ${propertyData.numberOfRooms}`}
                     />
                   )}
 
                   {propertyData.numberOfWashrooms && (
                     <PropertyItemCard
                       icon={Bath}
-                      text={`Number of washrooms: ${" "} ${
-                        propertyData.numberOfWashrooms
-                      }`}
+                      text={`Number of washrooms:  ${propertyData.numberOfWashrooms}`}
                     />
                   )}
                   {propertyData.numberOfFloors && (
                     <PropertyItemCard
                       icon={Hotel}
-                      text={`Number of floors: ${" "} ${
-                        propertyData.numberOfFloors
-                      }`}
+                      text={`Number of floors:  ${propertyData.numberOfFloors}`}
                     />
                   )}
                   {propertyData.floorArea && (
                     <PropertyItemCard
                       icon={LandPlot}
-                      text={`Floor area: ${" "} ${propertyData.floorArea} sqft`}
+                      text={`Floor area:  ${propertyData.floorArea} sqft`}
                     />
                   )}
                   {propertyData?.furnished && (
