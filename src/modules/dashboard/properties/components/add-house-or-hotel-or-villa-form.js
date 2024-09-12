@@ -10,16 +10,8 @@ import { VideoDropbox } from "../../../shared/components/video-dropbox";
 export const AddHouseOrHotelOrVillaForm = ({
   control,
   errors,
-  setUploding,
-  setValue,
-  setIsImageUploaded,
-  setIsVideoUploaded,
+  setUploading,
 }) => {
-  const handleImageUpload = (field, value) => {
-    setValue(field, value);
-    setIsImageUploaded(!!value);
-  };
-
   return (
     <div>
       <Row gutter={16}>
@@ -135,6 +127,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             placeholder="Add cover image"
             required={true}
             control={control}
+            setUploading={setUploading}
           />
         </Col>
 
@@ -145,6 +138,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             control={control}
             required={false}
             errors={errors}
+            setUploading={setUploading}
           />
         </Col>
 
@@ -155,6 +149,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             placeholder="Upload video"
             required={false}
             control={control}
+            setUploading={setUploading}
           />
         </Col>
       </Row>

@@ -7,19 +7,7 @@ import { Dropbox } from "../../../shared/components/dropbox";
 import { MultiDropbox } from "../../../shared/components/multi-dropbox";
 import { VideoDropbox } from "../../../shared/components/video-dropbox";
 
-export const AddApartmentForm = ({
-  control,
-  errors,
-  setUploding,
-  setValue,
-  setIsImageUploaded,
-  setIsVideoUploaded,
-}) => {
-  const handleImageUpload = (field, value) => {
-    setValue(field, value);
-    setIsImageUploaded(!!value);
-  };
-
+export const AddApartmentForm = ({ control, errors, setUploading }) => {
   return (
     <div>
       <Row gutter={16}>
@@ -139,8 +127,9 @@ export const AddApartmentForm = ({
             name="cover"
             label="Cover image"
             placeholder="Add cover image"
-            required={false}
+            required={true}
             control={control}
+            setUploading={setUploading}
           />
         </Col>
 
@@ -151,6 +140,7 @@ export const AddApartmentForm = ({
             control={control}
             required={false}
             errors={errors}
+            setUploading={setUploading}
           />
         </Col>
 
@@ -161,6 +151,7 @@ export const AddApartmentForm = ({
             placeholder="Upload video"
             required={false}
             control={control}
+            setUploading={setUploading}
           />
         </Col>
       </Row>

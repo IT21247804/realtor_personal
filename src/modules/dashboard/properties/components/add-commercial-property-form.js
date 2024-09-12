@@ -14,16 +14,8 @@ import { VideoDropbox } from "../../../shared/components/video-dropbox";
 export const AddCommercialPropertyForm = ({
   control,
   errors,
-  setUploding,
-  setValue,
-  setIsImageUploaded,
-  setIsVideoUploaded,
+  setUploading,
 }) => {
-  const handleImageUpload = (field, value) => {
-    setValue(field, value);
-    setIsImageUploaded(!!value);
-  };
-
   return (
     <div>
       <Row gutter={16}>
@@ -160,6 +152,7 @@ export const AddCommercialPropertyForm = ({
             placeholder="Add cover image"
             required={true}
             control={control}
+            setUploading={setUploading}
           />
         </Col>
 
@@ -170,6 +163,7 @@ export const AddCommercialPropertyForm = ({
             control={control}
             required={false}
             errors={errors}
+            setUploading={setUploading}
           />
         </Col>
 
@@ -180,6 +174,7 @@ export const AddCommercialPropertyForm = ({
             placeholder="Upload video"
             required={false}
             control={control}
+            setUploading={setUploading}
           />
         </Col>
       </Row>

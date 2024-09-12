@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useDropzone } from "react-dropzone";
-import { Button, message, Form } from "antd";
+import { Button, message, Form, Spin } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import AWS from "aws-sdk";
 import { RequiredIndicator } from "./required-indictor";
@@ -26,6 +26,7 @@ export const VideoDropbox = ({
   errors,
 }) => {
   const [preview, setPreview] = useState(null);
+  const [uploading, setUploading] = useState(false); // State to track the upload status
   const onChangeRef = useRef(null); // Ref to hold field.onChange
 
   let error;
@@ -60,6 +61,7 @@ export const VideoDropbox = ({
     }
 
     setPreview(URL.createObjectURL(file)); // Update preview URL
+    setUploading(true); // Set uploading to true
 
     try {
       const fileName = file.name;
@@ -84,7 +86,6 @@ export const VideoDropbox = ({
       });
 
       if (response.ok) {
-        message.success(`${fileName} uploaded successfully`);
         // Construct the file URL
         const fileUrl = `https://${params.Bucket}.s3.${AWS.config.region}.amazonaws.com/${params.Key}`;
         // Update the form state
@@ -97,6 +98,8 @@ export const VideoDropbox = ({
     } catch (error) {
       console.error(error);
       message.error("Video upload failed.");
+    } finally {
+      setUploading(false); // Set uploading to false after upload completes
     }
   };
 
@@ -139,8 +142,12 @@ export const VideoDropbox = ({
             >
               <input {...getInputProps()} />
               <p>Drag & drop a video here, or click to select one</p>
-              <Button icon={<UploadOutlined />} type="primary">
-                Upload Video
+              <Button
+                icon={<UploadOutlined />}
+                type="primary"
+                disabled={uploading} // Disable button while uploading
+              >
+                {uploading ? <Spin /> : "Upload Video"}
               </Button>
               {preview && (
                 <div style={{ marginTop: 16 }}>

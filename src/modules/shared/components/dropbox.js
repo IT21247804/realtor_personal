@@ -24,6 +24,7 @@ export const Dropbox = ({
   required,
   labelColor,
   errors,
+  setUploading, // Pass the setUploading function as a prop
 }) => {
   const [preview, setPreview] = useState(null);
   const onChangeRef = useRef(null); // Ref to hold field.onChange
@@ -53,6 +54,7 @@ export const Dropbox = ({
 
     const file = acceptedFiles[0];
     setPreview(URL.createObjectURL(file)); // Update preview URL
+    setUploading(true); // Set uploading state to true
 
     try {
       const fileName = file.name;
@@ -77,7 +79,6 @@ export const Dropbox = ({
       });
 
       if (response.ok) {
-        message.success(`${fileName} file uploaded successfully`);
         // Construct the file URL
         const fileUrl = `https://${params.Bucket}.s3.${AWS.config.region}.amazonaws.com/${params.Key}`;
         // Update the form state
@@ -90,6 +91,8 @@ export const Dropbox = ({
     } catch (error) {
       console.error(error);
       message.error("File upload failed.");
+    } finally {
+      setUploading(false); // Set uploading state back to false
     }
   };
 

@@ -24,6 +24,7 @@ export const MultiDropbox = ({
   required,
   labelColor,
   errors,
+  setUploading, // Pass setUploading as a prop
 }) => {
   const [previewImages, setPreviewImages] = useState([]);
   const onChangeRef = useRef(null); // Ref to hold field.onChange
@@ -43,7 +44,7 @@ export const MultiDropbox = ({
     error = errors[name];
   }
 
-  // Define onDrop with access to onChangeRef
+  // Define onDrop with access to onChangeRef and setUploading
   const onDrop = async (acceptedFiles) => {
     if (acceptedFiles.length === 0) {
       message.error("No files selected.");
@@ -55,14 +56,16 @@ export const MultiDropbox = ({
       return;
     }
 
+    setUploading(true); // Set uploading to true when the upload starts
+
     const newPreviewImages = [];
     const imageUrls = [];
 
-    for (const file of acceptedFiles) {
-      const filePreview = URL.createObjectURL(file); // Update preview URLs
-      newPreviewImages.push(filePreview);
+    try {
+      for (const file of acceptedFiles) {
+        const filePreview = URL.createObjectURL(file); // Update preview URLs
+        newPreviewImages.push(filePreview);
 
-      try {
         const fileName = file.name;
         const fileType = file.type;
         const params = {
@@ -85,24 +88,25 @@ export const MultiDropbox = ({
         });
 
         if (response.ok) {
-          message.success(`${fileName} uploaded successfully`);
           // Construct the file URL
           const fileUrl = `https://${params.Bucket}.s3.${AWS.config.region}.amazonaws.com/${params.Key}`;
           imageUrls.push(fileUrl);
         } else {
           throw new Error("Upload failed");
         }
-      } catch (error) {
-        console.error(error);
-        message.error("File upload failed.");
       }
-    }
 
-    // Update the preview images and form field
-    setPreviewImages((prevImages) => [...prevImages, ...newPreviewImages]);
-    if (onChangeRef.current) {
-      const updatedUrls = [...imageUrls].join(",");
-      onChangeRef.current(updatedUrls);
+      // Update the preview images and form field
+      setPreviewImages((prevImages) => [...prevImages, ...newPreviewImages]);
+      if (onChangeRef.current) {
+        const updatedUrls = [...imageUrls].join(",");
+        onChangeRef.current(updatedUrls);
+      }
+    } catch (error) {
+      console.error(error);
+      message.error("File upload failed.");
+    } finally {
+      setUploading(false); // Set uploading to false when the upload ends
     }
   };
 
