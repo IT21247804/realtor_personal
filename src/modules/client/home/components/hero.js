@@ -18,14 +18,17 @@ const Hero = () => {
   return (
     <div className={"relative w-full h-screen overflow-hidden"}>
       <Slider {...settings}>
-        <HeroBanner location={"colombo"} videoLink={"/video/colombo.mp4"} />
-        <HeroBanner location={"galle"} videoLink={"/video/galle.mp4"} />
-        <HeroBanner location={"matara"} videoLink={"/video/matara.mp4"} />
+        <HeroBanner
+          location={"colombo"}
+          videoLink={"/images/banner/colombo.png"}
+        />
+        <HeroBanner location={"galle"} videoLink={"/images/banner/galle.png"} />
+        <HeroBanner location={"kandy"} videoLink={"/images/banner/kandy.png"} />
         <HeroBanner
           location={"nuwara eliya"}
-          videoLink={"/video/nuwara-eliya.mp4"}
+          videoLink={"/images/banner/nuwara-eliya.jpeg"}
         />
-        <HeroBanner location={"dubai"} videoLink={"/video/dubai.mp4"} />
+        <HeroBanner location={"dubai"} videoLink={"/images/banner/dubai.png"} />
       </Slider>
     </div>
   );
