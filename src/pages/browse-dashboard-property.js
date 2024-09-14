@@ -151,6 +151,15 @@ export const BrowseDashboardProperty = () => {
     }
   };
 
+  function formatNumber(number) {
+    let reversedNumber = number?.toString().split("").reverse().join("");
+    let reversedWithCommas = reversedNumber?.match(/.{1,3}/g).join(",");
+    let formattedNumber = reversedWithCommas?.split("").reverse().join("");
+
+    return formattedNumber;
+  }
+
+  console.log(propertyData);
   return (
     <div className={"w-full max-w-[1440px] mx-auto p-8"}>
       <div className="w-full pb-16">
@@ -179,7 +188,11 @@ export const BrowseDashboardProperty = () => {
                   <div className={"gap-4 flex items-center"}>
                     <Button onClick={showModal}>Status</Button>
                     <p className="text-[#e53030] border p-4 border-black rounded-full text-lg: lg:text-3xl">
-                      <>LKR {formatPrice(propertyData.price)} Million</>
+                      {propertyData?.listingType === "rent" ? (
+                        <>LKR {formatNumber(propertyData?.price)}</>
+                      ) : (
+                        <>LKR {formatPrice(propertyData.price)} Million</>
+                      )}
                     </p>
                   </div>
                 </div>
