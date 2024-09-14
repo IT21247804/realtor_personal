@@ -34,38 +34,40 @@ const SignatureProperties = () => {
 
   return (
     <>
-      {signatureData ? (
+      {signatureData.length > 0 ? (
         <>
           <div
             className={
               "w-full px-4 py-6 md:px-6 md:py-10 lg:px-8 lg:py-20 mx-auto text-center overflow-hidden"
             }
           >
-            <motion.h1
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: -20,
-                },
-                show: {
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    type: "keyframes",
-                    duration: 0.2,
-                    delay: 0.2,
+            {signatureData?.length > 0 && (
+              <motion.h1
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: -20,
                   },
-                },
-              }}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false, amount: 0.6 }}
-              className={
-                "mb-6 text-xl md:text-4xl lg:text-6xl transition-all ease-in-out duration-500 uppercase font-semibold md:font-bold text-[#272c63] tracking-widest title-font"
-              }
-            >
-              signature collection
-            </motion.h1>
+                  show: {
+                    y: 0,
+                    opacity: 1,
+                    transition: {
+                      type: "keyframes",
+                      duration: 0.2,
+                      delay: 0.2,
+                    },
+                  },
+                }}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: false, amount: 0.6 }}
+                className={
+                  "mb-6 text-xl md:text-4xl lg:text-6xl transition-all ease-in-out duration-500 uppercase font-semibold md:font-bold text-[#272c63] tracking-widest title-font"
+                }
+              >
+                signature collection
+              </motion.h1>
+            )}
 
             {isLoading ? (
               <LoadingSpinner />

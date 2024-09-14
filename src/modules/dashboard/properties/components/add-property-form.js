@@ -342,7 +342,7 @@ export const AddPropertyForm = () => {
         description: "Property added successfully!",
       });
 
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       notification.error({
         message: "Error",

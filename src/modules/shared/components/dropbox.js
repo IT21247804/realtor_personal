@@ -31,7 +31,7 @@ export const Dropbox = ({
 
   let error;
 
-  if (name.includes(".")) {
+  if (name?.includes(".")) {
     const nameIndexes = name.split(".");
     if (
       errors &&

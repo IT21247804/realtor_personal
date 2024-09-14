@@ -22,13 +22,12 @@ const addMarketFormSchema = Yup.object().shape({
 
 export const AddMarketForm = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isImageUploaded, setIsImageUploaded] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const {
     control,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm({
     defaultValues: {
       location: "",
@@ -73,11 +72,6 @@ export const AddMarketForm = () => {
     }
   };
 
-  const handleImageUpload = (field, value) => {
-    setValue(field, value); // Set image value
-    setIsImageUploaded(!!value); // Mark image as uploaded if value exists
-  };
-
   return (
     <div className="text-left flex flex-col mx-auto w-full md:max-w-2xl z-20 p-2 rounded-xl">
       <AntForm
@@ -109,54 +103,33 @@ export const AddMarketForm = () => {
           </Col>
 
           <Col span={24}>
-            <AntForm.Item
-              label="Image"
-              validateStatus={errors.cover ? "error" : ""}
-              help={errors.cover?.message}
-            >
-              <Dropbox
-                control={control}
-                required={true}
-                fieldLabel="Cover Image"
-                fieldName="cover"
-                setValue={handleImageUpload} // Handle image upload
-              />
-            </AntForm.Item>
+            <Dropbox
+              name="cover"
+              label="Cover image"
+              placeholder="Add cover image"
+              required={true}
+              control={control}
+              setUploading={setUploading}
+            />
           </Col>
         </Row>
 
         <Row>
           <Col span={24} className="flex items-center justify-end">
-            {!isImageUploaded ? (
-              <Button
-                type="primary"
-                htmlType="submit"
-                disabled
-                loading={isLoading}
-              >
-                Add Market
-              </Button>
-            ) : (
-              <Button
-                htmlType="submit"
-                loading={isLoading}
-                style={{
-                  backgroundColor: "#272c63",
-                  border: "none",
-                  height: "40px",
-                  color: "white",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#e53030";
-                  e.currentTarget.style.color = "#ffffff";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#272c63";
-                }}
-              >
-                Add Market
-              </Button>
-            )}
+            <Button
+              htmlType="submit"
+              className="h-10 w-auto py-3 bg-[#085585] text-white rounded-md hover:bg-[#272c63] transition-colors"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#e53030";
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.border = 0;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#272c63";
+              }}
+            >
+              Add Market
+            </Button>
           </Col>
         </Row>
       </AntForm>
