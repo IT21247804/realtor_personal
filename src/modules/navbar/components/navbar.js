@@ -201,7 +201,7 @@ const Navbar = () => {
                   </div>
                 </Panel>
 
-                <Panel
+                {/* <Panel
                   header="book / reserve"
                   key="3"
                   className="uppercase font-normal"
@@ -224,7 +224,7 @@ const Navbar = () => {
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
                     restaurants
                   </div>
-                </Panel>
+                </Panel> */}
               </Collapse>
             </li>
           </ul>
