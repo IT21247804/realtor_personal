@@ -25,7 +25,6 @@ function Lightbox({ activityImages, activityName, businessName }) {
         onCancel={handleCancel}
         footer={null}
         width={1000}
-        bodyStyle={{ height: "800px" }}
         centered
       >
         <div className="border-b-[1px] pb-4">
@@ -34,7 +33,7 @@ function Lightbox({ activityImages, activityName, businessName }) {
           </div>
         </div>
 
-        <div className="flex items-center justify-center h-[800px] max-w-[1200px] object-cover overflow-hidden">
+        <div className="flex items-center justify-center max-h-[1200px] max-w-[1200px] object-cover overflow-hidden">
           <ImageGallery
             items={activityImages || []}
             showPlayButton={false}
