@@ -297,10 +297,13 @@ export const BrowseDashboardProperty = () => {
                 </div>
 
                 <div className="mt-4">
-                  <div className="mb-2">
+                  <div className="mb-10">
                     <p className="font-semibold text-lg">Description: </p>
                     {propertyDescription?.map((d, index) => (
-                      <p key={index}>{d.description}</p>
+                      <>
+                        <p key={index}>{d.description}</p>
+                        {d.description == null && <br />}
+                      </>
                     ))}
                   </div>
 
