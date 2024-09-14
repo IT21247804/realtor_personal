@@ -34,7 +34,7 @@ export const PropertyCard = ({
   return (
     <div
       className={
-        "relative group w-full cursor-pointer rounded-lg border border-[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow-[#085585]/40 overflow-hidden h-[600px]"
+        "relative group w-full cursor-pointer rounded-lg border border-[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow-[#085585]/40 overflow-hidden h-[500px]"
       }
     >
       {status === "sold" && (

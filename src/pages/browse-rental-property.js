@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { ViewIndividualProperty } from "../modules/shared/components/view-individual-property";
 
-export const BrowseProperty = () => {
+export const BrowseRentalProperty = () => {
   const route = useLocation();
   const propertyId = parseInt(route.pathname.split("/")[2]);
   return (

@@ -125,6 +125,8 @@ export const ViewIndividualProperty = (propertyId) => {
                     </span>
                   </p>
                 </div>
+
+                {console.log(44, route.pathname)}
                 <div className={"gap-4 flex items-center"}>
                   {propertyData.status === "sold" ? (
                     <p className="text-[#e53030] border p-4 border-black rounded-full text-lg: lg:text-3xl">
@@ -132,7 +134,7 @@ export const ViewIndividualProperty = (propertyId) => {
                     </p>
                   ) : (
                     <p className="text-[#e53030] border p-4 border-black rounded-full text-lg: lg:text-3xl">
-                      {route.pathname.includes("browse-rentals") ? (
+                      {route.pathname.includes("rentals") ? (
                         <>LKR {formatNumber(propertyData?.price)}</>
                       ) : (
                         <>LKR {formatPrice(propertyData.price)} Million</>
@@ -356,7 +358,7 @@ export const ViewIndividualProperty = (propertyId) => {
                 <div className="grid grid-cols-1 lg:grid-cols-4 mb-4">
                   {propertyData.firstname && (
                     <div className="flex items-center">
-                      <p className="font-semibold mr-4">Name: </p>
+                      <p className="font-semibold mr-7">Name: </p>
                       <p className="capitalize">
                         {propertyData.firstname} {propertyData.lastname}
                       </p>
@@ -364,7 +366,7 @@ export const ViewIndividualProperty = (propertyId) => {
                   )}
 
                   {propertyData.addressLineOne && (
-                    <div className="flex items-center">
+                    <div className="flex items-start">
                       <p className="font-semibold mr-4">Address: </p>
                       <p className="capitalize">
                         {propertyData.addressLineOne}{" "}

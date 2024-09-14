@@ -9,7 +9,8 @@ import SignatureProperty from "./pages/signature-property";
 import AddListing from "./pages/add-listing";
 import { ExploreToBuy } from "./pages/explore-to-buy";
 import { BrowseRentals } from "./pages/browse-rentals";
-import { BrowseProperty } from "./pages/browse-property";
+import { BrowseRentalProperty } from "./pages/browse-rental-property";
+import { BrowseSellProperty } from "./pages/browse-sell-property";
 import PropertyRequests from "./pages/property-requests";
 import Properties from "./pages/properties";
 import { BrowseDashboardProperty } from "./pages/browse-dashboard-property";
@@ -31,8 +32,8 @@ const App = () => {
         />
         <Route path="/explore-to-buy" element={<ExploreToBuy />} />
         <Route path="/browse-rentals" element={<BrowseRentals />} />
-        <Route path="/explore-to-buy/:id" element={<BrowseProperty />} />
-        <Route path="/browse-rentals/:id" element={<BrowseProperty />} />
+        <Route path="/explore-to-buy/:id" element={<BrowseSellProperty />} />
+        <Route path="/browse-rentals/:id" element={<BrowseRentalProperty />} />
       </Route>
 
       <Route

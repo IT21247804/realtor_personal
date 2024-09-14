@@ -1,6 +1,7 @@
 import { Button, Select, Input, Slider } from "antd";
 import { formatPrice } from "../utils/format-price";
 import { propertyAgeType, propertyTypes } from "../utils/types";
+import { useLocation } from "react-router-dom";
 
 export const PropertyFilterBar = ({
   data,
@@ -17,6 +18,9 @@ export const PropertyFilterBar = ({
   maxPrice,
   link,
 }) => {
+  const router = useLocation();
+
+  console.log(45, router.pathname);
   const locations = Array.from(
     new Set(data?.map((property) => property?.location) || [])
   );
@@ -38,6 +42,19 @@ export const PropertyFilterBar = ({
       setSelectedNumberOfRooms("");
     }
   };
+
+  function formatNumber(number) {
+    // Convert the number to a string and reverse it
+    let reversedNumber = number?.toString().split("").reverse().join("");
+
+    // Use a regular expression to insert commas every three digits
+    let reversedWithCommas = reversedNumber?.match(/.{1,3}/g).join(",");
+
+    // Reverse the string back to its original order
+    let formattedNumber = reversedWithCommas?.split("").reverse().join("");
+
+    return formattedNumber;
+  }
 
   return (
     <div className="mb-8 capitalize flex flex-col lg:flex-row items-start justify-between border-b pb-4 w-full z-0">
@@ -126,12 +143,24 @@ export const PropertyFilterBar = ({
             </div>
           </div>
           <div className="flex justify-between mt-2 w-full max-w-[600px]">
-            <span className={"text-sm text-[#085585]"}>
-              LKR {formatPrice(priceRange[0])} Million
-            </span>
-            <span className={"text-sm text-[#272c63]"}>
-              LKR {formatPrice(priceRange[1])} Million
-            </span>
+            {router.pathname.includes("rentals") ? (
+              <span className={"text-sm text-[#085585]"}>
+                LKR {formatNumber(priceRange[0])}
+              </span>
+            ) : (
+              <span className={"text-sm text-[#085585]"}>
+                LKR {formatPrice(priceRange[0])} Million
+              </span>
+            )}
+            {router.pathname.includes("rentals") ? (
+              <span className={"text-sm text-[#085585]"}>
+                LKR {formatNumber(priceRange[1])}
+              </span>
+            ) : (
+              <span className={"text-sm text-[#085585]"}>
+                LKR {formatPrice(priceRange[1])} Million
+              </span>
+            )}
           </div>
         </div>
       </div>

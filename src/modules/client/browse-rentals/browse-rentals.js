@@ -124,7 +124,7 @@ export const BrowseRentalProperties = () => {
         setSelectedNumberOfRooms={setSelectedNumberOfRooms}
         setSelectedPropertyAge={setSelectedPropertyAge}
         setSelectedPropertyType={setSelectedPropertyType}
-        link={"/explore-to-buy"}
+        link={"/browse-rentals"}
       />
 
       <div className="flex items-center w-full justify-center">
@@ -146,7 +146,7 @@ export const BrowseRentalProperties = () => {
               const desc =
                 description?.length > 0 ? descriptions : <p>No description</p>;
               return (
-                <Link key={property.id} to={`/explore-to-buy/${property.id}`}>
+                <Link key={property.id} to={`/browse-rentals/${property.id}`}>
                   <PropertyCard
                     id={property.id}
                     cover={property.cover}
