@@ -32,6 +32,7 @@ import {
   X,
 } from "lucide-react";
 import { Button, Modal, Form, Select, notification } from "antd"; // Import Form and Select from antd
+import Lightbox from "../modules/shared/components/lightbox";
 
 const { Option } = Select;
 
@@ -294,6 +295,14 @@ export const BrowseDashboardProperty = () => {
                       )}
                     </div>
                   )}
+                </div>
+
+                <div className="flex w-full mt-2">
+                  <Lightbox
+                    activityName={propertyData?.location}
+                    businessName={propertyData?.propertyType}
+                    activityImages={sliderImages}
+                  />
                 </div>
 
                 <div className="mt-4">

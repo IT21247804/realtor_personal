@@ -32,6 +32,7 @@ import {
   Waypoints,
   X,
 } from "lucide-react";
+import Lightbox from "./lightbox";
 
 export const ViewIndividualProperty = (propertyId) => {
   const [propertyData, setPropertyData] = useState([]);
@@ -222,6 +223,14 @@ export const ViewIndividualProperty = (propertyId) => {
                     )}
                   </div>
                 )}
+              </div>
+
+              <div className="flex w-full mt-2">
+                <Lightbox
+                  activityName={propertyData?.location}
+                  businessName={propertyData?.propertyType}
+                  activityImages={sliderImages}
+                />
               </div>
 
               <div className="mt-4">
