@@ -127,7 +127,6 @@ export const ViewIndividualProperty = (propertyId) => {
                   </p>
                 </div>
 
-                {console.log(44, route.pathname)}
                 <div className={"gap-4 flex items-center"}>
                   {propertyData.status === "sold" ? (
                     <p className="text-[#e53030] border p-4 border-black rounded-full text-lg: lg:text-3xl">

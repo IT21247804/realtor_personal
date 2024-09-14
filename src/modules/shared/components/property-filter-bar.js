@@ -20,7 +20,6 @@ export const PropertyFilterBar = ({
 }) => {
   const router = useLocation();
 
-  console.log(45, router.pathname);
   const locations = Array.from(
     new Set(data?.map((property) => property?.location) || [])
   );

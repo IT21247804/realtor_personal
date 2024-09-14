@@ -342,7 +342,7 @@ export const AddPropertyForm = () => {
         description: "Property added successfully!",
       });
 
-      // navigate("/dashboard/properties");
+      window.location.reload();
     } catch (error) {
       notification.error({
         message: "Error",
