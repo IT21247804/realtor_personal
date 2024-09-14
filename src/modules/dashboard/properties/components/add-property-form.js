@@ -416,7 +416,7 @@ export const AddPropertyForm = () => {
             <InputField
               name="whatsappNumber"
               label="Whatsapp Number"
-              placeholder="Whatsapp Number"
+              placeholder="Whatsapp Number(Add your number with country code.)"
               required
               control={control}
               errors={errors}
