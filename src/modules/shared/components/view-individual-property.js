@@ -88,9 +88,14 @@ export const ViewIndividualProperty = (propertyId) => {
   const route = useLocation();
 
   function formatNumber(number) {
-    let reversedNumber = number?.toString().split("").reverse().join("");
-    let reversedWithCommas = reversedNumber?.match(/.{1,3}/g).join(",");
-    let formattedNumber = reversedWithCommas?.split("").reverse().join("");
+    // Convert the number to a string and reverse it
+    let reversedNumber = number?.toString()?.split("")?.reverse()?.join("");
+
+    // Use a regular expression to insert commas every three digits
+    let reversedWithCommas = reversedNumber?.match(/.{1,3}/g)?.join(",");
+
+    // Reverse the string back to its original order
+    let formattedNumber = reversedWithCommas?.split("")?.reverse()?.join("");
 
     return formattedNumber;
   }

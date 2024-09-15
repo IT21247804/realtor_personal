@@ -327,7 +327,7 @@ export const AddPropertyForm = () => {
           },
           body: JSON.stringify({
             ...data,
-            price: data.price.split(",").join(""),
+            price: data?.price?.split(",")?.join(""),
             description: descriptionContent,
           }),
         }

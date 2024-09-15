@@ -126,9 +126,9 @@ export const PropertyDetails = () => {
               );
 
               const descriptions = description
-                .map((item) => item.description)
-                .filter((desc) => desc)
-                .join(", ");
+                ?.map((item) => item.description)
+                ?.filter((desc) => desc)
+                ?.join(", ");
 
               const desc =
                 description?.length > 0 ? descriptions : <p>No description</p>;

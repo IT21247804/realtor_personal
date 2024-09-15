@@ -44,17 +44,16 @@ export const PropertyFilterBar = ({
 
   function formatNumber(number) {
     // Convert the number to a string and reverse it
-    let reversedNumber = number?.toString().split("").reverse().join("");
+    let reversedNumber = number?.toString()?.split("")?.reverse()?.join("");
 
     // Use a regular expression to insert commas every three digits
-    let reversedWithCommas = reversedNumber?.match(/.{1,3}/g).join(",");
+    let reversedWithCommas = reversedNumber?.match(/.{1,3}/g)?.join(",");
 
     // Reverse the string back to its original order
-    let formattedNumber = reversedWithCommas?.split("").reverse().join("");
+    let formattedNumber = reversedWithCommas?.split("")?.reverse()?.join("");
 
     return formattedNumber;
   }
-
   return (
     <div className="mb-8 capitalize flex flex-col lg:flex-row items-start justify-between border-b pb-4 w-full z-0">
       <div className={"w-full"}>
