@@ -8,6 +8,7 @@ module.exports = (db) => {
     const getPropertyById = "SELECT * FROM property WHERE id = ?";
 
     db.query(getPropertyById, [id], (err, result) => {
+      console.log("get property by id: ", getPropertyById);
       if (err) {
         console.error("Error retrieving data:", err.message);
         return res.status(500).json({ error: "Failed to retrieve data" });

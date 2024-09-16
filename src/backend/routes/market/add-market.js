@@ -9,6 +9,7 @@ module.exports = (db) => {
       VALUES (?, ?, ?)`;
 
     // Extract values from request body
+    console.log("add market values: ", req.body);
     const marketValues = [
       req.body.location,
       req.body.description,

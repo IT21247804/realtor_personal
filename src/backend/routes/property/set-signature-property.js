@@ -7,6 +7,8 @@ module.exports = (db) => {
     const { id } = req.params;
     const { signature } = req.body; // Expecting { signature: true/false }
 
+    console.log("property id: ", req.params);
+
     if (typeof signature !== "boolean") {
       return res.status(400).json({ error: "Invalid signature value" });
     }
@@ -15,6 +17,7 @@ module.exports = (db) => {
       "UPDATE property SET signature = ? WHERE id = ?";
 
     db.query(updateSignatureQuery, [signature, id], (err, result) => {
+      console.log("update signature property: ", req.body);
       if (err) {
         console.error("Error updating signature:", err.message);
         return res

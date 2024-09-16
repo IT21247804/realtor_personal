@@ -6,6 +6,7 @@ module.exports = (db) => {
     const getMarket = "SELECT * FROM user";
 
     db.query(getMarket, (err, results) => {
+      console.log("users: ", results);
       if (err) {
         console.error("Error retrieving data:", err.message);
         return res.status(500).json({ error: "Failed to retrieve data" });

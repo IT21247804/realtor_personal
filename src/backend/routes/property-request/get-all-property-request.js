@@ -6,6 +6,7 @@ module.exports = (db) => {
     const getPropertyRequests = "SELECT * FROM property_request";
 
     db.query(getPropertyRequests, (err, results) => {
+      console.log("property requests: ", results);
       if (err) {
         console.error("Error retrieving data:", err.message);
         return res.status(500).json({ error: "Failed to retrieve data" });

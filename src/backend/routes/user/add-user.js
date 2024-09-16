@@ -16,6 +16,8 @@ module.exports = (db) => {
       req.body.userRole,
     ];
 
+    console.log("add user: ", req.body);
+
     // Execute the query
     db.query(addUser, userValues, (err, results) => {
       if (err) {

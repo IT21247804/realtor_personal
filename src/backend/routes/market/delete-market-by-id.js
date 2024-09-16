@@ -11,6 +11,7 @@ module.exports = (db) => {
       DELETE FROM market
       WHERE id = ?`;
 
+    console.log("delete market value id: ", req.params.id);
     // Execute the query
     db.query(deleteMarket, [marketId], (err, results) => {
       if (err) {

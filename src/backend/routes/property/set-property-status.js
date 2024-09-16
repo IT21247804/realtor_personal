@@ -17,6 +17,7 @@ module.exports = (db) => {
     const updateStatusQuery = "UPDATE property SET status = ? WHERE id = ?";
 
     db.query(updateStatusQuery, [status, id], (err, result) => {
+      console.log("update stats query:", updateStatusQuery);
       if (err) {
         console.error("Error updating status:", err.message);
         return res

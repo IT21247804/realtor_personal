@@ -13,6 +13,7 @@ module.exports = (db) => {
 
     // Execute the query
     db.query(deleteMarket, [marketId], (err, results) => {
+      console.log("delete market: ", deleteMarket);
       if (err) {
         console.error("Error deleting market data: ", err.message);
         return res.status(500).json({ error: "Failed to delete market data" });

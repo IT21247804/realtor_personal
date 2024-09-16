@@ -19,6 +19,7 @@ module.exports = (db) => {
       req.body.listingType,
     ];
 
+    console.log("add property request: ", propertyRequestValues);
     // Execute the query
     db.query(addPropertyRequest, propertyRequestValues, (err, results) => {
       if (err) {

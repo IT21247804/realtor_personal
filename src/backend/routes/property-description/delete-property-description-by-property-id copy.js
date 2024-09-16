@@ -6,11 +6,17 @@ module.exports = (db) => {
   router.delete("/:propertyId", (req, res) => {
     const propertyId = req.params.propertyId; // Extract propertyId from the route parameter
 
+    console.log("delete property, id: ", req.params);
+
     const deletePropertyDescriptionsQuery = `
       DELETE FROM property_description WHERE property_id = ?
     `;
 
     db.query(deletePropertyDescriptionsQuery, [propertyId], (err) => {
+      console.log(
+        "delete property description",
+        deletePropertyDescriptionsQuery
+      );
       if (err) {
         console.error("Error deleting property descriptions:", err.message);
         return res
