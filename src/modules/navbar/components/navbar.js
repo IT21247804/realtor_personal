@@ -97,6 +97,33 @@ const Navbar = () => {
               browse rentals
             </Link>
           </li>
+          <li
+            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+              route === "explore-to-buy" ? "text-[#e53030]" : ""
+            }`}
+          >
+            <Link to="/explore-to-buy" onClick={handleLinkClick}>
+            About Us
+            </Link>
+          </li>
+          <li
+            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+              route === "explore-to-buy" ? "text-[#e53030]" : ""
+            }`}
+          >
+            <Link to="/explore-to-buy" onClick={handleLinkClick}>
+            Our Services
+            </Link>
+          </li>
+          <li
+            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+              route === "explore-to-buy" ? "text-[#e53030]" : ""
+            }`}
+          >
+            <Link to="/explore-to-buy" onClick={handleLinkClick}>
+            Contact Us
+            </Link>
+          </li>
         </ul>
         <MenuOutlined
           className={"cursor-pointer"}
