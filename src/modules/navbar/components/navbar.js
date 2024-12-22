@@ -125,6 +125,15 @@ const Navbar = () => {
     Contact Us
   </ScrollLink>
 </li>
+<li
+            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+              route === "explore-to-buy" ? "text-[#e53030]" : ""
+            }`}
+          >
+            <Link to="/services" onClick={handleLinkClick}>
+            Services
+            </Link>
+          </li>
         </ul>
         <MenuOutlined
           className={"cursor-pointer"}

@@ -18,6 +18,7 @@ import Market from "./pages/market";
 import Users from "./pages/users";
 import AddProperty from "./pages/add-property";
 import About from "./pages/about";
+import Services from "./pages/Services";
 
 const App = () => {
   const { user } = useAuth();
@@ -33,6 +34,7 @@ const App = () => {
         />
         <Route path="/explore-to-buy" element={<ExploreToBuy />} />
         <Route path="/about" element={< About/>} />
+        <Route path ="/services" element={<Services/>} />
         <Route path="/browse-rentals" element={<BrowseRentals />} />
         <Route path="/explore-to-buy/:id" element={<BrowseSellProperty />} />
         <Route path="/browse-rentals/:id" element={<BrowseRentalProperty />} />
