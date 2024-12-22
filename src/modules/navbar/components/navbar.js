@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { Menu, Collapse } from "antd";
+import { Link as ScrollLink } from 'react-scroll';
 
 const Navbar = () => {
   const { Panel } = Collapse;
@@ -102,7 +103,7 @@ const Navbar = () => {
               route === "explore-to-buy" ? "text-[#e53030]" : ""
             }`}
           >
-            <Link to="/explore-to-buy" onClick={handleLinkClick}>
+            <Link to="/about" onClick={handleLinkClick}>
             About Us
             </Link>
           </li>
@@ -116,14 +117,14 @@ const Navbar = () => {
             </Link>
           </li>
           <li
-            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
-              route === "explore-to-buy" ? "text-[#e53030]" : ""
-            }`}
-          >
-            <Link to="/explore-to-buy" onClick={handleLinkClick}>
-            Contact Us
-            </Link>
-          </li>
+  className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+    route === "explore-to-buy" ? "text-[#e53030]" : ""
+  }`}
+>
+  <ScrollLink to="contact-us" smooth={true} duration={500}>
+    Contact Us
+  </ScrollLink>
+</li>
         </ul>
         <MenuOutlined
           className={"cursor-pointer"}

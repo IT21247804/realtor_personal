@@ -1,3 +1,4 @@
+import { Element } from 'react-scroll';
 import BrandPromise from "./brand-promise";
 import ContactUs from "./contact-us";
 import Hero from "./hero";
@@ -13,7 +14,9 @@ export const HomeComp = () => {
       <BrandPromise />
       <OurMarket />
       <Testimonials />
-      <ContactUs />
+      <Element name="contact-us">
+        <ContactUs />
+      </Element>
     </>
   );
 };
