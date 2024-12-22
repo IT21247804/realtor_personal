@@ -1,7 +1,16 @@
-import React from "react";
+import React from 'react';
+import AboutUs from './AboutUs';
+import BrandPromise from './BrandPromise';
+import OurTeam from './OurTeam';
 
 const About = () => {
-  return <h1>About Page</h1>;
+  return (
+    <div>
+      <AboutUs />
+      <BrandPromise />
+      <OurTeam />
+    </div>
+  );
 };
 
 export default About;
