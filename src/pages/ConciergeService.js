@@ -130,8 +130,10 @@ const ConciergeService = () => {
   ];
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold text-center mb-8">Concierge Service</h2>
+    <div className="p-4 ">
+        <div className="flex justify-center">
+      <h2 className=" mb-6 text-xl md:text-4xl lg:text-6xl transition-all ease-in-out duration-500 uppercase font-semibold md:font-bold text-[#272c63] tracking-widest title-font">Concierge Service</h2>
+      </div>
       <div className=" gap-4">
         {services.map((service, index) => (
           <ConciergeServiceItem

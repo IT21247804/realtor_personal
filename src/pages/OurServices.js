@@ -3,11 +3,11 @@ import Card from './Card';
 
 const OurServices = () => {
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold text-center mb-8">Our Services</h2>
+    <div className="p-4 justify-items-center bg-[#272c63]">
+      <h2 className="mb-6 text-xl md:text-4xl lg:text-6xl transition-all ease-in-out duration-500 uppercase font-semibold md:font-bold text-[#FFFF] tracking-widest title-font">Our Services</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <Card
-          image="/images/buysell.png"
+          image="/images/buy_new.png"
           altText="Service 1"
           name="Buying & Selling"
           title=" We assist clients in buying and selling properties with a streamlined and 
@@ -16,7 +16,7 @@ vetting to market analysis, ensuring the best outcomes for both buyers and
 sellers."
         />
         <Card
-          image="/images/rental.png"
+          image="/images/rent_new.png"
           altText="Service 2"
           name="Rental"
           title="We offer comprehensive rental services, helping property owners rent out 
@@ -25,7 +25,7 @@ Our services cover everything from tenant screening to lease agreements,
 ensuring a smooth rental experience."
         />
         <Card
-          image="/images/property.png"
+          image="/images/town_new.png"
           altText="Service 3"
           name="Property Management"
           title="Description of Service 3"
