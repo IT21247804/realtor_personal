@@ -11,8 +11,10 @@ const ConciergeServiceItem = ({ image, title, text }) => {
         backgroundPosition: 'center',
       }}
     >
-      <h3 className="text-xl font-bold text-black mb-4">{title}</h3>
-      <div className="text-black">
+        <div className=" justify-items-center pt-40">
+      <h3 className="text-3xl md:text-4xl font-bold text-[#272c63] mb-4">{title}</h3>
+     
+      <div className="text-[#272c63]">
         {text.map((paragraph, index) => (
           <p key={index} className="mb-4">
             {paragraph.map((part, subIndex) =>
@@ -24,6 +26,7 @@ const ConciergeServiceItem = ({ image, title, text }) => {
             )}
           </p>
         ))}
+      </div>
       </div>
     </div>
   );

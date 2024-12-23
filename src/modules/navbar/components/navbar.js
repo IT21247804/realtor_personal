@@ -238,6 +238,24 @@ const Navbar = () => {
                   </div>
                 </Panel>
 
+                <Panel header="Services" key="3" className="uppercase font-normal">
+                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+                  Our Agents
+                  </div>
+                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+                   Blogs
+                  </div>
+                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+                  How to list? 
+                  </div>
+                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+                  Contact Us
+                  </div>
+                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+                  Concierge service
+                  </div>
+                </Panel>
+
                 {/* <Panel
                   header="book / reserve"
                   key="3"

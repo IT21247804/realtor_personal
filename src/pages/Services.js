@@ -1,13 +1,19 @@
 import React from 'react';
 import OurServices from './OurServices';
 import ConciergeService from './ConciergeService';
+import ContactUs from '../modules/client/home/components/contact-us';
+import { Element } from 'react-scroll';
 
 const Services = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center mb-6">Services</h1>
+      
       <OurServices />
+      <div className="my-12"></div>
       <ConciergeService />
+      <Element name="contact-us">
+        <ContactUs />
+      </Element>
     </div>
   );
 };
