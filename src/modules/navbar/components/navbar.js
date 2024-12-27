@@ -248,9 +248,9 @@ const Navbar = () => {
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
                   How to list? 
                   </div>
-                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                  Contact Us
-                  </div>
+                  <ScrollLink to="contact-us" smooth={true} duration={500} className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full cursor-pointer">
+                    Contact Us
+                  </ScrollLink>
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
                   Concierge service
                   </div>
