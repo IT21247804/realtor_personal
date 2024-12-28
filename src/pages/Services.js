@@ -7,10 +7,11 @@ import { Element } from 'react-scroll';
 const Services = () => {
   return (
     <div>
-      
       <OurServices />
       <div className="my-12"></div>
-      <ConciergeService />
+      <Element name="concierge-service">
+        <ConciergeService />
+      </Element>
       <Element name="contact-us">
         <ContactUs />
       </Element>
@@ -19,4 +20,3 @@ const Services = () => {
 };
 
 export default Services;
-

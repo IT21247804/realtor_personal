@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { Menu, Collapse } from "antd";
-import { Link as ScrollLink } from 'react-scroll';
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   const { Panel } = Collapse;
@@ -104,7 +104,7 @@ const Navbar = () => {
             }`}
           >
             <Link to="/about" onClick={handleLinkClick}>
-            About Us
+              About Us
             </Link>
           </li>
           <li
@@ -113,25 +113,25 @@ const Navbar = () => {
             }`}
           >
             <Link to="/explore-to-buy" onClick={handleLinkClick}>
-            Our Services
+              Our Services
             </Link>
           </li>
           <li
-  className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
-    route === "explore-to-buy" ? "text-[#e53030]" : ""
-  }`}
->
-  <ScrollLink to="contact-us" smooth={true} duration={500}>
-    Contact Us
-  </ScrollLink>
-</li>
-<li
+            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
+              route === "explore-to-buy" ? "text-[#e53030]" : ""
+            }`}
+          >
+            <ScrollLink to="contact-us" smooth={true} duration={500}>
+              Contact Us
+            </ScrollLink>
+          </li>
+          <li
             className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
               route === "explore-to-buy" ? "text-[#e53030]" : ""
             }`}
           >
             <Link to="/services" onClick={handleLinkClick}>
-            Services
+              Services
             </Link>
           </li>
         </ul>
@@ -238,22 +238,54 @@ const Navbar = () => {
                   </div>
                 </Panel>
 
-                <Panel header="Services" key="3" className="uppercase font-normal">
+                <Panel
+                  header="Services"
+                  key="3"
+                  className="uppercase font-normal"
+                >
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                  Our Agents
+                    Our Agents
                   </div>
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                   Blogs
+                    Blogs
                   </div>
+                  <Link to="/add-listing" onClick={handleLinkClick}>
+                    <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+                      How to list?
+                    </div>
+                  </Link>
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                  How to list? 
-                  </div>
-                  <ScrollLink to="contact-us" smooth={true} duration={500} className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full cursor-pointer">
+                  <ScrollLink
+                    to="contact-us"
+                    smooth={true}
+                    duration={500}
+                    
+                  >
                     Contact Us
                   </ScrollLink>
-                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                  Concierge service
                   </div>
+
+                  {location.pathname === "/services" ? (
+                     <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+                    <ScrollLink
+                      to="concierge-service"
+                      smooth={true}
+                      duration={500}
+                      
+                    >
+                      Concierge service
+                    </ScrollLink>
+                    </div>
+                  ) : (
+                    <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+                    <Link
+                      to="/services#concierge-service"
+                      
+                    >
+                      Concierge service
+                    </Link>
+                    </div>
+                  )}
                 </Panel>
 
                 {/* <Panel
