@@ -14,11 +14,15 @@ const ConciergeService = () => {
       text: [
         [
           { content: 'For Buyers: ', bold: true },
-          { content: 'In-depth consultation to understand needs, preferences, budget, and timeline.', bold: false },
+          { content: `We begin with an in-depth consultation to understand the buyers needs, preferences,
+ budget, and timeline. This includes a discussion on the type of property they are looking for, preferred
+ locations, and any specific requirements.`, bold: false },
         ],
         [
           { content: 'For Sellers: ', bold: true },
-          { content: 'Thorough assessment of the property and market analysis to determine the optimal listing price.', bold: false },
+          { content: `We conduct a thorough assessment of the property, including a market analysis to
+ determine the optimal listing price. We also discuss the seller’s goals, timeline, and any specific
+ requirements for the sale.`, bold: false },
         ],
       ],
     },
@@ -28,11 +32,14 @@ const ConciergeService = () => {
       text: [
         [
           { content: 'For Buyers: ', bold: true },
-          { content: 'We only present properties that have undergone our rigorous screening process.', bold: false },
+          { content: `We only present properties that have undergone our rigorous screening process. This
+ includes verifying ownership, checking legal compliance, and ensuring the property is free from any
+ encumbrances.`, bold: false },
         ],
         [
           { content: 'For Sellers: ', bold: true },
-          { content: 'We ensure all legal documentation is in order and suggest necessary improvements.', bold: false },
+          { content: `We help ensure that all legal documentation is in order and that the property is market
+ready. This includes suggesting any necessary repairs or improvements to maximize the property value.`, bold: false },
         ],
       ],
     },
@@ -42,11 +49,13 @@ const ConciergeService = () => {
       text: [
         [
           { content: 'For Buyers: ', bold: true },
-          { content: 'Detailed market analysis to ensure a fair price and negotiate the best deal.', bold: false },
+          { content: `We provide detailed market analysis to ensure buyers are paying a fair price for the
+ property. We negotiate on their behalf to secure the best possible deal.`, bold: false },
         ],
         [
           { content: 'For Sellers: ', bold: true },
-          { content: 'Comprehensive market analysis to set a competitive yet fair price.', bold: false },
+          { content: `We offer a comprehensive market analysis to set a competitive yet fair price. We strategize
+ to position the property in the market for maximum visibility and appeal.`, bold: false },
         ],
       ],
     },
@@ -56,11 +65,14 @@ const ConciergeService = () => {
       text: [
         [
           { content: 'For Buyers: ', bold: true },
-          { content: 'Private viewings and virtual tours to help make informed decisions.', bold: false },
+          { content: `We arrange private viewings and virtual tours, providing detailed information and
+ professional advice to help buyers make informed decisions.`, bold: false },
         ],
         [
           { content: 'For Sellers: ', bold: true },
-          { content: 'Professional marketing, including photography, staging, and open houses.', bold: false },
+          { content: `We handle all aspects of property marketing, including professional photography, staging,
+ and listing the property on relevant platforms. We also manage open houses and private showings,
+ ensuring the property is presented in the best light.`, bold: false },
         ],
       ],
     },
@@ -70,11 +82,13 @@ const ConciergeService = () => {
       text: [
         [
           { content: 'For Buyers: ', bold: true },
-          { content: 'Negotiations to secure the best possible terms and conditions.', bold: false },
+          { content: `Our experienced agents handle all negotiations, ensuring that buyers get the best possible
+ terms and conditions. We work to protect their interests at every stage of the transaction.`, bold: false },
         ],
         [
           { content: 'For Sellers: ', bold: true },
-          { content: 'Negotiations to achieve the highest price and favorable terms.', bold: false },
+          { content: `We negotiate with potential buyers on behalf of the seller to achieve the highest possible
+ price and favorable terms, keeping the seller’s objectives at the forefront.`, bold: false },
         ],
       ],
     },
@@ -84,11 +98,13 @@ const ConciergeService = () => {
       text: [
         [
           { content: 'For Buyers: ', bold: true },
-          { content: 'Assistance with legal and financial aspects to ensure a smooth process.', bold: false },
+          { content: `We assist with the legal and financial aspects of the transaction, including coordinating
+ with lawyers, banks, and other relevant parties to ensure a smooth process.`, bold: false },
         ],
         [
           { content: 'For Sellers: ', bold: true },
-          { content: 'Coordination of legal paperwork and financial transactions.', bold: false },
+          { content: `We help coordinate the legal paperwork and financial transactions, ensuring that
+ everything is in order for a successful sale.`, bold: false },
         ],
       ],
     },
@@ -102,7 +118,8 @@ const ConciergeService = () => {
         ],
         [
           { content: 'For Sellers: ', bold: true },
-          { content: 'Support through the closing process and advice on reinvestment.', bold: false },
+          { content: `We continue to support the seller through the closing process, ensuring all final details are
+ managed efficiently. We also offer advice on reinvesting the proceeds or finding a new property if needed.`, bold: false },
         ],
       ],
     },
@@ -112,11 +129,15 @@ const ConciergeService = () => {
       text: [
         [
           { content: 'For Buyers: ', bold: true },
-          { content: 'Flexible appointments, including evenings and weekends.', bold: false },
+          { content: `Our concierge service is designed to fit into the buyer’s schedule. 
+We offer flexible appointment times, including evenings and weekends, and can 
+arrange meetings at a location convenient for the buyer.`, bold: false },
         ],
         [
           { content: 'For Sellers: ', bold: true },
-          { content: 'Consultations conducted at their convenience.', bold: false },
+          { content: `We bring the process to the seller, minimizing the need for them to 
+travel or disrupt their daily routine. All consultations, assessments, and 
+negotiations can be conducted in the comfort of their home or office.`, bold: false },
         ],
       ],
     },
