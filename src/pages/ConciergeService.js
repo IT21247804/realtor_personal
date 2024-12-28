@@ -2,19 +2,12 @@ import React from 'react';
 import ConciergeServiceItem from './ConciergeServiceItem';
 
 const ConciergeService = () => {
+  const introText = [
+    { content: 'The Real Realtor’s concierge service is designed to provide a seamless, personalized, and stress-free experience for both property buyers and sellers.', bold: false },
+    { content: 'Here’s a breakdown of the key elements', bold: true },
+  ];
   const services = [
-    {
-      image: '/images/consultation.jpg',
-      title: 'Concierge Service',
-      text: [
-        [
-          { content: 'The Real Realtor’s concierge service is designed to provide a seamless, personalized, and stress-free experience for both property buyers and sellers.', bold: false },
-        ],
-        [
-          { content: 'Here’s a breakdown of the key elements:', bold: true },
-        ],
-      ],
-    },
+    
     {
       image: '/images/Concierge_Service.jpg',
       title: 'Personalized Consultation',
@@ -130,17 +123,29 @@ const ConciergeService = () => {
   ];
 
   return (
-    <div className="p-4 ">
-        <div className="flex justify-center">
-      <h2 className=" mb-6 text-xl md:text-4xl lg:text-6xl transition-all ease-in-out duration-500 uppercase font-semibold md:font-bold text-[#272c63] tracking-widest title-font">Concierge Service</h2>
+    <div className="p-4">
+      <div className="flex justify-center">
+        <h2 className="mb-6 text-xl md:text-4xl lg:text-6xl transition-all ease-in-out duration-500 uppercase font-semibold md:font-bold text-[#272c63] tracking-widest title-font">Concierge Service</h2>
       </div>
-      <div className=" gap-4">
+      <div className="bg-white rounded-lg shadow-md p-6 m-4">
+        {introText.map((paragraph, index) => (
+          <p key={index} className="mb-4 text-center">
+            {paragraph.bold ? (
+              <strong>{paragraph.content}</strong>
+            ) : (
+              <span>{paragraph.content}</span>
+            )}
+          </p>
+        ))}
+      </div>
+      <div className="gap-4">
         {services.map((service, index) => (
           <ConciergeServiceItem
             key={index}
             image={service.image}
             title={service.title}
             text={service.text}
+            reverse={index % 2 !== 0} // Reverse layout for odd-indexed items
           />
         ))}
       </div>
