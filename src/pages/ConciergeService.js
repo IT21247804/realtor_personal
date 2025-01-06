@@ -114,7 +114,8 @@ ready. This includes suggesting any necessary repairs or improvements to maximiz
       text: [
         [
           { content: 'For Buyers: ', bold: true },
-          { content: 'Post-sale services like moving, renovations, and settling in.', bold: false },
+          { content: `Our support doesn’t end with the purchase. We assist with post-sale services such as 
+moving, renovations, and settling into the new property.`, bold: false },
         ],
         [
           { content: 'For Sellers: ', bold: true },
