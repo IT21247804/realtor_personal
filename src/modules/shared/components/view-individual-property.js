@@ -106,6 +106,12 @@ export const ViewIndividualProperty = (propertyId) => {
     original: images,
     thumbnail: images,
   }));
+ 
+    const handleRightClick = (e) => {
+      e.preventDefault();
+      alert("Right-click is disabled on this image!");
+    };
+ 
 
   return (
     <div className="w-full pb-16">
@@ -154,6 +160,7 @@ export const ViewIndividualProperty = (propertyId) => {
                     src={propertyData.cover}
                     alt={propertyData.location}
                     className="w-full h-full object-cover"
+                    onContextMenu={handleRightClick}
                   />
                 </div>
                 <div className="gap-2 w-2/5 hidden lg:flex">
@@ -163,6 +170,7 @@ export const ViewIndividualProperty = (propertyId) => {
                         src={individualImage[0]}
                         alt={propertyData.location}
                         className="w-full h-48 object-cover rounded-md"
+                        onContextMenu={handleRightClick}
                       />
                     )}
 
@@ -171,6 +179,7 @@ export const ViewIndividualProperty = (propertyId) => {
                         src={individualImage[1]}
                         alt={propertyData.location}
                         className="w-full h-48 object-cover rounded-md"
+                        onContextMenu={handleRightClick}
                       />
                     )}
                   </div>
@@ -180,6 +189,7 @@ export const ViewIndividualProperty = (propertyId) => {
                         src={individualImage[2]}
                         alt={propertyData.location}
                         className="w-full h-48 object-cover rounded-md"
+                        onContextMenu={handleRightClick}
                       />
                     )}
                     {individualImage && individualImage[3] && (
@@ -187,6 +197,7 @@ export const ViewIndividualProperty = (propertyId) => {
                         src={individualImage[3]}
                         alt={propertyData.location}
                         className="w-full h-48 object-cover rounded-md"
+                        onContextMenu={handleRightClick}
                       />
                     )}
                   </div>
@@ -200,6 +211,7 @@ export const ViewIndividualProperty = (propertyId) => {
                         src={individualImage[4]}
                         alt={propertyData.location}
                         className="w-full h-48 object-cover rounded-md"
+                        onContextMenu={handleRightClick}
                       />
                     )}
                     {individualImage[5] && (
@@ -207,6 +219,7 @@ export const ViewIndividualProperty = (propertyId) => {
                         src={individualImage[5]}
                         alt={propertyData.location}
                         className="w-full h-48 object-cover rounded-md"
+                        onContextMenu={handleRightClick}
                       />
                     )}
 
@@ -215,6 +228,7 @@ export const ViewIndividualProperty = (propertyId) => {
                         src={individualImage[6]}
                         alt={propertyData.location}
                         className="w-full h-48 object-cover rounded-md"
+                        onContextMenu={handleRightClick}
                       />
                     )}
                     {individualImage[7] && (
@@ -223,6 +237,7 @@ export const ViewIndividualProperty = (propertyId) => {
                         alt={propertyData.location}
                         width={1920}
                         className="w-full h-48 object-cover rounded-md"
+                        onContextMenu={handleRightClick}
                       />
                     )}
                   </div>
