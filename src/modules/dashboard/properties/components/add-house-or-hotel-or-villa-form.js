@@ -26,6 +26,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             required={true}
             control={control}
             errors={errors}
+           
           />
         </Col>
 
@@ -37,6 +38,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             required={true}
             control={control}
             errors={errors}
+            
           />
         </Col>
 
@@ -48,6 +50,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             required={true}
             control={control}
             errors={errors}
+          
           />
         </Col>
 
@@ -63,10 +66,15 @@ export const AddHouseOrHotelOrVillaForm = ({
                   required={true}
                   control={control}
                   errors={errors}
+                  
                 />
               </Col>
 
-              <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+              
+            </Row>
+          </Col>
+        )}
+        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                 <SelectFormField
                   name="measuringUnit"
                   placeholder="Select a measuring unit"
@@ -75,11 +83,9 @@ export const AddHouseOrHotelOrVillaForm = ({
                   control={control}
                   errors={errors}
                   options={measuringUnitType}
+                  
                 />
               </Col>
-            </Row>
-          </Col>
-        )}
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <InputField
@@ -89,6 +95,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             required={true}
             control={control}
             errors={errors}
+           
           />
         </Col>
 
@@ -100,6 +107,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             required={true}
             control={control}
             errors={errors}
+          
           />
         </Col>
 
@@ -112,6 +120,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             control={control}
             errors={errors}
             options={furnitureTypes}
+           
           />
         </Col>
 
@@ -123,6 +132,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             required={true}
             control={control}
             errors={errors}
+           
           />
         </Col>
 
@@ -134,6 +144,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             required={true}
             control={control}
             setUploading={setUploading}
+            
           />
         </Col>
 

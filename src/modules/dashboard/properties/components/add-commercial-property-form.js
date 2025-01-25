@@ -20,14 +20,14 @@ export const AddCommercialPropertyForm = ({
     <div>
       <Row gutter={16}>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <InputField
+          {/* <InputField
             name="numberOfRooms"
             label="Number of rooms"
             placeholder="Number of rooms"
             required={true}
             control={control}
             errors={errors}
-          />
+          /> */}
         </Col>
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
@@ -38,6 +38,7 @@ export const AddCommercialPropertyForm = ({
             required={true}
             control={control}
             errors={errors}
+            
           />
         </Col>
 
