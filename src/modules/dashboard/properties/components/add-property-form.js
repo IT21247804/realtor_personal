@@ -498,6 +498,7 @@ export const AddPropertyForm = () => {
 
         {propertyType === "house" && (
           <AddHouseOrHotelOrVillaForm
+          listingType={watch('listingType')}
             control={control}
             errors={errors}
             setUploading={setUploading}
@@ -530,6 +531,7 @@ export const AddPropertyForm = () => {
 
         {propertyType.includes("villa") && (
           <AddHouseOrHotelOrVillaForm
+          listingType={watch('listingType')}
             control={control}
             errors={errors}
             setUploading={setUploading}
@@ -538,6 +540,7 @@ export const AddPropertyForm = () => {
 
         {propertyType === "hotel" && (
           <AddHouseOrHotelOrVillaForm
+          listingType={watch('listingType')}
             control={control}
             errors={errors}
             setUploading={setUploading}

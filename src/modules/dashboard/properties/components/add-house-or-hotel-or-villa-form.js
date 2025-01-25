@@ -1,3 +1,5 @@
+//addhouseorvillaform
+
 import { Row, Col } from "antd";
 import { InputField } from "../../../shared/components/input-field";
 import { SelectFormField } from "../../../shared/components/select-field";
@@ -11,6 +13,7 @@ export const AddHouseOrHotelOrVillaForm = ({
   control,
   errors,
   setUploading,
+  listingType ,
 }) => {
   return (
     <div>
@@ -48,32 +51,35 @@ export const AddHouseOrHotelOrVillaForm = ({
           />
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <Row gutter={16}>
-            <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-              <InputField
-                name="size"
-                label="Size of the land"
-                placeholder="Enter the size of the land"
-                required={true}
-                control={control}
-                errors={errors}
-              />
-            </Col>
+        {/* Conditionally render the 'size' input field */}
+        {listingType !== "rent" && (
+          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+            <Row gutter={16}>
+              <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+                <InputField
+                  name="size"
+                  label="Size of the land"
+                  placeholder="Enter the size of the land"
+                  required={true}
+                  control={control}
+                  errors={errors}
+                />
+              </Col>
 
-            <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-              <SelectFormField
-                name="measuringUnit"
-                placeholder="Select a measuring unit"
-                label="Measuring unit"
-                required={true}
-                control={control}
-                errors={errors}
-                options={measuringUnitType}
-              />
-            </Col>
-          </Row>
-        </Col>
+              <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+                <SelectFormField
+                  name="measuringUnit"
+                  placeholder="Select a measuring unit"
+                  label="Measuring unit"
+                  required={true}
+                  control={control}
+                  errors={errors}
+                  options={measuringUnitType}
+                />
+              </Col>
+            </Row>
+          </Col>
+        )}
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <InputField

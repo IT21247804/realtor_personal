@@ -25,6 +25,7 @@ export const AddLandForm = ({ control, errors, setUploading }) => {
                 required={true}
                 control={control}
                 errors={errors}
+                
               />
             </Col>
 
