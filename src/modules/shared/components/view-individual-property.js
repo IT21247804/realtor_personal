@@ -39,6 +39,7 @@ export const ViewIndividualProperty = (propertyId) => {
   const [propertyDescription, setPropertyDescriptionData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     const fetchProperty = async () => {
@@ -110,6 +111,10 @@ export const ViewIndividualProperty = (propertyId) => {
     const handleRightClick = (e) => {
       e.preventDefault();
       alert("Right-click is disabled on this image!");
+    };
+
+    const toggleShowMore = () => {
+      setShowMore((prev) => !prev);
     };
  
 
@@ -253,15 +258,34 @@ export const ViewIndividualProperty = (propertyId) => {
               </div>
 
               <div className="mt-4">
-                <div className="mb-10">
-                  <p className="font-semibold text-lg">Description: </p>
-                  {propertyDescription?.map((d, index) => (
-                    <>
-                      <p key={index}>{d.description}</p>
-                      {d.description == null && <br />}
-                    </>
-                  ))}
-                </div>
+              <div className="mb-10">
+        <p className="font-semibold text-lg">Description: </p>
+        {showMore
+          ? propertyDescription?.map((d, index) => (
+              <div key={index}>
+                {d.description ? (
+                  <p>{d.description}</p>
+                ) : (
+                  <br />
+                )}
+              </div>
+            ))
+          : propertyDescription?.[0]?.description && (
+              <p>
+                {propertyDescription[0].description.length <= 10
+                  ? propertyDescription[0].description
+                  : `${propertyDescription[0].description.slice(0, 10)}...`}
+              </p>
+            )}
+        {propertyDescription.length > 1 && (
+          <button
+            onClick={toggleShowMore}
+            className="mt-2 text-blue-500 hover:underline"
+          >
+            {showMore ? "Show Less" : "Show More"}
+          </button>
+        )}
+      </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                   {propertyData.numberOfRooms && (
