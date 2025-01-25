@@ -8,9 +8,9 @@ import { Controller } from "react-hook-form";
 
 // Configure AWS SDK
 AWS.config.update({
-  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-  region: process.env.REACT_APP_AWS_REGION,
+  accessKeyId: "AKIA2UC3EVGCE3UXFAPD",
+  secretAccessKey: "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",
+  region: "eu-north-1",
 });
 
 const s3 = new AWS.S3();
@@ -60,7 +60,7 @@ export const Dropbox = ({
       const fileName = file.name;
       const fileType = file.type;
       const params = {
-        Bucket: process.env.REACT_APP_AWS_S3_BUCKET_NAME,
+        Bucket: "trrbucket",
         Key: `uploads/${fileName}`,
         ContentType: fileType,
         ACL: "public-read",

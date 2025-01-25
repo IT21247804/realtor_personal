@@ -315,6 +315,8 @@ export const AddPropertyForm = () => {
     const descriptionContent = descriptionData?.map((line) => ({
       item: line,
     }));
+    console.log(descriptionData);
+    console.log(descriptionContent);
 
     try {
       setIsLoading(true);
