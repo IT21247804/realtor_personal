@@ -60,7 +60,7 @@ export const PropertyFilterBar = ({
         <div className={"flex gap-4 lg:items-center flex-col lg:flex-row"}>
           <div className={"lg:mb-4"}>
             <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
-              Filter by Location:
+               Location:
             </p>
             <Select
               showSearch
@@ -77,7 +77,7 @@ export const PropertyFilterBar = ({
 
           <div className={"lg:mb-4"}>
             <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
-              Filter by Property Type:
+             Property Type:
             </p>
             <Select
               showSearch
@@ -92,9 +92,9 @@ export const PropertyFilterBar = ({
             />
           </div>
 
-          <div className={"lg:mb-4"}>
+          {/* <div className={"lg:mb-4"}>
             <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
-              Filter by Property Age:
+              Property Age:
             </p>
             <Select
               showSearch
@@ -107,12 +107,12 @@ export const PropertyFilterBar = ({
               }))}
               onChange={(value) => setSelectedPropertyAge(value)}
             />
-          </div>
+          </div> */}
 
           {selectedPropertyType !== "land" && selectedPropertyType && (
             <div className={"lg:mb-4"}>
               <p className={"font-semibold text-[#272c63] text-sm mb-2"}>
-                Filter by Number of Rooms:
+               Number of Rooms:
               </p>
               <Input
                 type="number"

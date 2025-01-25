@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { PushpinOutlined } from "@ant-design/icons";
 import { formatPrice } from "../../shared/utils/format-price";
+import { useNavigate } from "react-router-dom";
 
 export const PropertyCard = ({
   cover,
@@ -11,6 +13,19 @@ export const PropertyCard = ({
   status,
   id,
 }) => {
+  const [isExpanded, setIsExpanded] = useState(false); // State for toggling description
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/property/${id}`); // Redirect to the property details page
+  };
+
+  const handleToggleDescription = (e) => {
+    e.stopPropagation(); // Prevent the card click event from firing
+    e.preventDefault();
+    setIsExpanded(!isExpanded); // Toggle the expanded state
+  };
+
   const truncateDescription = (str) => {
     if (str?.length > 280) {
       return str.slice(0, 280) + "...";
@@ -19,23 +34,17 @@ export const PropertyCard = ({
   };
 
   function formatNumber(number) {
-    // Convert the number to a string and reverse it
     let reversedNumber = number?.toString()?.split("")?.reverse()?.join("");
-
-    // Use a regular expression to insert commas every three digits
     let reversedWithCommas = reversedNumber?.match(/.{1,3}/g)?.join(",");
-
-    // Reverse the string back to its original order
-    let formattedNumber = reversedWithCommas?.split("")?.reverse()?.join("");
-
-    return formattedNumber;
+    return reversedWithCommas?.split("")?.reverse()?.join("");
   }
 
   return (
     <div
       className={
-        "relative group w-full cursor-pointer rounded-lg border border-[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow-[#085585]/40 overflow-hidden h-[500px]"
+        "relative group w-full cursor-pointer rounded-lg border border-[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow-[#085585]/40 overflow-hidden h-auto"
       }
+      onClick={handleCardClick} // Handle card redirection
     >
       {status === "sold" && (
         <div className={"w-full h-full absolute bg-black/20"} />
@@ -54,7 +63,7 @@ export const PropertyCard = ({
         />
       </div>
 
-      <div className={"p-2"}>
+      <div className={"p-4"}>
         <div className={"flex items-center justify-between mb-4"}>
           <div className={"flex items-center"}>
             {listingType === "rent" ? (
@@ -91,7 +100,17 @@ export const PropertyCard = ({
           </div>
         </div>
 
-        <div className={"mb-4"}>{description}</div>
+        <div className={"mb-4"}>
+          {isExpanded ? description : truncateDescription(description)}
+          {description?.length > 280 && (
+            <button
+              className="text-[#085585] font-semibold underline ml-2"
+              onClick={handleToggleDescription} // Prevent card click propagation
+            >
+              {isExpanded ? "See Less" : "See More"}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
