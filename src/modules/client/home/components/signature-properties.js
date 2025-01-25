@@ -74,281 +74,266 @@ const SignatureProperties = () => {
             ) : (
               <div
                 className={
-                  "grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 items-center"
+                  "grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 items-center"
                 }
               >
-                {signatureData[0] && (
-                  <Link
-                    to={`/signature-collection/${
-                      signatureData && signatureData[0]?.id
-                    }`}
-                  >
-                    <motion.div
-                      variants={{
-                        hidden: {
-                          opacity: 0,
-                          x: -100,
-                        },
-                        show: {
-                          x: 0,
-                          opacity: 1,
-                          transition: {
-                            type: "keyframes",
-                            duration: 0.2,
-                            delay: 0.2,
-                          },
-                        },
-                      }}
-                      initial="hidden"
-                      whileInView="show"
-                      viewport={{ once: false, amount: 0.25 }}
-                      className={
-                        "z-30 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
-                      }
-                    >
-                      {signatureData && signatureData[0] && (
-                        <img
-                          src={signatureData[0]?.cover}
-                          alt={"cover"}
-                          className={
-                            "w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
-                          }
-                        />
-                      )}
+             {signatureData[0] && (
+  <Link
+    to={`/signature-collection/${
+      signatureData && signatureData[0]?.id
+    }`}
+  >
+    <motion.div
+      variants={{
+        hidden: {
+          opacity: 0,
+          x: -100,
+        },
+        show: {
+          x: 0,
+          opacity: 1,
+          transition: {
+            type: "keyframes",
+            duration: 0.2,
+            delay: 0.2,
+          },
+        },
+      }}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.25 }}
+      className={
+        "z-30 relative w-full cursor-pointer transition-all duration-500 ease-in-out overflow-hidden group rounded-lg shadow-md border"
+      }
+    >
+      {/* Image Section */}
+      {signatureData && signatureData[0] && (
+  <div className="group relative overflow-hidden rounded-t-lg">
+    <img
+      src={signatureData[0]?.cover}
+      alt={"cover"}
+      className={
+        "w-full h-[340px] object-cover rounded-b-lg transition-transform duration-500 group-hover:scale-110"
+      }
+    />
+  </div>
+)}
 
-                      {signatureData && signatureData[0] && (
-                        <h1
-                          className={
-                            "capitalize absolute mt-6 mr-4 text-white font-medium text-xl -right-[150px] group-hover:right-8 transition-all duration-500 ease-in-out"
-                          }
-                        >
-                          {signatureData[0]?.propertyType}
-                        </h1>
-                      )}
-                      <div
-                        className={
-                          "absolute text-left text-white p-8 -bottom-[130px] md:-bottom-[100px] lg:-bottom[150px] group-hover:bottom-3 transition-all duration-500 ease-in-out"
-                        }
-                      >
-                        {signatureData && signatureData[0] && (
-                          <h1 className={"capitalize text-3xl mb-4 title-font"}>
-                            {signatureData[0]?.propertyType}
-                          </h1>
-                        )}
+      {/* Top-Left Button */}
+      <button
+        className="absolute top-4 left-4 bg-white bg-opacity-50 text-[#272c63] text-sm font-bold px-4 py-2 rounded-full hover:bg-opacity-75 transition"
+        onClick={(e) => {
+          e.preventDefault(); // Prevent navigation if the button performs an action
+          console.log("Button clicked!");
+        }}
+      >
+        {signatureData[0]?.propertyType} for {signatureData[0]?.listingType}
+      </button>
 
-                        {signatureData && signatureData[0] && (
-                          <p className={"text-md mt-2"}>
-                            {truncateString(signatureData[0]?.description, 150)}
-                          </p>
-                        )}
-                      </div>
-                    </motion.div>
-                  </Link>
-                )}
-                {signatureData[1] && (
-                  <Link
-                    to={`/signature-collection/${
-                      signatureData && signatureData[1]?.id
-                    }`}
-                  >
-                    <motion.div
-                      variants={{
-                        hidden: {
-                          opacity: 0,
-                          x: -100,
-                        },
-                        show: {
-                          x: 0,
-                          opacity: 1,
-                          transition: {
-                            type: "keyframes",
-                            duration: 0.2,
-                            delay: 0.2,
-                          },
-                        },
-                      }}
-                      initial="hidden"
-                      whileInView="show"
-                      viewport={{ once: false, amount: 0.25 }}
-                      className={
-                        "z-30 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
-                      }
-                    >
-                      {signatureData && signatureData[1] && (
-                        <img
-                          src={signatureData[1]?.cover}
-                          alt={"cover"}
-                          className={
-                            "w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
-                          }
-                        />
-                      )}
+      {/* Details Section */}
+      <div
+        className={
+          "text-left bg-white p-6 w-full text-black space-y-3 rounded-b-lg"
+        }
+      >
+        {/* Price */}
+        {signatureData && signatureData[0] && (
+          <h1 className="capitalize text-2xl font-bold text-[#272c63]">
+            LKR {signatureData[0]?.price}
+          </h1>
+        )}
 
-                      {signatureData && signatureData[1] && (
-                        <h1
-                          className={
-                            "capitalize absolute mt-6 mr-4 text-white font-medium text-xl -right-[150px] group-hover:right-8 transition-all duration-500 ease-in-out"
-                          }
-                        >
-                          {signatureData[1]?.propertyType}
-                        </h1>
-                      )}
-                      <div
-                        className={
-                          "absolute text-left text-white p-8 -bottom-[130px] md:-bottom-[100px] lg:-bottom[150px] group-hover:bottom-3 transition-all duration-500 ease-in-out"
-                        }
-                      >
-                        {signatureData && signatureData[1] && (
-                          <h1 className={"capitalize text-3xl mb-4 title-font"}>
-                            {signatureData[1]?.propertyType}
-                          </h1>
-                        )}
+        {/* Description */}
+        {signatureData && signatureData[0] && (
+          <p className="text-md text-gray-600">
+            {truncateString(signatureData[0]?.description, 150)}
+          </p>
+        )}
 
-                        {signatureData && signatureData[1] && (
-                          <p className={"text-md mt-2"}>
-                            {truncateString(signatureData[1]?.description, 150)}
-                          </p>
-                        )}
-                      </div>
-                    </motion.div>
-                  </Link>
-                )}
-                {signatureData[2] && (
-                  <Link
-                    to={`/signature-collection/${
-                      signatureData && signatureData[2]?.id
-                    }`}
-                  >
-                    <motion.div
-                      variants={{
-                        hidden: {
-                          opacity: 0,
-                          x: -100,
-                        },
-                        show: {
-                          x: 0,
-                          opacity: 1,
-                          transition: {
-                            type: "keyframes",
-                            duration: 0.2,
-                            delay: 0.2,
-                          },
-                        },
-                      }}
-                      initial="hidden"
-                      whileInView="show"
-                      viewport={{ once: false, amount: 0.25 }}
-                      className={
-                        "z-30 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
-                      }
-                    >
-                      {signatureData && signatureData[2] && (
-                        <img
-                          src={signatureData[2]?.cover}
-                          alt={"cover"}
-                          className={
-                            "w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
-                          }
-                        />
-                      )}
+        {/* Additional Details */}
+        <div className="mt-4 text-sm text-[#272c63] flex space-x-4">
+          <p className="font-bold">• {signatureData[0]?.location}</p>
+          <p className="font-bold">• {signatureData[0]?.age}</p>
+          <p className="font-bold">• {signatureData[0]?.size}</p>
+        </div>
+      </div>
+    </motion.div>
+  </Link>
+)}
 
-                      {signatureData && signatureData[2] && (
-                        <h1
-                          className={
-                            "capitalize absolute mt-6 mr-4 text-white font-medium text-xl -right-[150px] group-hover:right-8 transition-all duration-500 ease-in-out"
-                          }
-                        >
-                          {signatureData[2]?.propertyType}
-                        </h1>
-                      )}
-                      <div
-                        className={
-                          "absolute text-left text-white p-8 -bottom-[130px] md:-bottom-[100px] lg:-bottom[150px] group-hover:bottom-3 transition-all duration-500 ease-in-out"
-                        }
-                      >
-                        {signatureData && signatureData[2] && (
-                          <h1 className={"capitalize text-3xl mb-4 title-font"}>
-                            {signatureData[2]?.propertyType}
-                          </h1>
-                        )}
 
-                        {signatureData && signatureData[2] && (
-                          <p className={"text-md mt-2"}>
-                            {truncateString(signatureData[2]?.description, 150)}
-                          </p>
-                        )}
-                      </div>
-                    </motion.div>
-                  </Link>
-                )}
-                {signatureData[3] && (
-                  <Link
-                    to={`/signature-collection/${
-                      signatureData && signatureData[3]?.id
-                    }`}
-                  >
-                    <motion.div
-                      variants={{
-                        hidden: {
-                          opacity: 0,
-                          x: -100,
-                        },
-                        show: {
-                          x: 0,
-                          opacity: 1,
-                          transition: {
-                            type: "keyframes",
-                            duration: 0.2,
-                            delay: 0.2,
-                          },
-                        },
-                      }}
-                      initial="hidden"
-                      whileInView="show"
-                      viewport={{ once: false, amount: 0.25 }}
-                      className={
-                        "z-30 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all bg-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
-                      }
-                    >
-                      {signatureData && signatureData[3] && (
-                        <img
-                          src={signatureData[3]?.cover}
-                          alt={"cover"}
-                          className={
-                            "w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
-                          }
-                        />
-                      )}
 
-                      {signatureData && signatureData[3] && (
-                        <h1
-                          className={
-                            "capitalize absolute mt-6 mr-4 text-white font-medium text-xl -right-[150px] group-hover:right-8 transition-all duration-500 ease-in-out"
-                          }
-                        >
-                          {signatureData[3]?.propertyType}
-                        </h1>
-                      )}
-                      <div
-                        className={
-                          "absolute text-left text-white p-8 -bottom-[130px] md:-bottom-[100px] lg:-bottom[150px] group-hover:bottom-3 transition-all duration-500 ease-in-out"
-                        }
-                      >
-                        {signatureData && signatureData[3] && (
-                          <h1 className={"capitalize text-3xl mb-4 title-font"}>
-                            {signatureData[3]?.propertyType}
-                          </h1>
-                        )}
+{signatureData[1] && (
+  <Link
+    to={`/signature-collection/${
+      signatureData && signatureData[1]?.id
+    }`}
+  >
+    <motion.div
+      variants={{
+        hidden: {
+          opacity: 0,
+          x: -100,
+        },
+        show: {
+          x: 0,
+          opacity: 1,
+          transition: {
+            type: "keyframes",
+            duration: 0.2,
+            delay: 0.2,
+          },
+        },
+      }}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.25 }}
+      className={
+        "z-30 relative w-full cursor-pointer transition-all duration-500 ease-in-out overflow-hidden group rounded-lg shadow-md border"
+      }
+    >
+      {/* Image Section */}
+      {signatureData && signatureData[1] && (
+  <div className="group relative overflow-hidden rounded-t-lg">
+    <img
+      src={signatureData[1]?.cover}
+      alt={"cover"}
+      className={
+        "w-full h-[340px] object-cover rounded-b-lg transition-transform duration-500 group-hover:scale-110"
+      }
+    />
+  </div>
+)}
 
-                        {signatureData && signatureData[3] && (
-                          <p className={"text-md mt-2"}>
-                            {truncateString(signatureData[3]?.description, 150)}
-                          </p>
-                        )}
-                      </div>
-                    </motion.div>
-                  </Link>
-                )}
+      {/* Top-Left Button */}
+      <button
+        className="absolute top-4 left-4 bg-white bg-opacity-50 text-[#272c63] text-sm font-bold px-4 py-2 rounded-full hover:bg-opacity-75 transition"
+        onClick={(e) => {
+          e.preventDefault(); // Prevent navigation if the button performs an action
+          console.log("Button clicked!");
+        }}
+      >
+        {signatureData[1]?.propertyType} for {signatureData[1]?.listingType}
+      </button>
+      
+
+      {/* Details Section */}
+      <div
+        className={
+          "text-left bg-white p-6 w-full text-black space-y-3 rounded-b-lg"
+        }
+      >
+        {/* Price */}
+        {signatureData && signatureData[1] && (
+          <h1 className="capitalize text-2xl font-bold text-[#272c63]">
+            LKR {signatureData[0]?.price}
+          </h1>
+        )}
+
+        {/* Description */}
+        {signatureData && signatureData[1] && (
+          <p className="text-md text-gray-600">
+            {truncateString(signatureData[0]?.description, 150)}
+          </p>
+        )}
+
+        {/* Additional Details */}
+        <div className="mt-4 text-sm text-[#272c63] flex space-x-4">
+        <p className="font-bold">• {signatureData[1]?.location}</p>
+        <p className="font-bold">• {signatureData[1]?.age}</p>
+        <p className="font-bold">• {signatureData[1]?.size} {signatureData[1]?.measuringUnit}</p>
+        </div>
+      </div>
+    </motion.div>
+  </Link>
+)}
+
+{signatureData[2] && (
+  <Link
+    to={`/signature-collection/${
+      signatureData && signatureData[1]?.id
+    }`}
+  >
+    <motion.div
+      variants={{
+        hidden: {
+          opacity: 0,
+          x: -100,
+        },
+        show: {
+          x: 0,
+          opacity: 1,
+          transition: {
+            type: "keyframes",
+            duration: 0.2,
+            delay: 0.2,
+          },
+        },
+      }}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.25 }}
+      className={
+        "z-30 relative w-full cursor-pointer transition-all duration-500 ease-in-out overflow-hidden group rounded-lg shadow-md border"
+      }
+    >
+      {/* Image Section */}
+      {signatureData && signatureData[2] && (
+  <div className="group relative overflow-hidden rounded-t-lg">
+    <img
+      src={signatureData[2]?.cover}
+      alt={"cover"}
+      className={
+        "w-full h-[340px] object-cover rounded-b-lg transition-transform duration-500 group-hover:scale-110"
+      }
+    />
+  </div>
+)}
+
+      {/* Top-Left Button */}
+      <button
+        className="absolute top-4 left-4 bg-white bg-opacity-50 text-[#272c63] text-sm font-bold px-4 py-2 rounded-full hover:bg-opacity-75 transition"
+        onClick={(e) => {
+          e.preventDefault(); // Prevent navigation if the button performs an action
+          console.log("Button clicked!");
+        }}
+      >
+        {signatureData[2]?.propertyType} for {signatureData[2]?.listingType}
+      </button>
+      
+
+      {/* Details Section */}
+      <div
+        className={
+          "text-left bg-white p-6 w-full text-black space-y-3 rounded-b-lg"
+        }
+      >
+        {/* Price */}
+        {signatureData && signatureData[2] && (
+          <h1 className="capitalize text-2xl font-bold">
+            LKR {signatureData[0]?.price}
+          </h1>
+        )}
+
+        {/* Description */}
+        {signatureData && signatureData[2] && (
+          <p className="text-md text-gray-600">
+            {truncateString(signatureData[0]?.description, 150)}
+          </p>
+        )}
+
+        {/* Additional Details */}
+        <div className="mt-4 text-sm text-[#272c63] flex space-x-4">
+        <p className="font-bold">• {signatureData[2]?.location}</p>
+        <p className="font-bold">• {signatureData[2]?.age}</p>
+        <p className="font-bold">• {signatureData[2]?.size} {signatureData[2]?.measuringUnit}</p>
+        </div>
+      </div>
+    </motion.div>
+  </Link>
+)}
+
+                
               </div>
             )}
           </div>
