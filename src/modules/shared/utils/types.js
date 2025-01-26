@@ -49,6 +49,48 @@ export const furnitureTypes = [
   },
 ];
 
+export const pervalTypes = [
+
+  {
+    label: "Per Month",
+    value: "per month",
+    key: "per month",
+  },
+  {
+    label: "Per Year",
+    value: "per year",
+    key: "per year",
+  },
+  {
+    label: "Per Week",
+    value: "per week",
+    key: "per week",
+  },
+  {
+    label: "Per Day",
+    value: "per day",
+    key: "per day",
+  },
+  {
+    label: "Per Hour",
+    value: "per hour",
+    key: "per hour",
+  },
+  {
+    label: "Per Sqft",
+    value: "per sqft",
+    key: "per sqft",
+  },
+
+  {
+    label: "Per Desk",
+    value: "per desk",
+    key: "per desk",
+  },
+    
+  
+];
+
 export const booleanTypes = [
   {
     label: "Yes",

@@ -284,6 +284,7 @@ export const AddPropertyForm = () => {
       parking: "",
       security: "",
       pictures: "",
+      perval: "",
     },
     resolver: yupResolver(addPropertyFormSchema),
   });
@@ -516,6 +517,7 @@ export const AddPropertyForm = () => {
 
         {propertyType?.includes("commercial") && (
           <AddCommercialPropertyForm
+          listingType={watch('listingType')}
             control={control}
             errors={errors}
             setUploading={setUploading}

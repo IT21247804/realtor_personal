@@ -12,8 +12,8 @@ module.exports = (db) => {
     const addProperty = `
       INSERT INTO property (
         referenceId, firstname, lastname, contactNumberOne, contactNumberTwo, whatsappNumber, email, addressLineOne, addressLineTwo, location, age, listingType, propertyType, 
-        numberOfRooms, numberOfWashrooms, floorArea, size, measuringUnit ,price, numberOfFloors, furnished, cover, pictures, video, accessRoad, airCondition, amenity, apartmentName, cod, deedType, developer, elevator, generator, parking, security, signature, status, surveyPlans 
-      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        numberOfRooms, numberOfWashrooms, floorArea, size, measuringUnit ,price, numberOfFloors, furnished, cover, pictures, video, accessRoad, airCondition, amenity, apartmentName, cod, deedType, developer, elevator, generator, parking, security, signature, status, surveyPlans, perval 
+      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     `;
 
     console.log("add property: ", req.body);
@@ -58,6 +58,7 @@ module.exports = (db) => {
       req.body.signature,
       req.body.status,
       req.body.surveyPlans,
+      req.body.perval,
     ];
 
     const addPropertyDescription = `

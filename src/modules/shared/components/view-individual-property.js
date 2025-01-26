@@ -126,39 +126,49 @@ export const ViewIndividualProperty = (propertyId) => {
         <div>
           <div>
             <div className="w-full">
-              <div className="flex items-start justify-between">
-                <div>
-                  <h2 className="capitalize text-xl lg:text-3xl mb-2 font-semibold text-[#272c63]">
-                    {propertyData?.propertyType} in {propertyData.location}
-                  </h2>
-                  <p className="text-[#272c63] mb-2 text-lg  lg:text-2xl capitalize ">
-                    {propertyData.referenceId}
-                    <span>
-                      {propertyData?.size && propertyData?.measuringUnit && (
-                        <>
-                          , {propertyData?.size} {propertyData?.measuringUnit}
-                        </>
-                      )}
-                    </span>
-                  </p>
-                </div>
+            <div className="flex items-start justify-between">
+  <div>
+    <h2 className="capitalize text-xl lg:text-3xl mb-2 font-semibold text-[#272c63]">
+      {propertyData?.propertyType} in {propertyData.location}
+    </h2>
+    <p className="text-[#272c63] mb-2 text-lg lg:text-2xl capitalize">
+      {propertyData.referenceId}
+      
+    </p>
+  </div>
 
-                <div className={"gap-4 flex items-center"}>
-                  {propertyData.status === "sold" ? (
-                    <p className="text-[#e53030] border p-4 border-black rounded-full text-lg: lg:text-3xl">
-                      Sold out
-                    </p>
-                  ) : (
-                    <p className="text-[#e53030] border p-4 border-black rounded-full text-lg: lg:text-3xl">
-                      {route.pathname.includes("rentals") ? (
-                        <>LKR {formatNumber(propertyData?.price)}</>
-                      ) : (
-                        <>LKR {formatPrice(propertyData.price)} Million</>
-                      )}
-                    </p>
-                  )}
-                </div>
-              </div>
+  <div className={"gap-4 flex items-center"}>
+  <p className="text-[#272c63] mb-2 text-lg lg:text-2xl capitalize">
+      
+      
+        {propertyData?.size && propertyData?.measuringUnit && (
+          <>
+             {propertyData?.size} {propertyData?.measuringUnit}
+          </>
+        )}
+     
+    </p>
+    {propertyData.status === "sold" ? (
+      <p className="text-[#e53030] border p-4 border-black rounded-full text-lg lg:text-3xl">
+        Sold out
+      </p>
+    ) : (
+      <p className="text-[#e53030] border p-4 border-black rounded-full text-lg lg:text-3xl">
+        {route.pathname.includes("rentals") ? (
+          <>LKR {formatNumber(propertyData?.price)}</>
+        ) : (
+          <>LKR {formatPrice(propertyData.price)} Million</>
+        )}
+      </p>
+    )}
+    {propertyData?.perval && (
+    <p className="text-black font-bold text-sm lg:text-base mt-0">{propertyData.perval}</p> 
+  )}
+  </div>
+  
+  
+
+</div>
               <div className="w-full flex gap-2">
                 <div className="w-full lg:w-3/5 h-96 overflow-hidden rounded-md shadow-sm relative">
                   <img
