@@ -19,6 +19,15 @@ import Users from "./pages/users";
 import AddProperty from "./pages/add-property";
 import About from "./pages/about";
 import Services from "./pages/Services";
+import {AddTeamForm} from "./pages/add-team";
+import {TeamList} from "./pages/get-team";
+import {TeamUpdate} from "./pages/team-update";
+import {AddTestimonialsForm} from "./pages/add-testimonials";
+import {ManageTestimonials} from "./pages/ManageTestimonials";
+import {UpdateTestimonial} from "./pages/UpdateTestimonial";
+
+
+
 
 const App = () => {
   const { user } = useAuth();
@@ -32,6 +41,7 @@ const App = () => {
           path="/signature-collection/:id"
           element={<SignatureProperty />}
         />
+        
         <Route path="/explore-to-buy" element={<ExploreToBuy />} />
         <Route path="/about" element={< About/>} />
         <Route path ="/services" element={<Services/>} />
@@ -41,11 +51,24 @@ const App = () => {
       </Route>
 
       <Route
-        path="/dashboard/*"
+        path="/dashboard/"
         // element={user ? <Dashboard /> : <Navigate to="/login" />}
         element={<Dashboard />}
       >
         {/* Nested routes inside dashboard */}
+        <Route
+          path="add-team"
+          element={<AddTeamForm />}
+        />
+        <Route
+          path="get-team"
+          element={<TeamList />}
+        />
+        <Route path="manage-testimonials" element={<ManageTestimonials />} />
+        <Route path="update-testimonial/:id" element={<UpdateTestimonial />} />
+        
+        <Route path="add-testimonials" element={<AddTestimonialsForm />} />
+         <Route path="update-team/:id" element={<TeamUpdate/>} />
         <Route path="property-requests" element={<PropertyRequests />} />
         <Route path="properties" element={<Properties />} />
         <Route path="properties/:id" element={<BrowseDashboardProperty />} />

@@ -9,6 +9,7 @@ import {
   UserOutlined,
   MenuOutlined,
   CloseOutlined,
+  CommentOutlined,
 } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 
@@ -33,11 +34,8 @@ export const DashboardNavBar = () => {
       <div
         className={`fixed top-0 left-0 bottom-0 h-screen w-64 bg-[#272c63] text-white transition-transform duration-300 transform z-40 ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 md:relative md:w-64 md:z-auto shadow-lg`}
+        } md:translate-x-0 md:relative md:w-64 md:z-auto shadow-lg overflow-y-auto`} // Added overflow-y-auto
       >
-        {/* Mobile Menu Button */}
-
-        {/* Sidebar */}
         <div>
           <div className="p-6 border-b-[1px]">
             <img
@@ -103,6 +101,38 @@ export const DashboardNavBar = () => {
             </NavLink>
           </div>
 
+          {/* Team Section */}
+          <div className="mt-4">
+            <div className="flex items-center gap-4 mb-4 pl-6">
+              <UsergroupAddOutlined className="text-2xl" />
+              <p className="text-lg font-semibold">Team</p>
+            </div>
+
+            <NavLink
+              to="/dashboard/get-team"
+              className={({ isActive }) =>
+                `pl-10 py-4 flex items-center gap-4 ${
+                  isActive ? "bg-[#e53030]" : "hover:bg-[#e53030]"
+                } text-white transition-colors duration-300`
+              }
+            >
+              <UserOutlined className="text-xl" />
+              <p>Get Team</p>
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/add-team"
+              className={({ isActive }) =>
+                `pl-10 py-4 flex items-center gap-4 ${
+                  isActive ? "bg-[#e53030]" : "hover:bg-[#e53030]"
+                } text-white transition-colors duration-300`
+              }
+            >
+              <PlusCircleOutlined className="text-xl" />
+              <p>Add Team</p>
+            </NavLink>
+          </div>
+
           {/* Users Section */}
           <div className="mt-4">
             <div className="flex items-center gap-4 mb-4 pl-6">
@@ -120,6 +150,38 @@ export const DashboardNavBar = () => {
             >
               <UserOutlined className="text-xl" />
               <p>All Users</p>
+            </NavLink>
+          </div>
+
+          {/* Testimonials Section */}
+          <div className="mt-4">
+            <div className="flex items-center gap-4 mb-4 pl-6">
+              <CommentOutlined className="text-2xl" />
+              <p className="text-lg font-semibold">Testimonials</p>
+            </div>
+
+            <NavLink
+              to="/dashboard/manage-testimonials"
+              className={({ isActive }) =>
+                `pl-10 py-4 flex items-center gap-4 ${
+                  isActive ? "bg-[#e53030]" : "hover:bg-[#e53030]"
+                } text-white transition-colors duration-300`
+              }
+            >
+              <UserOutlined className="text-xl" />
+              <p>Manage Testimonials</p>
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/add-testimonials"
+              className={({ isActive }) =>
+                `pl-10 py-4 flex items-center gap-4 ${
+                  isActive ? "bg-[#e53030]" : "hover:bg-[#e53030]"
+                } text-white transition-colors duration-300`
+              }
+            >
+              <PlusCircleOutlined className="text-xl" />
+              <p>Add Testimonials</p>
             </NavLink>
           </div>
         </div>

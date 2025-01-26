@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const path = require("path"); 
 
 const app = express();
 app.use(cors());
@@ -104,6 +105,83 @@ try {
   console.error("Error setting up property description routes: ", error);
 }
 
+// File upload route (for team details)
+try {
+  const addTeam = require("./routes/add-team"); // Update with actual path to the route
+  app.use("/add-team", addTeam(db)); // Pass db to the route
+} catch (error) {
+  console.error("Error setting up file upload routes: ", error);
+}
+
+try {
+  const getTeam = require("./routes/get-team"); // Update with actual path to the route
+  app.use("/get-team", getTeam(db)); // Pass db to the route
+} catch (error) {
+  console.error("Error getting team details ", error);
+}
+
+try {
+  const deleteTeam = require("./routes/delete-team"); // Update with actual path to the route
+  app.use("/delete-team", deleteTeam(db)); // Pass db to the route
+} catch (error) {
+  console.error("Error deleteing team details ", error);
+}
+
+try {
+  const updateTeam = require("./routes/update-team"); // Update with actual path to the route
+  app.use("/update-team", updateTeam(db)); // Pass db to the route
+} catch (error) {
+  console.error("Error update team details ", error);
+}
+
+try {
+  const getTeamById = require("./routes/get-team-id"); // Path to your get-team-by-id route
+  app.use("/get-team", getTeamById(db)); // Use "/get-team" for the base path
+} catch (error) {
+  console.error("Error getting team member by ID: ", error);
+}
+
+
+//testimonials
+
+// Routes
+try {
+  const addTestimonials = require("./routes/add-testimonials");
+  app.use("/add-testimonials", addTestimonials(db));
+} catch (error) {
+  console.error("Error setting up add testimonials route: ", error);
+}
+
+try {
+  const getTestimonials = require("./routes/get-testimonials");
+  app.use("/get-testimonials", getTestimonials(db));
+} catch (error) {
+  console.error("Error getting testimonials: ", error);
+}
+
+try {
+  const deleteTestimonials = require("./routes/delete-testimonials");
+  app.use("/delete-testimonials", deleteTestimonials(db));
+} catch (error) {
+  console.error("Error deleting testimonial: ", error);
+}
+
+try {
+  const updateTestimonials = require("./routes/update-testimonials");
+  app.use("/update-testimonials", updateTestimonials(db));
+} catch (error) {
+  console.error("Error updating testimonial: ", error);
+}
+
+try {
+  const getTestimonialsById = require("./routes/get-testimonials-id");
+  app.use("/get-testimonials", getTestimonialsById(db));
+} catch (error) {
+  console.error("Error getting testimonial by ID: ", error);
+}
+
+
+ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 // Start the server
 try {
   const port = process.env.MYSQL_PORT || 3000;
