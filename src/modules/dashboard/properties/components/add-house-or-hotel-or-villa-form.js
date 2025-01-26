@@ -137,6 +137,17 @@ export const AddHouseOrHotelOrVillaForm = ({
         </Col>
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <MultiDropbox
+            name="pictures"
+            label="Upload Images"
+            control={control}
+            required={false}
+            errors={errors}
+            setUploading={setUploading}
+          />
+        </Col>
+
+        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <Dropbox
             name="cover"
             label="Cover image"
@@ -148,16 +159,7 @@ export const AddHouseOrHotelOrVillaForm = ({
           />
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <MultiDropbox
-            name="pictures"
-            label="Upload Images"
-            control={control}
-            required={false}
-            errors={errors}
-            setUploading={setUploading}
-          />
-        </Col>
+       
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <VideoDropbox
