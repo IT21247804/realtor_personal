@@ -5,6 +5,7 @@ import {
   booleanTypes,
   furnitureTypes,
   measuringUnitType,
+  pervalTypes,
 } from "../../../shared/utils/types";
 import { TextInputField } from "../../../shared/components/text-area";
 import { Dropbox } from "../../../shared/components/dropbox";
@@ -15,20 +16,41 @@ export const AddCommercialPropertyForm = ({
   control,
   errors,
   setUploading,
+  listingType ,
 }) => {
   return (
     <div>
       <Row gutter={16}>
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <InputField
+          {/* <InputField
             name="numberOfRooms"
             label="Number of rooms"
             placeholder="Number of rooms"
             required={true}
             control={control}
             errors={errors}
-          />
+          /> */}
         </Col>
+
+        {listingType !== "sell" && (
+          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+            <Row gutter={16}>
+              <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+              <SelectFormField
+            name="perval"
+            label="Per Value"
+            placeholder="Per Value"
+            required={true}
+            control={control}
+            errors={errors}
+            options={pervalTypes}
+          />
+              </Col>
+
+              
+            </Row>
+          </Col>
+        )}
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <InputField
@@ -38,6 +60,7 @@ export const AddCommercialPropertyForm = ({
             required={true}
             control={control}
             errors={errors}
+            
           />
         </Col>
 
@@ -144,6 +167,18 @@ export const AddCommercialPropertyForm = ({
             errors={errors}
           />
         </Col>
+       
+
+        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <MultiDropbox
+            name="pictures"
+            label="Upload Images"
+            control={control}
+            required={false}
+            errors={errors}
+            setUploading={setUploading}
+          />
+        </Col>
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <Dropbox
@@ -156,16 +191,7 @@ export const AddCommercialPropertyForm = ({
           />
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <MultiDropbox
-            name="pictures"
-            label="Upload Images"
-            control={control}
-            required={false}
-            errors={errors}
-            setUploading={setUploading}
-          />
-        </Col>
+       
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <VideoDropbox

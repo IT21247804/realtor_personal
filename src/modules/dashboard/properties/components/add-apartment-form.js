@@ -7,7 +7,7 @@ import { Dropbox } from "../../../shared/components/dropbox";
 import { MultiDropbox } from "../../../shared/components/multi-dropbox";
 import { VideoDropbox } from "../../../shared/components/video-dropbox";
 
-export const AddApartmentForm = ({ control, errors, setUploading }) => {
+export const AddApartmentForm = ({ control, errors, setUploading, listingType , }) => {
   return (
     <div>
       <Row gutter={16}>
@@ -55,7 +55,7 @@ export const AddApartmentForm = ({ control, errors, setUploading }) => {
           />
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+        {/* <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <InputField
             name="coc"
             label="COC/DEED availability"
@@ -64,7 +64,28 @@ export const AddApartmentForm = ({ control, errors, setUploading }) => {
             control={control}
             errors={errors}
           />
-        </Col>
+        </Col> */}
+
+{listingType !== "rent" && (
+          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+            <Row gutter={16}>
+              <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+                <InputField
+                  name="coc"
+                  label="COC/DEED availability"
+                  placeholder="COC/DEED availability"
+                  required={true}
+                  control={control}
+                  errors={errors}
+                />
+              </Col>
+
+              
+            </Row>
+          </Col>
+        )}
+
+        
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <InputField
@@ -123,6 +144,17 @@ export const AddApartmentForm = ({ control, errors, setUploading }) => {
         </Col>
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <MultiDropbox
+            name="pictures"
+            label="Upload Images"
+            control={control}
+            required={false}
+            errors={errors}
+            setUploading={setUploading}
+          />
+        </Col>
+
+        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <Dropbox
             name="cover"
             label="Cover image"
@@ -133,16 +165,7 @@ export const AddApartmentForm = ({ control, errors, setUploading }) => {
           />
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <MultiDropbox
-            name="pictures"
-            label="Upload Images"
-            control={control}
-            required={false}
-            errors={errors}
-            setUploading={setUploading}
-          />
-        </Col>
+        
 
         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
           <VideoDropbox

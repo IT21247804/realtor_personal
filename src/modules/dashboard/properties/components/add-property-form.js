@@ -284,6 +284,7 @@ export const AddPropertyForm = () => {
       parking: "",
       security: "",
       pictures: "",
+      perval: "",
     },
     resolver: yupResolver(addPropertyFormSchema),
   });
@@ -323,15 +324,15 @@ export const AddPropertyForm = () => {
       const response = await fetch(
         `${process.env.REACT_APP_MYSQL_ENDPOINT}/add-property`,
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...data,
-            price: data?.price?.split(",")?.join(""),
-            description: descriptionContent,
-          }),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          price: data?.price?.split(",")?.join(""),
+          description: descriptionContent,
+        }),
         }
       );
 
@@ -507,6 +508,7 @@ export const AddPropertyForm = () => {
 
         {propertyType === "apartment" && (
           <AddApartmentForm
+          listingType={watch('listingType')}
             control={control}
             errors={errors}
             setUploading={setUploading}
@@ -515,6 +517,7 @@ export const AddPropertyForm = () => {
 
         {propertyType?.includes("commercial") && (
           <AddCommercialPropertyForm
+          listingType={watch('listingType')}
             control={control}
             errors={errors}
             setUploading={setUploading}

@@ -17,6 +17,8 @@ module.exports = (db) => {
       if (result.length === 0) {
         return res.status(404).json({ error: "Property not found" });
       }
+      // Console log the perval value
+      console.log("Perval value:", result[0].perval);
 
       res.status(200).json(result[0]); // Return the property details
     });
