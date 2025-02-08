@@ -3,10 +3,12 @@ import { PropertyFilterBar } from "../../shared/components/property-filter-bar";
 import { LoadingSpinner } from "../../shared/components/loading-spinner";
 import { Link } from "react-router-dom";
 import { PropertyCard } from "../explore-properties/property-card";
+import { useSearchParams } from 'react-router-dom';
+
 
 export const BrowseRentalProperties = () => {
   const [isLoading, setIsLoading] = useState(false);
-
+  const [searchParams] = useSearchParams();
   const [propertyData, setPropertyData] = useState([]);
   const [error, setError] = useState(null);
   const [descriptionData, setDescriptionData] = useState([]);
@@ -68,18 +70,28 @@ export const BrowseRentalProperties = () => {
   const [maxPrice, setMaxPrice] = useState(1000000);
 
   useEffect(() => {
-    if (propertyData) {
-      const rentalsData = propertyData.filter(
-        (property) => property.listingType.toString() === "rent"
-      );
+    // Initialize filters from URL parameters
+    const location = searchParams.get('location');
+    const propertyType = searchParams.get('category');
+    const minPrice = searchParams.get('minPrice');
+    const maxPrice = searchParams.get('maxPrice');
+
+    if (location) setSelectedLocation(location);
+    if (propertyType) setSelectedPropertyType(propertyType);
+    if (minPrice && maxPrice) setPriceRange([Number(minPrice), Number(maxPrice)]);
+  }, [searchParams]);
+
+  // Similar modification for propertyData effect
+  useEffect(() => {
+    if (propertyData && !searchParams.get('minPrice') && !searchParams.get('maxPrice')) {
       const maxPropertyPrice = Math.max(
-        ...rentalsData.map((property) => property.price),
+        ...propertyData.map((property) => property.price),
         1000000
       );
       setPriceRange([0, maxPropertyPrice]);
       setMaxPrice(maxPropertyPrice);
     }
-  }, [propertyData]);
+  }, [propertyData, searchParams]);
 
   const rentalsData = propertyData?.filter(
     (property) => property.listingType.toString() === "rent"
@@ -108,6 +120,8 @@ export const BrowseRentalProperties = () => {
       isSelectedPropertyAge
     );
   });
+
+  
 
   return (
     <div>
