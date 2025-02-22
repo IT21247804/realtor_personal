@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Spin, Typography } from "antd";
+import { Row, Col, Spin, Typography, Pagination } from "antd";
 import { useNavigate } from "react-router-dom";
 import { BlogCard } from "./BlogCard";
 
@@ -8,6 +8,8 @@ const { Title } = Typography;
 export const BlogsPage = () => {
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(3); // Number of blogs per page
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +27,16 @@ export const BlogsPage = () => {
 
     fetchBlogs();
   }, []);
+
+  // Calculate the current page's blogs
+  const indexOfLastBlog = currentPage * pageSize;
+  const indexOfFirstBlog = indexOfLastBlog - pageSize;
+  const currentBlogs = blogs.slice(1).slice(indexOfFirstBlog, indexOfLastBlog);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   if (isLoading) {
     return (
@@ -93,9 +105,9 @@ export const BlogsPage = () => {
         </div>
       )}
 
-      <Title level={2} style={{ marginBottom: "30px", color: "#272c63" }}>Latest Blog Posts</Title>
+<Title level={2} style={{ marginBottom: "30px", color: "#272c63" }}>Latest Blog Posts</Title>
       <Row gutter={[24, 24]}>
-        {blogs.slice(1).map((blog) => (
+        {currentBlogs.map((blog) => (
           <Col xs={24} sm={12} md={8} key={blog.id}>
             <BlogCard
               title={blog.title}
@@ -109,6 +121,32 @@ export const BlogsPage = () => {
           </Col>
         ))}
       </Row>
+
+      {/* Pagination */}
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        marginTop: '40px',
+        marginBottom: '20px'
+      }}>
+        <Pagination
+          current={currentPage}
+          total={blogs.slice(1).length}
+          pageSize={pageSize}
+          onChange={handlePageChange}
+          showSizeChanger={false}
+          style={{
+            '& .ant-pagination-item-active': {
+              borderColor: '#272c63',
+              color: '#272c63'
+            },
+            '& .ant-pagination-item:hover': {
+              borderColor: '#272c63',
+              color: '#272c63'
+            }
+          }}
+        />
+      </div>
     </div>
   );
 };
