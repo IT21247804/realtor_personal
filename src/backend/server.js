@@ -180,6 +180,42 @@ try {
   console.error("Error getting testimonial by ID: ", error);
 }
 
+// blog routes
+try {
+  const addBlog = require("./routes/add-blog");
+  app.use("/add-blog", addBlog(db));
+} catch (error) {
+  console.error("Error setting up add blog route: ", error);
+}
+
+try {
+  const getBlogs = require("./routes/get-blog");
+  app.use("/get-blogs", getBlogs(db));
+} catch (error) {
+  console.error("Error getting blogs: ", error);
+}
+
+try {
+  const deleteBlog = require("./routes/delete-blog");
+  app.use("/delete-blog", deleteBlog(db));
+} catch (error) {
+  console.error("Error deleting blog: ", error);
+}
+
+try {
+  const updateBlog = require("./routes/update-blog");
+  app.use("/update-blog", updateBlog(db));
+} catch (error) {
+  console.error("Error updating blog: ", error);
+}
+
+try {
+  const getBlogById = require("./routes/get-blog-id");
+  app.use("/get-blog-id", getBlogById(db));
+} catch (error) {
+  console.error("Error getting blog by ID: ", error);
+}
+
 
  app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 // Start the server

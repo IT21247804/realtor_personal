@@ -25,6 +25,10 @@ import {TeamUpdate} from "./pages/team-update";
 import {AddTestimonialsForm} from "./pages/add-testimonials";
 import {ManageTestimonials} from "./pages/ManageTestimonials";
 import {UpdateTestimonial} from "./pages/UpdateTestimonial";
+import { CreateBlog } from "./pages/CreateBlog";
+import { ManageBlogs } from "./pages/ManageBlogs";
+import { UpdateBlog } from "./pages/UpdateBlog";
+import { BlogsPage } from "./pages/BlogsPage";
 
 
 
@@ -45,9 +49,11 @@ const App = () => {
         <Route path="/explore-to-buy" element={<ExploreToBuy />} />
         <Route path="/about" element={< About/>} />
         <Route path ="/services" element={<Services/>} />
+        <Route path ="/blogspage" element={<BlogsPage />} />
         <Route path="/browse-rentals" element={<BrowseRentals />} />
         <Route path="/explore-to-buy/:id" element={<BrowseSellProperty />} />
         <Route path="/browse-rentals/:id" element={<BrowseRentalProperty />} />
+
       </Route>
 
       <Route
@@ -75,6 +81,9 @@ const App = () => {
         <Route path="market" element={<Market />} />
         <Route path="users" element={<Users />} />
         <Route path="add-property" element={<AddProperty />} />
+        <Route path="manage-blog" element={<ManageBlogs />} />
+        <Route path="create-blog" element={<CreateBlog />} />
+        <Route path="update-blog/:id" element={<UpdateBlog />} />
       </Route>
 
       <Route path="/login" element={<Login />} />

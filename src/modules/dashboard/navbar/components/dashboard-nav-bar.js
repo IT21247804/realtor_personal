@@ -10,6 +10,8 @@ import {
   MenuOutlined,
   CloseOutlined,
   CommentOutlined,
+  FileAddOutlined,
+  FileTextOutlined,
 } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 
@@ -182,6 +184,38 @@ export const DashboardNavBar = () => {
             >
               <PlusCircleOutlined className="text-xl" />
               <p>Add Testimonials</p>
+            </NavLink>
+          </div>
+
+          {/* Blog Section */}
+          <div className="mt-4">
+            <div className="flex items-center gap-4 mb-4 pl-6">
+              <FileTextOutlined className="text-2xl" />
+              <p className="text-lg font-semibold">Blog</p>
+            </div>
+
+            <NavLink
+              to="/dashboard/manage-blog"
+              className={({ isActive }) =>
+                `pl-10 py-4 flex items-center gap-4 ${
+                  isActive ? "bg-[#e53030]" : "hover:bg-[#e53030]"
+                } text-white transition-colors duration-300`
+              }
+            >
+              <FileTextOutlined className="text-xl" />
+              <p>Manage Blog</p>
+            </NavLink>
+
+            <NavLink
+              to="/dashboard/create-blog"
+              className={({ isActive }) =>
+                `pl-10 py-4 flex items-center gap-4 ${
+                  isActive ? "bg-[#e53030]" : "hover:bg-[#e53030]"
+                } text-white transition-colors duration-300`
+              }
+            >
+              <FileAddOutlined className="text-xl" />
+              <p>Create Blog</p>
             </NavLink>
           </div>
         </div>
