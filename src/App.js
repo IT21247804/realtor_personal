@@ -29,6 +29,7 @@ import { CreateBlog } from "./pages/CreateBlog";
 import { ManageBlogs } from "./pages/ManageBlogs";
 import { UpdateBlog } from "./pages/UpdateBlog";
 import { BlogsPage } from "./pages/BlogsPage";
+import { BlogPost } from "./pages/BlogPost";
 
 
 
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/about" element={< About/>} />
         <Route path ="/services" element={<Services/>} />
         <Route path ="/blogspage" element={<BlogsPage />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/browse-rentals" element={<BrowseRentals />} />
         <Route path="/explore-to-buy/:id" element={<BrowseSellProperty />} />
         <Route path="/browse-rentals/:id" element={<BrowseRentalProperty />} />

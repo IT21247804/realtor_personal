@@ -246,9 +246,11 @@ const Navbar = () => {
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
                     Our Agents
                   </div>
-                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                    Blogs
-                  </div>
+                  <Link to="/blogspage" onClick={handleLinkClick}>
+  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+    Blogs
+  </div>
+</Link>
                   <Link to="/add-listing" onClick={handleLinkClick}>
                     <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
                       How to list?
