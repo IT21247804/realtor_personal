@@ -3,10 +3,11 @@ import { PropertyFilterBar } from "../../shared/components/property-filter-bar";
 import { LoadingSpinner } from "../../shared/components/loading-spinner";
 import { Link } from "react-router-dom";
 import { PropertyCard } from "./property-card";
+import { useSearchParams } from 'react-router-dom';
 
 export const ExploreProperties = () => {
   const [isLoading, setIsLoading] = useState(false);
-
+  const [searchParams] = useSearchParams();
   const [propertyData, setPropertyData] = useState([]);
   const [error, setError] = useState(null);
   const [descriptionData, setDescriptionData] = useState([]);
@@ -68,18 +69,34 @@ export const ExploreProperties = () => {
   const [maxPrice, setMaxPrice] = useState(1000000);
 
   useEffect(() => {
+    // Initialize filters from URL parameters
+    const location = searchParams.get('location');
+    const category = searchParams.get('category');
+    const minPrice = searchParams.get('minPrice');
+    const maxPrice = searchParams.get('maxPrice');
+
+    if (location) setSelectedLocation(location);
+    if (category) setSelectedPropertyType(category);
+    if (minPrice && maxPrice) setPriceRange([Number(minPrice), Number(maxPrice)]);
+  }, [searchParams]);
+
+  useEffect(() => {
     if (propertyData) {
-      const sellData = propertyData.filter(
-        (property) => property.listingType.toString() === "sell"
+      const rentalsData = propertyData.filter(
+        (property) => property.listingType.toString() === "rent"
       );
-      const maxPropertyPrice = Math.max(
-        ...sellData.map((property) => property.price),
-        1000000
-      );
-      setPriceRange([0, maxPropertyPrice]);
-      setMaxPrice(maxPropertyPrice);
+      
+      // Only set price range if not already set by URL params
+      if (!searchParams.get('minPrice') && !searchParams.get('maxPrice')) {
+        const maxPropertyPrice = Math.max(
+          ...rentalsData.map((property) => property.price),
+          1000000
+        );
+        setPriceRange([0, maxPropertyPrice]);
+        setMaxPrice(maxPropertyPrice);
+      }
     }
-  }, [propertyData]);
+  }, [propertyData, searchParams]);
 
   const sellData = propertyData?.filter(
     (property) => property.listingType.toString() === "sell"
@@ -108,6 +125,11 @@ export const ExploreProperties = () => {
       isSelectedPropertyAge
     );
   });
+
+
+
+  // ...existing code...
+
 
   return (
     <div>

@@ -26,6 +26,7 @@ export const AddHouseOrHotelOrVillaForm = ({
             required={true}
             control={control}
             errors={errors}
+            rules={{ required: "Number of rooms is required", min: { value: 1, message: "Must be at least 1" } }}
            
           />
         </Col>

@@ -1,19 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { AutoComplete } from "antd";
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
-  const [city, setCity] = useState("");
+  const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [mode, setMode] = useState("Buy");
+  const [locations, setLocations] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState([]);
+  const navigate = useNavigate();
 
-  const categories = ["Apartment", "House", "Land", "Commercial"];
-  const handleSearch = () => {
-    console.log({ mode, city, category, minPrice, maxPrice });
+  const categories = ["apartment", "house", "land", "commercial", "villa/bungalow", "hotel"];
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_MYSQL_ENDPOINT}/get-all-properties`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch locations");
+        }
+        const data = await response.json();
+        const uniqueLocations = [...new Set(data.map(property => property.location))];
+        setLocations(uniqueLocations);
+      } catch (error) {
+        console.error("Error fetching locations:", error);
+      }
+    };
+
+    fetchLocations();
+  }, []);
+
+  const handleLocationChange = (value) => {
+    setLocation(value);
+    if (!value.trim()) {
+      setFilteredLocations([]);
+      return;
+    }
+    const filtered = locations.filter((loc) =>
+      loc.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredLocations(filtered);
   };
 
+  const handleSelect = (value) => {
+    setLocation(value);
+    setFilteredLocations([]);
+  };
+
+  const handleSearch = () => {
+    const searchParams = new URLSearchParams({
+      location: location || '',
+      category: category || '',
+      minPrice: minPrice || '',
+      maxPrice: maxPrice || '',
+      mode: mode
+    }).toString();
+
+    if (mode === 'Buy') {
+      navigate(`/explore-to-buy?${searchParams}`);
+    } else {
+      navigate(`/browse-rentals?${searchParams}`);
+    }
+  };
+  
   return (
-    <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-lg shadow-md">
+    <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-lg shadow-md relative z-[60]">
       {/* Mode Toggle */}
       <div className="flex gap-2">
         <button
@@ -34,16 +87,18 @@ const SearchBar = () => {
         </button>
       </div>
 
-      {/* City Search */}
-      <input
-        type="text"
-        placeholder="Search City..."
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        className="flex-grow border border-gray-300 rounded-md px-4 py-2"
+      {/* Location Search */}
+      <AutoComplete
+        value={location}
+        options={filteredLocations.map((loc) => ({ value: loc }))}
+        onChange={handleLocationChange}
+        onSelect={handleSelect}
+        placeholder="Search Location"
+        className="w-48"
+        dropdownStyle={{ zIndex: 9999 }}
       />
 
-      {/* Categories Dropdown */}
+      {/* Category Select */}
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -51,13 +106,13 @@ const SearchBar = () => {
       >
         <option value="">Categories</option>
         {categories.map((cat, index) => (
-          <option value={cat} key={index}>
+          <option key={index} value={cat}>
             {cat}
           </option>
         ))}
       </select>
 
-      {/* Min Price */}
+      {/* Price Range */}
       <input
         type="number"
         placeholder="Min Price"
@@ -66,7 +121,6 @@ const SearchBar = () => {
         className="w-28 border border-gray-300 rounded-md px-4 py-2"
       />
 
-      {/* Max Price */}
       <input
         type="number"
         placeholder="Max Price"
