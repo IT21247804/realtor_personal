@@ -66,12 +66,12 @@ const SearchBar = () => {
   };
   
   return (
-    <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-lg shadow-md relative z-[60]">
+    <div className="flex flex-wrap items-center gap-4 bg-white p-4 rounded-lg shadow-md"> 
       {/* Mode Toggle */}
       <div className="flex gap-2">
         <button
           className={`px-4 py-2 rounded-md font-semibold ${
-            mode === "Buy" ? "bg-red-500 text-white" : "bg-gray-100"
+            mode === "Buy" ? "bg-[#272c63] text-white" : "bg-gray-100"
           }`}
           onClick={() => setMode("Buy")}
         >
@@ -79,7 +79,7 @@ const SearchBar = () => {
         </button>
         <button
           className={`px-4 py-2 rounded-md font-semibold ${
-            mode === "Rent" ? "bg-red-500 text-white" : "bg-gray-100"
+            mode === "Rent" ? "bg-[#272c63] text-white" : "bg-gray-100"
           }`}
           onClick={() => setMode("Rent")}
         >
@@ -150,7 +150,7 @@ const SearchBar = () => {
       {/* Search Button */}
       <button
         onClick={handleSearch}
-        className="px-4 py-2 bg-red-500 text-white rounded-md flex items-center"
+        className="px-4 py-2 bg-[#272c63] text-white rounded-md flex items-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

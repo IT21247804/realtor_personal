@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { Menu, Collapse } from "antd";
 import { Link as ScrollLink } from "react-scroll";
+import { Dropdown, Space } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 
 const Navbar = () => {
   const { Panel } = Collapse;
@@ -10,6 +12,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [sideMenu, setSideMenu] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,6 +53,30 @@ const Navbar = () => {
     setSideMenu(false);
     document.body.style.overflow = "auto"; // Ensure scrolling is enabled again
   };
+
+ const servicesMenu = {
+  items: [
+    {
+      key: '1',
+      label: (
+        <Link to="/services" onClick={handleLinkClick}>
+          Our Services
+        </Link>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <Link 
+          to="/services#concierge-service" 
+          onClick={handleLinkClick}
+        >
+          Concierge Services
+        </Link>
+      ),
+    },
+  ],
+};
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -108,14 +136,17 @@ const Navbar = () => {
             </Link>
           </li>
           <li
-            className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
-              route === "explore-to-buy" ? "text-[#e53030]" : ""
-            }`}
-          >
-            <Link to="/explore-to-buy" onClick={handleLinkClick}>
-              Our Services
-            </Link>
-          </li>
+  className={`mr-8 uppercase tracking-widest hover:text-[#085585] duration-300 ${
+    route === "services" ? "text-[#e53030]" : ""
+  }`}
+>
+  <Dropdown menu={servicesMenu}>
+    <Space className="cursor-pointer">
+      Services
+      <DownOutlined />
+    </Space>
+  </Dropdown>
+</li>
           <li
             className={`mr-8 uppercase tracking-widest hover:underline hover:text-[#085585] duration-300 ${
               route === "explore-to-buy" ? "text-[#e53030]" : ""
@@ -130,8 +161,8 @@ const Navbar = () => {
               route === "explore-to-buy" ? "text-[#e53030]" : ""
             }`}
           >
-            <Link to="/services" onClick={handleLinkClick}>
-              Services
+            <Link to="/blogspage" onClick={handleLinkClick}>
+              Blogs
             </Link>
           </li>
         </ul>
@@ -246,26 +277,8 @@ const Navbar = () => {
                   <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
                     Our Agents
                   </div>
-                  <Link to="/blogspage" onClick={handleLinkClick}>
-  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-    Blogs
-  </div>
-</Link>
-                  <Link to="/add-listing" onClick={handleLinkClick}>
-                    <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                      How to list?
-                    </div>
-                  </Link>
-                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                  <ScrollLink
-                    to="contact-us"
-                    smooth={true}
-                    duration={500}
-                    
-                  >
-                    Contact Us
-                  </ScrollLink>
-                  </div>
+                 
+ 
 
                   {location.pathname === "/services" ? (
                      <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
@@ -289,6 +302,34 @@ const Navbar = () => {
                     </div>
                   )}
                 </Panel>
+                <Panel header="Blogs" key="4" className="uppercase font-normal">
+    <Link to="/blogspage" onClick={handleLinkClick}>
+      <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+        View All Blogs
+      </div>
+    </Link>
+  </Panel>
+
+  <Panel header="How to List" key="5" className="uppercase font-normal">
+    <Link to="/add-listing" onClick={handleLinkClick}>
+      <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+        List Your Property
+      </div>
+    </Link>
+  </Panel>
+
+  <Panel header="Contact Us" key="6" className="uppercase font-normal">
+    <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+      <ScrollLink
+        to="contact-us"
+        smooth={true}
+        duration={500}
+        onClick={handleLinkClick}
+      >
+        Get in Touch
+      </ScrollLink>
+    </div>
+  </Panel>
 
                 {/* <Panel
                   header="book / reserve"

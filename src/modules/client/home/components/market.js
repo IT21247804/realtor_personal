@@ -76,236 +76,209 @@ const OurMarket = () => {
               }
             >
               {market[0] && (
-                <motion.div
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      x: -100,
-                    },
-                    show: {
-                      x: 0,
-                      opacity: 1,
-                      transition: {
-                        type: "keyframes",
-                        duration: 0.2,
-                        delay: 0.2,
-                      },
-                    },
-                  }}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: false, amount: 0.25 }}
-                  className={
-                    "z-0 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
-                  }
-                >
-                  {market && market[0] && (
-                    <img
-                      src={market[0]?.cover}
-                      alt={"cover"}
-                      className={
-                        "w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
-                      }
-                    />
-                  )}
-                  <div>
-                    {market && market[0] && (
-                      <h1
-                        className={
-                          "capitalize bg-white text-slate-900 absolute mt-6 mr-4 px-6 tracking-widest py-4 font-medium text-xl transition-all duration-500 ease-in-out rounded-tr-full rounded-br-full"
-                        }
-                      >
-                        {market[0]?.location}
-                      </h1>
-                    )}
-                  </div>
-                  <div
-                    className={
-                      "absolute text-left text-white p-8 -bottom-[130px] md:-bottom-[100px] lg:-bottom[150px] group-hover:bottom-16 transition-all duration-500 ease-in-out"
-                    }
-                  >
-                    {market && market[0] && (
-                      <p className={"text-md mt-2"}>
-                        {truncateString(market[0]?.description, 150)}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-
-              {market[1] && (
-                <motion.div
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      x: -100,
-                    },
-                    show: {
-                      x: 0,
-                      opacity: 1,
-                      transition: {
-                        type: "keyframes",
-                        duration: 0.2,
-                        delay: 0.3,
-                      },
-                    },
-                  }}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: false, amount: 0.25 }}
-                  className={
-                    "z-0 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
-                  }
-                >
-                  {market && market[1] && (
-                    <img
-                      src={market[1]?.cover}
-                      alt={"cover"}
-                      className={
-                        "w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
-                      }
-                    />
-                  )}
-                  <div>
-                    {market && market[1] && (
-                      <h1
-                        className={
-                          "capitalize bg-white text-slate-900 absolute mt-6 mr-4 px-6 tracking-widest py-4 font-medium text-xl transition-all duration-500 ease-in-out rounded-tr-full rounded-br-full"
-                        }
-                      >
-                        {market[1]?.location}
-                      </h1>
-                    )}
-                  </div>
-                  <div
-                    className={
-                      "absolute text-left text-white p-8 -bottom-[130px] md:-bottom-[100px] lg:-bottom[150px] group-hover:bottom-16 transition-all duration-500 ease-in-out"
-                    }
-                  >
-                    {market && market[1] && (
-                      <p className={"text-md mt-2"}>
-                        {truncateString(market[1]?.description, 150)}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-
-              {market[2] && (
-                <motion.div
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      x: -100,
-                    },
-                    show: {
-                      x: 0,
-                      opacity: 1,
-                      transition: {
-                        type: "keyframes",
-                        duration: 0.2,
-                        delay: 0.4,
-                      },
-                    },
-                  }}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: false, amount: 0.25 }}
-                  className={
-                    "z-0 relative w-full  h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
-                  }
-                >
-                  {market && market[2] && (
-                    <img
-                      src={market[2]?.cover}
-                      alt={"cover"}
-                      className={
-                        "w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
-                      }
-                    />
-                  )}
-                  <div>
-                    {market && market[0] && (
-                      <h1
-                        className={
-                          "capitalize bg-white text-slate-900 absolute mt-6 mr-4 px-6 tracking-widest py-4 font-medium text-xl transition-all duration-500 ease-in-out rounded-tr-full rounded-br-full"
-                        }
-                      >
-                        {market[2]?.location}
-                      </h1>
-                    )}
-                  </div>
-                  <div
-                    className={
-                      "absolute text-left text-white p-8 -bottom-[130px] md:-bottom-[100px] lg:-bottom[150px] group-hover:bottom-16 transition-all duration-500 ease-in-out"
-                    }
-                  >
-                    {market && market[0] && (
-                      <p className={"text-md mt-2"}>
-                        {truncateString(market[2]?.description, 150)}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-
-              {market[3] && (
-                <motion.div
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      x: -100,
-                    },
-                    show: {
-                      x: 0,
-                      opacity: 1,
-                      transition: {
-                        type: "keyframes",
-                        duration: 0.2,
-                        delay: 0.5,
-                      },
-                    },
-                  }}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: false, amount: 0.25 }}
-                  className={
-                    "z-0 relative w-full h-[540px] cursor-pointer grayscale hover:grayscale-0 duration-500 transition-all object-cover ease-in-out overflow-hidden group rounded-tl-[50px] rounded-br-[50px] hover:rounded-tl-none hover:rounded-br-none hover:rounded-bl-[50px] hover:rounded-tr-[50px]"
-                  }
-                >
-                  {market && market[3] && (
-                    <img
-                      src={market[3]?.cover}
-                      alt={"cover"}
-                      className={
-                        "w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
-                      }
-                    />
-                  )}
-                  <div>
-                    {market && market[3] && (
-                      <h1
-                        className={
-                          "capitalize bg-white text-slate-900 absolute mt-6 mr-4 px-6 tracking-widest py-4 font-medium text-xl transition-all duration-500 ease-in-out rounded-tr-full rounded-br-full"
-                        }
-                      >
-                        {market[3]?.location}
-                      </h1>
-                    )}
-                  </div>
-                  <div
-                    className={
-                      "absolute text-left text-white p-8 -bottom-[130px] md:-bottom-[100px] lg:-bottom[150px] group-hover:bottom-16 transition-all duration-500 ease-in-out"
-                    }
-                  >
-                    {market && market[3] && (
-                      <p className={"text-md mt-2"}>
-                        {truncateString(market[3]?.description, 150)}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              )}
+  <motion.div
+    variants={{
+      hidden: {
+        opacity: 0,
+        x: -100,
+      },
+      show: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          type: "keyframes",
+          duration: 0.2,
+          delay: 0.5,
+        },
+      },
+    }}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: false, amount: 0.25 }}
+    className={
+      "z-30 relative w-full cursor-pointer transition-all duration-500 ease-in-out overflow-hidden group rounded-lg shadow-md border"
+    }
+  >
+    {market && market[0] && (
+      <div className="group relative overflow-hidden rounded-t-lg">
+        <img
+          src={market[0]?.cover}
+          alt={"cover"}
+          className={
+            "w-full h-[340px] object-cover transition-transform duration-500 group-hover:scale-110"
+          }
+        />
+      </div>
+    )}
+    
+    <div className="text-left bg-white p-6 w-full text-black space-y-3 rounded-b-lg">
+      {market && market[0] && (
+        <h2 className="capitalize text-2xl font-bold text-[#272c63]">
+          Our Market in {market[0]?.location}
+        </h2>
+      )}
+      
+      {market && market[0] && (
+        <p className="text-md text-gray-600">
+          {truncateString(market[0]?.description, 150)}
+        </p>
+      )}
+    </div>
+  </motion.div>
+)}
+{market[1] && (
+  <motion.div
+    variants={{
+      hidden: {
+        opacity: 0,
+        x: -100,
+      },
+      show: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          type: "keyframes",
+          duration: 0.2,
+          delay: 0.5,
+        },
+      },
+    }}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: false, amount: 0.25 }}
+    className={
+      "z-30 relative w-full cursor-pointer transition-all duration-500 ease-in-out overflow-hidden group rounded-lg shadow-md border"
+    }
+  >
+    {market && market[1] && (
+      <div className="group relative overflow-hidden rounded-t-lg">
+        <img
+          src={market[1]?.cover}
+          alt={"cover"}
+          className={
+            "w-full h-[340px] object-cover transition-transform duration-500 group-hover:scale-110"
+          }
+        />
+      </div>
+    )}
+    
+    <div className="text-left bg-white p-6 w-full text-black space-y-3 rounded-b-lg">
+      {market && market[1] && (
+        <h2 className="capitalize text-2xl font-bold text-[#272c63]">
+          Our Market in {market[1]?.location}
+        </h2>
+      )}
+      
+      {market && market[1] && (
+        <p className="text-md text-gray-600">
+          {truncateString(market[1]?.description, 150)}
+        </p>
+      )}
+    </div>
+  </motion.div>
+)}
+{market[2] && (
+  <motion.div
+    variants={{
+      hidden: {
+        opacity: 0,
+        x: -100,
+      },
+      show: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          type: "keyframes",
+          duration: 0.2,
+          delay: 0.5,
+        },
+      },
+    }}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: false, amount: 0.25 }}
+    className={
+      "z-30 relative w-full cursor-pointer transition-all duration-500 ease-in-out overflow-hidden group rounded-lg shadow-md border"
+    }
+  >
+    {market && market[2] && (
+      <div className="group relative overflow-hidden rounded-t-lg">
+        <img
+          src={market[2]?.cover}
+          alt={"cover"}
+          className={
+            "w-full h-[340px] object-cover transition-transform duration-500 group-hover:scale-110"
+          }
+        />
+      </div>
+    )}
+    
+    <div className="text-left bg-white p-6 w-full text-black space-y-3 rounded-b-lg">
+      {market && market[2] && (
+        <h2 className="capitalize text-2xl font-bold text-[#272c63]">
+          Our Market in {market[2]?.location}
+        </h2>
+      )}
+      
+      {market && market[2] && (
+        <p className="text-md text-gray-600">
+          {truncateString(market[2]?.description, 150)}
+        </p>
+      )}
+    </div>
+  </motion.div>
+)}
+{market[3] && (
+  <motion.div
+    variants={{
+      hidden: {
+        opacity: 0,
+        x: -100,
+      },
+      show: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          type: "keyframes",
+          duration: 0.2,
+          delay: 0.5,
+        },
+      },
+    }}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: false, amount: 0.25 }}
+    className={
+      "z-30 relative w-full cursor-pointer transition-all duration-500 ease-in-out overflow-hidden group rounded-lg shadow-md border"
+    }
+  >
+    {market && market[3] && (
+      <div className="group relative overflow-hidden rounded-t-lg">
+        <img
+          src={market[3]?.cover}
+          alt={"cover"}
+          className={
+            "w-full h-[340px] object-cover transition-transform duration-500 group-hover:scale-110"
+          }
+        />
+      </div>
+    )}
+    
+    <div className="text-left bg-white p-6 w-full text-black space-y-3 rounded-b-lg">
+      {market && market[3] && (
+        <h2 className="capitalize text-2xl font-bold text-[#272c63]">
+          Our Market in {market[3]?.location}
+        </h2>
+      )}
+      
+      {market && market[3] && (
+        <p className="text-md text-gray-600">
+          {truncateString(market[3]?.description, 150)}
+        </p>
+      )}
+    </div>
+  </motion.div>
+)}
             </div>
           )}
         </div>

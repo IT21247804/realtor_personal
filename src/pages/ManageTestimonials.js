@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Button, notification, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import { TestimonialCard } from "./TestimonialCard";
+import { CustomTableHeader } from "../modules/shared/components/custom-table-header";
 
 export const ManageTestimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -61,6 +62,7 @@ export const ManageTestimonials = () => {
 
   return (
     <div style={{ padding: "20px" }}>
+        <CustomTableHeader header="Manage Testimonials" description="" />
       <Row gutter={[16, 16]}>
         {testimonials.map((testimonial) => (
           <Col span={8} key={testimonial.id}>

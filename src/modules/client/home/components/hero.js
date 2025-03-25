@@ -41,7 +41,7 @@ const Hero = () => {
           <HeroBanner location={"dubai"} videoLink={"/images/banner/dubai.png"} />
         </div>
       </Slider>
-      <div className="absolute bottom-0 left-0 right-0 p-4">
+      <div className="absolute top-[35%] left-20 right-20 p-10">
         <SearchBar />
       </div>
     </div>

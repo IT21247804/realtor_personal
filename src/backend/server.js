@@ -39,6 +39,8 @@ try {
   const setSignatureProperty = require("./routes/property/set-signature-property");
   const getSignatureProperty = require("./routes/property/get-signature-property");
   const setPropertyStatus = require("./routes/property/set-property-status");
+  const updateProperty = require("./routes/property/update-property");
+
 
   app.use("/add-property", addProperty(db));
   app.use("/get-all-properties", getProperty(db));
@@ -47,6 +49,7 @@ try {
   app.use("/set-signature-property", setSignatureProperty(db));
   app.use("/get-signature-property", getSignatureProperty(db));
   app.use("/set-property-status", setPropertyStatus(db));
+  app.use("/update-property", updateProperty(db));
 } catch (error) {
   console.error("Error setting up property routes: ", error);
 }
@@ -79,9 +82,11 @@ try {
 try {
   const addUser = require("./routes/user/add-user");
   const getAllUsers = require("./routes/user/get-all-users");
+  const loginUser = require("./routes/user/login-user");
 
   app.use("/add-user", addUser(db));
   app.use("/get-all-users", getAllUsers(db));
+  app.use("/login", loginUser(db));
 } catch (error) {
   console.error("Error setting up user routes: ", error);
 }

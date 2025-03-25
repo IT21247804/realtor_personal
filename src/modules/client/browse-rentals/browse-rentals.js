@@ -20,19 +20,22 @@ export const BrowseRentalProperties = () => {
         const response = await fetch(
           `${process.env.REACT_APP_MYSQL_ENDPOINT}/get-all-properties`
         );
-
+  
         if (!response.ok) throw new Error("Failed to fetch market data");
-
+  
         const data = await response.json();
-
-        setPropertyData(data);
+        
+        // Filter for visible properties only
+        const visibleProperties = data.filter(property => property.visibility === 'on');
+        setPropertyData(visibleProperties);
+        
       } catch (err) {
         setError(err.message);
       } finally {
         setIsLoading(false);
       }
     };
-
+  
     fetchMarket();
   }, []);
 

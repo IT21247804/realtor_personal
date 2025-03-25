@@ -282,9 +282,9 @@ export const ViewIndividualProperty = (propertyId) => {
             ))
           : propertyDescription?.[0]?.description && (
               <p>
-                {propertyDescription[0].description.length <= 10
+                {propertyDescription[0].description.length <= 100
                   ? propertyDescription[0].description
-                  : `${propertyDescription[0].description.slice(0, 10)}...`}
+                  : `${propertyDescription[0].description.slice(0, 100)}...`}
               </p>
             )}
         {propertyDescription.length > 1 && (

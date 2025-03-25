@@ -12,8 +12,8 @@ module.exports = (db) => {
     const addProperty = `
       INSERT INTO property (
         referenceId, firstname, lastname, contactNumberOne, contactNumberTwo, whatsappNumber, email, addressLineOne, addressLineTwo, location, age, listingType, propertyType, 
-        numberOfRooms, numberOfWashrooms, floorArea, size, measuringUnit ,price, numberOfFloors, furnished, cover, pictures, video, accessRoad, airCondition, amenity, apartmentName, cod, deedType, developer, elevator, generator, parking, security, signature, status, surveyPlans, perval 
-      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        numberOfRooms, numberOfWashrooms, floorArea, size, measuringUnit ,price, numberOfFloors, furnished, cover, pictures, video, accessRoad, airCondition, amenity, apartmentName, cod, deedType, developer, elevator, generator, parking, security, signature, status, surveyPlans, perval, visibility, ownerName, ownerContact
+      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     `;
 
     console.log("add property: ", req.body);
@@ -59,11 +59,14 @@ module.exports = (db) => {
       req.body.status,
       req.body.surveyPlans,
       req.body.perval,
+      req.body.visibility,
+      req.body.ownerName, // New field
+      req.body.ownerContact // New field
     ];
 
     const addPropertyDescription = `
-          INSERT INTO property_description (description, property_id) VALUES ?
-        `;
+      INSERT INTO property_description (description, property_id) VALUES ?
+    `;
 
     const itemsValues = items.map((item) => [item.item || null, null]);
 
@@ -76,8 +79,8 @@ module.exports = (db) => {
       db.query(addProperty, propertyValues, (err, result) => {
         if (err) {
           return db.rollback(() => {
-            console.error("Error inserting invoice: ", err.stack);
-            return res.status(500).json({ error: "Failed to insert invoice" });
+            console.error("Error inserting property: ", err.stack);
+            return res.status(500).json({ error: "Failed to insert property" });
           });
         }
         const propertyId = result.insertId;
@@ -110,7 +113,7 @@ module.exports = (db) => {
             }
             res
               .status(201)
-              .json({ message: "Invoice and items added successfully" });
+              .json({ message: "Property and descriptions added successfully" });
           });
         });
       });
