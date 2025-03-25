@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Button, notification, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import { BlogCard } from "./BlogCard";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 export const ManageBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -61,33 +62,100 @@ export const ManageBlogs = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <Row gutter={[16, 16]}>
-        {blogs.map((blog) => (
-          <Col span={8} key={blog.id}>
-            <BlogCard
-              title={blog.title}
-              description={blog.description}
-              author={blog.author}
-              date={blog.date}
-              image={`${process.env.REACT_APP_MYSQL_ENDPOINT}/${blog.image}`}
-            />
-            <Button
-              type="primary"
-              onClick={() => navigate(`/dashboard/update-blog/${blog.id}`)}
-              style={{ marginTop: 10, marginRight: 10 }}
+    <h1 style={{ color: "#272c63", marginBottom: "30px", fontSize: "24px" }}>Manage Blogs</h1>
+    <Row gutter={[16, 16]}>
+      {blogs.map((blog) => (
+        <Col xs={24} sm={12} md={8} key={blog.id}>
+          <div 
+            style={{ 
+              border: "1px solid #e8e8e8",
+              borderRadius: "8px",
+              overflow: "hidden",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column"
+            }}
+          >
+            <div 
+              style={{ 
+                height: "200px",
+                overflow: "hidden",
+                position: "relative"
+              }}
             >
-              Update
-            </Button>
-            <Button
-              type="danger"
-              onClick={() => handleDelete(blog.id)}
-              style={{ marginTop: 10 }}
-            >
-              Delete
-            </Button>
-          </Col>
-        ))}
-      </Row>
-    </div>
+              <img
+                src={`${process.env.REACT_APP_MYSQL_ENDPOINT}/${blog.image}`}
+                alt={blog.title}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+              />
+            </div>
+            
+            <div style={{ padding: "16px", flex: 1 }}>
+              <h3 style={{ 
+                color: "#272c63",
+                marginBottom: "8px",
+                fontSize: "18px",
+                fontWeight: "600"
+              }}>
+                {blog.title}
+              </h3>
+              
+              <p style={{ 
+                color: "#666",
+                fontSize: "14px",
+                marginBottom: "8px",
+                display: "-webkit-box",
+                WebkitLineClamp: "2",
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden"
+              }}>
+                {blog.description}
+              </p>
+              
+              <div style={{ 
+                color: "#888",
+                fontSize: "12px",
+                marginBottom: "16px"
+              }}>
+                By {blog.author} | {new Date(blog.date).toLocaleDateString()}
+              </div>
+
+              <div style={{ 
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: "8px",
+                borderTop: "1px solid #e8e8e8",
+                paddingTop: "16px"
+              }}>
+                <Button
+                  type="primary"
+                  icon={<EditOutlined />}
+                  onClick={() => navigate(`/dashboard/update-blog/${blog.id}`)}
+                  style={{ 
+                    backgroundColor: "#272c63",
+                    borderColor: "#272c63"
+                  }}
+                >
+                  Update
+                </Button>
+                <Button
+                  danger
+                  icon={<DeleteOutlined />}
+                  onClick={() => handleDelete(blog.id)}
+                >
+                  Delete
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Col>
+      ))}
+    </Row>
+  </div>
   );
 };

@@ -191,3 +191,16 @@ export const amenityType = [
     key: "telephone",
   },
 ];
+
+export const visibilityTypes = [
+  {
+    label: "On",
+    value: "on",
+    key: "on",
+  },
+  {
+    label: "Off",
+    value: "off",
+    key: "off",
+  },
+];

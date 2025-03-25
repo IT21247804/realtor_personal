@@ -461,62 +461,79 @@ export const BrowseDashboardProperty = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="font-semibold text-lg mb-4">Agent details: </p>
-                  <div className="grid grid-cols-1 lg:grid-cols-4 mb-4">
-                    {propertyData.firstname && (
-                      <div className="flex items-center">
-                        <p className="font-semibold mr-4">Name: </p>
-                        <p className="capitalize">
-                          {propertyData.firstname} {propertyData.lastname}
-                        </p>
-                      </div>
-                    )}
+  <p className="font-semibold text-lg mb-4">Agent details: </p>
+  <div className="grid grid-cols-1 lg:grid-cols-4 mb-4">
+    {propertyData.firstname && (
+      <div className="flex items-center">
+        <p className="font-semibold mr-4">Name: </p>
+        <p className="capitalize">
+          {propertyData.firstname} {propertyData.lastname}
+        </p>
+      </div>
+    )}
 
-                    {propertyData.addressLineOne && (
-                      <div className="flex items-center">
-                        <p className="font-semibold mr-4">Address: </p>
-                        <p className="capitalize">
-                          {propertyData.addressLineOne}{" "}
-                          {propertyData.addressLineTwo}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                    {propertyData?.contactNumberOne && (
-                      <ContactFieldCard
-                        icon={Smartphone}
-                        text={propertyData.contactNumberOne}
-                      />
-                    )}
+    {propertyData.addressLineOne && (
+      <div className="flex items-center">
+        <p className="font-semibold mr-4">Address: </p>
+        <p className="capitalize">
+          {propertyData.addressLineOne} {propertyData.addressLineTwo}
+        </p>
+      </div>
+    )}
+  </div>
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    {propertyData?.contactNumberOne && (
+      <ContactFieldCard
+        icon={Smartphone}
+        text={propertyData.contactNumberOne}
+      />
+    )}
 
-                    {propertyData?.contactNumberTwo && (
-                      <ContactFieldCard
-                        icon={Smartphone}
-                        text={propertyData.contactNumberTwo}
-                      />
-                    )}
+    {propertyData?.contactNumberTwo && (
+      <ContactFieldCard
+        icon={Smartphone}
+        text={propertyData.contactNumberTwo}
+      />
+    )}
 
-                    {propertyData?.whatsappNumber && (
-                      <WhatsappButton
-                        message={`Hello, I am interested in property ID: ${propertyData?.referenceId}. Can you provide more details?`}
-                        number={propertyData?.whatsappNumber}
-                      />
-                    )}
+    {propertyData?.whatsappNumber && (
+      <WhatsappButton
+        message={`Hello, I am interested in property ID: ${propertyData?.referenceId}. Can you provide more details?`}
+        number={propertyData?.whatsappNumber}
+      />
+    )}
 
-                    {propertyData?.email && (
-                      <div
-                        className="flex items-center border p-4 justify-center rounded-4 shadow-sm hover:shadow-md cursor-pointer hover:shadow-[#085585]/50 duration-300 transition-all"
-                        onClick={() => handleEmailClick(propertyData.email)}
-                      >
-                        <Mail className="w-4 h-4 mr-2" />
-                        <p className="text-md lg:text-lg">
-                          {propertyData.email}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
+    {propertyData?.email && (
+      <div
+        className="flex items-center border p-4 justify-center rounded-4 shadow-sm hover:shadow-md cursor-pointer hover:shadow-[#085585]/50 duration-300 transition-all"
+        onClick={() => handleEmailClick(propertyData.email)}
+      >
+        <Mail className="w-4 h-4 mr-2" />
+        <p className="text-md lg:text-lg">{propertyData.email}</p>
+      </div>
+    )}
+  </div>
+</div>
+
+<div className="mt-4">
+  <p className="font-semibold text-lg mb-4">Owner details: </p>
+  <div className="grid grid-cols-1 lg:grid-cols-4 mb-4">
+    {propertyData.ownerName && (
+      <div className="flex items-center">
+        <p className="font-semibold mr-4">Owner Name: </p>
+        <p className="capitalize">{propertyData.ownerName}</p>
+      </div>
+    )}
+
+    {propertyData.ownerContact && (
+      <div className="flex items-center">
+        <p className="font-semibold mr-4">Owner Contact: </p>
+        <p className="capitalize">{propertyData.ownerContact}</p>
+      </div>
+    )}
+  </div>
+</div>
+                
               </div>
             </div>
           </div>

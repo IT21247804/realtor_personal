@@ -9,6 +9,7 @@ import {
   listingTypes,
   propertyAgeType,
   propertyTypes,
+  visibilityTypes
 } from "../../../shared/utils/types";
 import { SelectFormField } from "../../../shared/components/select-field";
 import { LoadingButton } from "../../../shared/components/loading-button";
@@ -18,7 +19,7 @@ import { AddApartmentForm } from "./add-apartment-form";
 import { AddLandForm } from "./add-land-form";
 
 // Schema validation
-const addPropertyFormSchema = Yup.object().shape({
+export const addPropertyFormSchema = Yup.object().shape({
   referenceId: Yup.string()
     .min(2, "Reference number is required.")
     .required("Reference number is required."),
@@ -52,7 +53,7 @@ const addPropertyFormSchema = Yup.object().shape({
     .required("Property type is required."),
 });
 
-const addApartmentFormSchema = addPropertyFormSchema.shape({
+export const addApartmentFormSchema = addPropertyFormSchema.shape({
   numberOfRooms: Yup.string()
     .min(1, "Number of rooms are required.")
     .required("Number of rooms are required."),
@@ -102,7 +103,7 @@ const addApartmentFormSchema = addPropertyFormSchema.shape({
   pictures: Yup.string().optional(),
 });
 
-const addCommercialPropertyFormSchema = addPropertyFormSchema.shape({
+export const addCommercialPropertyFormSchema = addPropertyFormSchema.shape({
   numberOfRooms: Yup.string()
     .min(1, "Number of rooms are required.")
     .required("Number of rooms are required."),
@@ -154,7 +155,7 @@ const addCommercialPropertyFormSchema = addPropertyFormSchema.shape({
   pictures: Yup.string().optional(),
 });
 
-const addLandFormSchema = addPropertyFormSchema.shape({
+export const addLandFormSchema = addPropertyFormSchema.shape({
   size: Yup.string().min(1, "Size is required.").required("Size is required."),
 
   measuringUnit: Yup.mixed()
@@ -193,7 +194,7 @@ const addLandFormSchema = addPropertyFormSchema.shape({
   pictures: Yup.string().optional(),
 });
 
-const addHouseOrHotelOrVillaFormSchema = addPropertyFormSchema.shape({
+export const addHouseOrHotelOrVillaFormSchema = addPropertyFormSchema.shape({
   size: Yup.string().min(1, "Size is required.").required("Size is required."),
 
   numberOfRooms: Yup.string()
@@ -285,6 +286,9 @@ export const AddPropertyForm = () => {
       security: "",
       pictures: "",
       perval: "",
+      visibility: "",
+      ownerName: "", // New field
+    ownerContact: "", // New field
     },
     resolver: yupResolver(addPropertyFormSchema),
   });
@@ -473,17 +477,55 @@ export const AddPropertyForm = () => {
               options={propertyAgeType}
             />
           </Col>
+          </Row>
           <Col xs={24} sm={12} md={12} lg={12}>
-            <SelectFormField
-              name="listingType"
-              label="Listing Type"
-              placeholder="Select Listing Type"
-              required
-              control={control}
-              errors={errors}
-              options={listingTypes}
-            />
-          </Col>
+          <InputField
+            name="ownerName"
+            label="Owner Name"
+            placeholder="Owner Name"
+            required
+            control={control}
+            errors={errors}
+          />
+        </Col>
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <InputField
+            name="ownerContact"
+            label="Owner Contact"
+            placeholder="Owner Contact"
+            required
+            control={control}
+            errors={errors}
+          />
+        </Col>
+          <Row gutter={[16, 16]}>
+  {/* ... existing fields ... */}
+  <Col xs={24} sm={24} md={16} lg={16}> {/* Increased width */}
+    <SelectFormField
+      name="listingType"
+      label="Listing Type"
+      placeholder="Select Listing Type"
+      required
+      control={control}
+      errors={errors}
+      options={listingTypes}
+    />
+  </Col>
+  {watch("listingType") === "rent" && (
+    <Col xs={24} sm={24} md={8} lg={8}> {/* Adjusted width for visibility */}
+      <SelectFormField
+        name="visibility"
+        label="Visibility"
+        placeholder="Select Visibility"
+        required
+        control={control}
+        errors={errors}
+        options={visibilityTypes}
+      />
+    </Col>
+  )}
+  {/* ... rest of the form ... */}
+</Row>
           <Col xs={24} sm={12} md={12} lg={12}>
             <SelectFormField
               name="propertyType"
@@ -495,7 +537,7 @@ export const AddPropertyForm = () => {
               options={propertyTypes}
             />
           </Col>
-        </Row>
+        
 
         {propertyType === "house" && (
           <AddHouseOrHotelOrVillaForm

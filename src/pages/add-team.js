@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { InputField } from "../modules/shared/components/input-field";  // Custom input component
 import { TextInputField } from "../modules/shared/components/text-area";  // Custom textarea component
+import { CustomTableHeader } from "../modules/shared/components/custom-table-header";
 
 // Define the validation schema for the team form
 const addTeamFormSchema = Yup.object().shape({
@@ -76,6 +77,7 @@ export const AddTeamForm = () => {
 
   return (
     <div className="text-left flex flex-col mx-auto w-full md:max-w-2xl z-20 p-2 rounded-xl">
+        <CustomTableHeader header="Add team" description="" />
       <AntForm
         layout="vertical"
         labelAlign="left"

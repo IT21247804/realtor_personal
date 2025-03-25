@@ -154,7 +154,7 @@ const SignatureProperties = () => {
         <div className="mt-4 text-sm text-[#272c63] flex space-x-4">
           <p className="font-bold">• {signatureData[0]?.location}</p>
           <p className="font-bold">• {signatureData[0]?.age}</p>
-          <p className="font-bold">• {signatureData[0]?.size}</p>
+          <p className="font-bold">• {signatureData[0]?.size} perches</p>
         </div>
       </div>
     </motion.div>

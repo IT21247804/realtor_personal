@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PushpinOutlined } from "@ant-design/icons";
 import { formatPrice } from "../../shared/utils/format-price";
-import { useNavigate } from "react-router-dom";
 
 export const PropertyCard = ({
   cover,
@@ -13,22 +12,11 @@ export const PropertyCard = ({
   status,
   id,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false); // State for toggling description
   const navigate = useNavigate();
 
-  const handleCardClick = () => {
-    navigate(`/property/${id}`); // Redirect to the property details page
-  };
-
-  const handleToggleDescription = (e) => {
-    e.stopPropagation(); // Prevent the card click event from firing
-    e.preventDefault();
-    setIsExpanded(!isExpanded); // Toggle the expanded state
-  };
-
   const truncateDescription = (str) => {
-    if (str?.length > 280) {
-      return str.slice(0, 280) + "...";
+    if (str?.length > 150) {
+      return str.slice(0, 150) + "...";
     }
     return str;
   };
@@ -42,9 +30,9 @@ export const PropertyCard = ({
   return (
     <div
       className={
-        "relative group w-full cursor-pointer rounded-lg border border-[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow-[#085585]/40 overflow-hidden h-auto"
+        "relative group w-full cursor-pointer rounded-lg border border-[#085585] shadow-lg hover:shadow-md duration-300 hover:shadow-[#085585]/40 overflow-hidden h-[500px]"
       }
-      onClick={handleCardClick} // Handle card redirection
+      onClick={() => navigate(`/property/${id}`)}
     >
       {status === "sold" && (
         <div className={"w-full h-full absolute bg-black/20"} />
@@ -87,7 +75,7 @@ export const PropertyCard = ({
 
         <div className={"flex items-center justify-between mb-4"}>
           <div>
-            <p className={"capitalize text-md "}>{propertyType}</p>
+            <p className={"capitalize text-md"}>{propertyType}</p>
           </div>
           <div>
             <p
@@ -100,14 +88,17 @@ export const PropertyCard = ({
           </div>
         </div>
 
-        <div className={"mb-4"}>
-          {isExpanded ? description : truncateDescription(description)}
-          {description?.length > 280 && (
+        <div className={"mb-4 relative"}>
+          {truncateDescription(description)}
+          {description?.length > 150 && (
             <button
               className="text-[#085585] font-semibold underline ml-2"
-              onClick={handleToggleDescription} // Prevent card click propagation
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/property/${id}`);
+              }}
             >
-              {isExpanded ? "See Less" : "See More"}
+              See More
             </button>
           )}
         </div>

@@ -163,6 +163,15 @@ export const DashboardPropertyCard = ({
           <Eye className="h-4 text--[#272c63]" />
         </Link>
       </div>
+      <div className="flex items-center gap-2 rounded-md hover:bg-gray-100 p-2 cursor-pointer">
+        <Link
+          to={`/dashboard/update-property/${id}`}
+          className="flex items-center gap-2"
+        >
+          <p className="text-sm text--[#272c63] font-semibold">Update Property</p>
+          
+        </Link>
+      </div>
       <div
         className="flex items-center gap-2 rounded-md hover:bg-gray-100 p-2 cursor-pointer"
         onClick={handleAddToSignature}
