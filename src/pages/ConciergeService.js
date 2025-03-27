@@ -146,10 +146,20 @@ negotiations can be conducted in the comfort of their home or office.`, bold: fa
 
   return (
     <div className="p-4">
-      <div className="flex justify-center">
-        <h2 className="mb-6 text-xl md:text-4xl lg:text-6xl transition-all ease-in-out duration-500 uppercase font-semibold md:font-bold text-[#272c63] tracking-widest title-font">Concierge Service</h2>
+      <div 
+        className="flex justify-center"
+        data-aos="fade-down"
+        data-aos-duration="2000"
+      >
+        <h2 className="mb-6 text-xl md:text-4xl lg:text-6xl transition-all ease-in-out duration-500 uppercase font-semibold md:font-bold text-[#272c63] tracking-widest title-font">
+          Concierge Service
+        </h2>
       </div>
-      <div className="bg-white rounded-lg shadow-md p-6 m-4">
+      <div 
+        className="bg-white rounded-lg shadow-md p-6 m-4"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
         {introText.map((paragraph, index) => (
           <p key={index} className="mb-4 text-center">
             {paragraph.bold ? (
@@ -162,13 +172,19 @@ negotiations can be conducted in the comfort of their home or office.`, bold: fa
       </div>
       <div className="gap-4">
         {services.map((service, index) => (
-          <ConciergeServiceItem
+          <div
             key={index}
-            image={service.image}
-            title={service.title}
-            text={service.text}
-            reverse={index % 2 !== 0} // Reverse layout for odd-indexed items
-          />
+            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+            data-aos-duration="2000"
+            data-aos-delay={`${index * 100}`}
+          >
+            <ConciergeServiceItem
+              image={service.image}
+              title={service.title}
+              text={service.text}
+              reverse={index % 2 !== 0}
+            />
+          </div>
         ))}
       </div>
     </div>
