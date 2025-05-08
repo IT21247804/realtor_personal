@@ -112,35 +112,35 @@ try {
 
 // File upload route (for team details)
 try {
-  const addTeam = require("./routes/add-team"); // Update with actual path to the route
+  const addTeam = require("./routes/team/add-team"); // Update with actual path to the route
   app.use("/add-team", addTeam(db)); // Pass db to the route
 } catch (error) {
   console.error("Error setting up file upload routes: ", error);
 }
 
 try {
-  const getTeam = require("./routes/get-team"); // Update with actual path to the route
+  const getTeam = require("./routes/team/get-team"); // Update with actual path to the route
   app.use("/get-team", getTeam(db)); // Pass db to the route
 } catch (error) {
   console.error("Error getting team details ", error);
 }
 
 try {
-  const deleteTeam = require("./routes/delete-team"); // Update with actual path to the route
+  const deleteTeam = require("./routes/team/delete-team"); // Update with actual path to the route
   app.use("/delete-team", deleteTeam(db)); // Pass db to the route
 } catch (error) {
   console.error("Error deleteing team details ", error);
 }
 
 try {
-  const updateTeam = require("./routes/update-team"); // Update with actual path to the route
+  const updateTeam = require("./routes/team/update-team"); // Update with actual path to the route
   app.use("/update-team", updateTeam(db)); // Pass db to the route
 } catch (error) {
   console.error("Error update team details ", error);
 }
 
 try {
-  const getTeamById = require("./routes/get-team-id"); // Path to your get-team-by-id route
+  const getTeamById = require("./routes/team/get-team-id"); // Path to your get-team-by-id route
   app.use("/get-team", getTeamById(db)); // Use "/get-team" for the base path
 } catch (error) {
   console.error("Error getting team member by ID: ", error);
@@ -151,35 +151,35 @@ try {
 
 // Routes
 try {
-  const addTestimonials = require("./routes/add-testimonials");
+  const addTestimonials = require("./routes/testimonials/add-testimonials");
   app.use("/add-testimonials", addTestimonials(db));
 } catch (error) {
   console.error("Error setting up add testimonials route: ", error);
 }
 
 try {
-  const getTestimonials = require("./routes/get-testimonials");
+  const getTestimonials = require("./routes/testimonials/get-testimonials");
   app.use("/get-testimonials", getTestimonials(db));
 } catch (error) {
   console.error("Error getting testimonials: ", error);
 }
 
 try {
-  const deleteTestimonials = require("./routes/delete-testimonials");
+  const deleteTestimonials = require("./routes/testimonials/delete-testimonials");
   app.use("/delete-testimonials", deleteTestimonials(db));
 } catch (error) {
   console.error("Error deleting testimonial: ", error);
 }
 
 try {
-  const updateTestimonials = require("./routes/update-testimonials");
+  const updateTestimonials = require("./routes/testimonials/update-testimonials");
   app.use("/update-testimonials", updateTestimonials(db));
 } catch (error) {
   console.error("Error updating testimonial: ", error);
 }
 
 try {
-  const getTestimonialsById = require("./routes/get-testimonials-id");
+  const getTestimonialsById = require("./routes/testimonials/get-testimonials-id");
   app.use("/get-testimonials", getTestimonialsById(db));
 } catch (error) {
   console.error("Error getting testimonial by ID: ", error);
@@ -187,35 +187,35 @@ try {
 
 // blog routes
 try {
-  const addBlog = require("./routes/add-blog");
+  const addBlog = require("./routes/blogs/add-blog");
   app.use("/add-blog", addBlog(db));
 } catch (error) {
   console.error("Error setting up add blog route: ", error);
 }
 
 try {
-  const getBlogs = require("./routes/get-blog");
+  const getBlogs = require("./routes/blogs/get-blog");
   app.use("/get-blogs", getBlogs(db));
 } catch (error) {
   console.error("Error getting blogs: ", error);
 }
 
 try {
-  const deleteBlog = require("./routes/delete-blog");
+  const deleteBlog = require("./routes/blogs/delete-blog");
   app.use("/delete-blog", deleteBlog(db));
 } catch (error) {
   console.error("Error deleting blog: ", error);
 }
 
 try {
-  const updateBlog = require("./routes/update-blog");
+  const updateBlog = require("./routes/blogs/update-blog");
   app.use("/update-blog", updateBlog(db));
 } catch (error) {
   console.error("Error updating blog: ", error);
 }
 
 try {
-  const getBlogById = require("./routes/get-blog-id");
+  const getBlogById = require("./routes/blogs/get-blog-id");
   app.use("/get-blog-id", getBlogById(db));
 } catch (error) {
   console.error("Error getting blog by ID: ", error);
