@@ -14,6 +14,14 @@ const Hero = () => {
     autoplay: true,
     autoplaySpeed: 7000,
     pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          dots: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -41,9 +49,16 @@ const Hero = () => {
           <HeroBanner location={"dubai"} videoLink={"/images/banner/dubai.png"} />
         </div>
       </Slider>
-      <div className="absolute top-[35%] left-20 right-20 p-10">
-        <SearchBar />
+
+      {/* SearchBar Container with Responsive Positioning */}
+      <div className="absolute w-full px-4 md:px-20 transform -translate-y-1/2 z-10 top-1/2 md:top-[35%]">
+        <div className="max-w-7xl mx-auto">
+          <SearchBar />
+        </div>
       </div>
+
+      {/* Optional Overlay for Better Text Contrast */}
+      <div className="absolute inset-0 bg-black bg-opacity-30 pointer-events-none" />
     </div>
   );
 };
