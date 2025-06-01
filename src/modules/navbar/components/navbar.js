@@ -274,9 +274,27 @@ const Navbar = () => {
                   key="3"
                   className="uppercase font-normal"
                 >
-                  <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
-                    Our Agents
-                  </div>
+                  {location.pathname === "/about" ? (
+    <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+      <ScrollLink
+        to="our-team"
+        smooth={true}
+        duration={500}
+        onClick={handleLinkClick}
+      >
+        Our Agents
+      </ScrollLink>
+    </div>
+  ) : (
+    <div className="hover:bg-slate-200 transition-all duration-500 ease-in-out text-xs px-4 py-2 w-full">
+      <Link
+        to="/about#our-team"
+        onClick={handleLinkClick}
+      >
+        Our Agents
+      </Link>
+    </div>
+  )}
                  
  
 

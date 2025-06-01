@@ -1,5 +1,7 @@
 import { Element } from 'react-scroll';
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { scroller } from 'react-scroll';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import AboutUs from './AboutUs';
@@ -9,6 +11,8 @@ import AboutBanner from './AboutBanner';
 import ContactUs from '../modules/client/home/components/contact-us';
 
 const About = () => {
+  const location = useLocation();
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -16,6 +20,22 @@ const About = () => {
       mirror: true
     });
   }, []);
+
+  useEffect(() => {
+    // Small delay to ensure the page has loaded
+    const timeoutId = setTimeout(() => {
+      if (location.hash === '#our-team') {
+        scroller.scrollTo('our-team', {
+          duration: 800,
+          delay: 0,
+          smooth: 'easeInOutQuart',
+          offset: -100
+        });
+      }
+    }, 100);
+  
+    return () => clearTimeout(timeoutId);
+  }, [location]);
 
   return (
     <div>
@@ -42,10 +62,11 @@ const About = () => {
         <BrandPromise />
       </div>
 
-      <div className="my-14"></div>
-
-     
-        <OurTeam />
+      <div className="my-14">
+        <Element name="our-team">
+          <OurTeam />
+        </Element>
+      </div>
      
 
       <div 
