@@ -88,18 +88,15 @@ export const AddListingForm = () => {
   };
 
   return (
-    <div
-      className={
-        "text-left flex flex-col mx-auto w-full md:max-w-2xl z-20 p-8 shadow-xl rounded-xl bg-slate-500/30 backdrop-blur"
-      }
-    >
+    <div className="text-left flex flex-col mx-auto w-full max-w-[95%] md:max-w-2xl z-20 p-4 md:p-8 shadow-xl rounded-xl bg-slate-500/30 backdrop-blur">
       <AntForm
         layout="vertical"
         labelAlign="left"
         onFinish={handleSubmit(onSubmit)}
       >
-        <Row gutter={16}>
-          <Col span={12}>
+        {/* Name Fields */}
+        <Row gutter={[16, 0]} className="mb-2">
+          <Col xs={24} sm={12}>
             <InputField
               name="firstname"
               label="Firstname"
@@ -110,7 +107,7 @@ export const AddListingForm = () => {
               labelColor="white"
             />
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={12}>
             <InputField
               name="lastname"
               label="Lastname"
@@ -122,7 +119,9 @@ export const AddListingForm = () => {
             />
           </Col>
         </Row>
-        <Row>
+
+        {/* Other Fields */}
+        <Row gutter={[0, 16]}>
           <Col span={24}>
             <InputField
               name="location"
@@ -167,6 +166,7 @@ export const AddListingForm = () => {
               control={control}
               errors={errors}
               labelColor="white"
+              type="tel"
             />
           </Col>
           <Col span={24}>
@@ -178,16 +178,19 @@ export const AddListingForm = () => {
               control={control}
               errors={errors}
               labelColor="white"
+              type="email"
             />
           </Col>
         </Row>
 
-        <Row>
-          <Col span={24} className="flex items-center justify-end">
+        {/* Submit Button */}
+        <Row className="mt-6">
+          <Col span={24} className="flex items-center justify-center md:justify-end">
             <CustomPrimaryButton
               text="Send Request"
               htmlType="submit"
               loading={isLoading}
+              className="w-full md:w-auto"
             />
           </Col>
         </Row>
